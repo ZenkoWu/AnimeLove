@@ -1,0 +1,16 @@
+/* .container {
+    padding: 100px 120px;
+} */
+
+.animeList {
+    /* background-color: antiquewhite; */
+    background-color: white;
+    border: 1px solid rgb(209, 204, 204);
+    padding: 20px;
+}
+.title {
+    font-weight: bold;
+    font-size: 28px;
+    padding-bottom: 10px;
+}
+/* https://foni.club/uploads/posts/2023-02/1675335309_foni-club-p-fon-belo-goluboi-anime-38.jpg */

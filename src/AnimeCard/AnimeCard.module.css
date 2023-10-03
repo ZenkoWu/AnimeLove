@@ -1,0 +1,21 @@
+.animeCard {
+    padding: 10px 0;
+    border-top: 1px solid rgb(199, 172, 172);
+}
+
+.poster {
+   height: 315px;
+   object-fit: cover;
+   width: 220px;
+
+}
+
+.animeContent {
+    padding-left: 20px;
+}
+
+.animeDescription {
+    padding-top: 15px;
+    text-align: justify;
+}
+
