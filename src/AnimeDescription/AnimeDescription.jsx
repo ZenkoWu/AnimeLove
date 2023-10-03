@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom"
 import { useGetAnimeFullByIdQuery } from "../redux/services/animeApi"
 import Preloader from "../Preloader/Preloader"
 import s from './AnimeDescription.module.css'
-import v from '../imges/2023-07-06 13-57-34.mkv'
+
 const AnimeDescription = () => {
     const params = useParams()
 

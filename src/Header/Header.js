@@ -1,4 +1,3 @@
-import LoginOutBtn from '../LoginBtn/LoginOutBtn';
 import s from './Header.module.css'
 import { NavLink } from "react-router-dom";
 
@@ -12,7 +11,6 @@ const Header = () => {
                     <NavLink to='/manga' className={s.link}>Manga</NavLink>
                 </div>
             </div>
-            {/* <LoginOutBtn/> */}
             <NavLink to='/favorites' className={s.title}>❤</NavLink>
         </header>
     )
