@@ -28,7 +28,7 @@ body {
 /* d-flex align-center justify-content-between */
 a {
     text-decoration: none;
-    color: white;
+    color: inherit;
 }
 .red {
     border: 2px solid red;
