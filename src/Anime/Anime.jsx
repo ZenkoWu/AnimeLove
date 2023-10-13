@@ -12,7 +12,7 @@ const Anime = () => {
     const pageLimit = useSelector(state => state.animeList.pageSize)
   
     let {data: anime} = useGetAnimeListQuery({currentPage, pageLimit})
-    console.log(anime)
+    // console.log(anime)
     const dispatch = useDispatch()
     
     // useEffect(()=> {

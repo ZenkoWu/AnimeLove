@@ -19,12 +19,12 @@ const AnimeDescription = () => {
         <div className={s.container}>
             <div className={s.cardBackground}>
                 <div className='p-4 w-100'>
-                    <div className="d-flex gap-4">
+                    <div className="d-flex gap-4 pb-4">
                         <img src={anime.images.jpg.image_url} alt="anime-img"  className={s.animePic}/>
                         <div className=""> 
                             <p className="m-0">
                                 <span className='fs-2' style={{color:'orange'}}>&#9733;</span>
-                                <span className='fs-4' style={{backgroundColor: scoreColor}}>{(anime.score).toFixed(1)}</span>/10
+                                <span className='fs-4' style={{backgroundColor: scoreColor}}>{(anime.score)?.toFixed(1)}</span>/10
                                 {/* <span> {anime.scored_by}</span>
                                 <span> scores</span> */}
                             </p>
