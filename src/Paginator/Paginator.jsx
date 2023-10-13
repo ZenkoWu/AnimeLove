@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom';
 
 
 export default function Paginator({totalAnimeCount, pageSize, currentPage, onPageChange}) {
@@ -22,11 +23,11 @@ export default function Paginator({totalAnimeCount, pageSize, currentPage, onPag
                 className='m-auto' 
                 style={{margin: '5px auto', textAlign: 'center'}}
             >
-                <ul class="pagination justify-content-center">
+                <ul className="pagination justify-content-center">
                     {
                         portionNumber > 1 &&
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous" onClick={()=> {setPortionNumber(portionNumber - 1) }}>
+                        <li className="page-item">
+                            <a className="page-link" href="#" aria-label="Previous" onClick={()=> {setPortionNumber(portionNumber - 1) }}>
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
@@ -41,14 +42,14 @@ export default function Paginator({totalAnimeCount, pageSize, currentPage, onPag
                                     className={currentPage == p ? 'fw-bold text-decoration-underline' : ''}  
                                     onClick = {()=>{onPageChange(p)}} 
                                 >
-                                    <a class="page-link" href="#">{p}</a>
+                                    <NavLink className="page-link" to="#">{p}</NavLink>
                                 </span>
                             )
                     }
 
                     {
                         (portionCount > portionNumber) && 
-                        <li class="page-item">
+                        <li className="page-item">
                             <a 
                                 className="page-link" 
                                 href="#" 
