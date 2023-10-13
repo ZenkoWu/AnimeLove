@@ -10,12 +10,16 @@ export const animeApi = createApi({
         )}),
         getAnimeFullById: builder.query({query: (id) => (
             `${API_ROUTES.anime}/${id}/full`
-        )})
+        )}),
+        getSearchedAnimeList: builder.query({query: ({input, limit}) => (
+            `${API_ROUTES.anime}?q=${input}&limit=${limit}`
+        )}),
     })
 })
 
 export const {
     useGetAnimeListQuery,
-    useGetAnimeFullByIdQuery 
+    useGetAnimeFullByIdQuery,
+    useGetSearchedAnimeListQuery
 } = animeApi;
 
