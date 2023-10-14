@@ -42,7 +42,7 @@ export default function Paginator({totalAnimeCount, pageSize, currentPage, onPag
                                     className={currentPage == p ? 'fw-bold text-decoration-underline' : ''}  
                                     onClick = {()=>{onPageChange(p)}} 
                                 >
-                                    <NavLink className="page-link" to="#">{p}</NavLink>
+                                    <a className="page-link" href="#">{p}</a>
                                 </span>
                             )
                     }
