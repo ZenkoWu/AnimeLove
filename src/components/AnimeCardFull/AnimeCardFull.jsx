@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import FavoriteBtn from '../FavoriteBtn/FavoriteBtn';
 import s from './AnimeCardFull.module.css'
 
-const AnimeCard = ({anime}) => {
+export const AnimeCardFull = ({anime}) => {
     return (
         <div className={`d-flex ${s.animeCard}`}>
             <img src={anime.images?.jpg.image_url} className={s.poster}/>
@@ -34,4 +34,3 @@ const AnimeCard = ({anime}) => {
        </div>
     )
 }
-export default AnimeCard;
