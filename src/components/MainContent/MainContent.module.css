@@ -1,0 +1,4 @@
+.contentContainer {
+    display: grid;
+    grid-template-columns: 6fr 2fr;
+}

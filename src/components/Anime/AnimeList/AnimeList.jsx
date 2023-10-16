@@ -5,7 +5,7 @@ import { useState } from 'react';
 import AnimeCard from '../../AnimeCard/AnimeCard';
 
 const AnimeList = ({animeList, changeCurrentPage, currentPage, totalAnimeCount}) => {
-    const [isFullCard, setIsFullCard] = useState(false)
+    const [isFullCard, setIsFullCard] = useState(false) // todo save this state localy
 
     return (
         <div className={s.container}>
