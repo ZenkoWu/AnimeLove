@@ -12,7 +12,7 @@ const AnimeList = ({animeList, changeCurrentPage, currentPage, totalAnimeCount})
             <div className={`${s.animeList}`}>
                 <div className='d-flex justify-content-between align-items-center pt-2 pb-3'>
                     <span className={s.title}>Anime List</span>
-                    <div class="form-check form-switch fs-4">
+                    <div className="form-check form-switch fs-4">
                         <input 
                             className="form-check-input" 
                             type="checkbox" 
