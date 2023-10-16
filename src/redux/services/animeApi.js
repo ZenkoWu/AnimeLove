@@ -10,12 +10,25 @@ export const animeApi = createApi({
         )}),
         getAnimeFullById: builder.query({query: (id) => (
             `${API_ROUTES.anime}/${id}/full`
-        )})
+        )}),
+        getFavoritesAnime: builder.query({
+            async queryFn(ids, _queryApi, _extraOptions, fetchWithBQ) {
+                ids = Object.keys(ids) //???
+                const response = await Promise.all(
+                    ids.map((animeId) => fetchWithBQ( `${API_ROUTES.anime}/${animeId}/full`))
+                );
+                
+                return response[0].data
+                    ? { data: response.map((anime) => anime.data)}
+                    : { error: response[0].error};
+            },
+          })
     })
 })
 
 export const {
     useGetAnimeListQuery,
-    useGetAnimeFullByIdQuery 
+    useGetAnimeFullByIdQuery,
+    useGetFavoritesAnimeQuery
 } = animeApi;
 

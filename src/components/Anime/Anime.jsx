@@ -12,7 +12,8 @@ const Anime = () => {
     const currentPage = useSelector(state => state.animeList.currentPage)
     const pageLimit = useSelector(state => state.animeList.pageSize)
   
-    let {data: anime} = useGetAnimeListQuery({currentPage, pageLimit})
+    // let {data: anime} = useGetAnimeListQuery({currentPage, pageLimit})
+    let anime = {data: [{title: 'One piece', mal_id: 1}], pagination: {items: {total: 250}}}
     // console.log(anime)
     const dispatch = useDispatch()
 

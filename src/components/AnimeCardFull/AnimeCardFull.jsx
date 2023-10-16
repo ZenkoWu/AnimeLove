@@ -1,24 +1,16 @@
 import { NavLink } from 'react-router-dom';
-import FavoriteBtn from '../../FavoriteBtn/FavoriteBtn';
-import s from './AnimeCard.module.css'
+import FavoriteBtn from '../FavoriteBtn/FavoriteBtn';
+import s from './AnimeCardFull.module.css'
 
 const AnimeCard = ({anime}) => {
     return (
-        // <div style={{ marginBottom: '10px', textAlign:'center', }} className='col p-0'>
-           
-        //         <div>
-        //             <img src={anime.images.jpg.image_url} className={s.poster}/>
-        //         </div>
-                
-        // </div>
-  
         <div className={`d-flex ${s.animeCard}`}>
             <img src={anime.images?.jpg.image_url} className={s.poster}/>
             <div className={`${s.animeContent}`}>
                 <div className={`d-flex align-center justify-content-between`}>
                     <NavLink to={`${anime.mal_id}`} className='text-dark'>
                     <h2>{anime.title}</h2></NavLink>
-                    <FavoriteBtn id={anime.id}/>
+                    <FavoriteBtn id={anime.mal_id}/>
                 </div>
                 <div className={`d-flex align-center`} style={{gap: 20}}>
                     <p>
