@@ -8,6 +8,7 @@ const AnimeCard = ({anime}) => {
            
                 <div>
                     {/* <img src={anime.images.jpg.image_url} className={s.poster}/> */}
+                    {/* <p>{anime.title}</p> */}
                 </div>
                 
         </div>
