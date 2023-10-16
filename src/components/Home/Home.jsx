@@ -1,4 +1,4 @@
-import img from '../imges/home.png'
+import img from '../../imges/home.png'
 import s from './Home.module.css'
 const Home = () => {
     return (

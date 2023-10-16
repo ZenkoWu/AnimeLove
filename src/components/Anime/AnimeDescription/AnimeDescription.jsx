@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
-import { useGetAnimeFullByIdQuery } from "../redux/services/animeApi"
-import Preloader from "../Preloader/Preloader"
+import { useGetAnimeFullByIdQuery } from "../../../redux/services/animeApi"
+import Preloader from "../../../Preloader/Preloader"
 import s from './AnimeDescription.module.css'
 
 const AnimeDescription = () => {

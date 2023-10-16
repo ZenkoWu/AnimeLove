@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import {API_ROUTES, BASE_URL} from './api_routes/api_routes'
+import {API_ROUTES, BASE_URL} from './apiRoutes/apiRoutes'
 
 export const mangaApi = createApi({
     reducerPath: 'manga',

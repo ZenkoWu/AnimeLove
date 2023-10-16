@@ -1,5 +1,6 @@
-import AnimeCard from '../../AnimeCard/AnimeCard';
+
 import Paginator from '../../Paginator/Paginator';
+import AnimeCard from '../AnimeCard/AnimeCard';
 import s from './AnimeList.module.css'
 const AnimeList = ({animeList, changeCurrentPage, currentPage, totalAnimeCount}) => {
     return (

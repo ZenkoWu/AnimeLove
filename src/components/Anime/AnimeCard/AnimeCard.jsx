@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import FavoriteBtn from '../FavoriteBtn/FavoriteBtn';
+import FavoriteBtn from '../../FavoriteBtn/FavoriteBtn';
 import s from './AnimeCard.module.css'
 
 const AnimeCard = ({anime}) => {
@@ -13,7 +13,7 @@ const AnimeCard = ({anime}) => {
         // </div>
   
         <div className={`d-flex ${s.animeCard}`}>
-            <img src={anime.images.jpg.image_url} className={s.poster}/>
+            <img src={anime.images?.jpg.image_url} className={s.poster}/>
             <div className={`${s.animeContent}`}>
                 <div className={`d-flex align-center justify-content-between`}>
                     <NavLink to={`${anime.mal_id}`} className='text-dark'>
