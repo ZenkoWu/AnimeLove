@@ -28,7 +28,6 @@ export const animeApi = createApi({
 
 export const {
     useGetAnimeListQuery,
-    useGetAnimeFullByIdQuery,
-    useGetFavoritesAnimeQuery
+    useGetAnimeFullByIdQuery 
 } = animeApi;
 

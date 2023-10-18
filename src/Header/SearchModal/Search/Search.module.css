@@ -1,0 +1,24 @@
+.modalContainer {
+    position: absolute;
+    top: 50px; 
+    width: 360px;
+    border: 1px solid rgb(209, 204, 204);
+    box-shadow: 0px 3px 15px grey;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 650px; /* 370 650 */
+}
+
+.modalContainer::-webkit-scrollbar {
+    width: 16px; /* ширина для вертикального скролла */
+    background-color: rgba(247, 82, 41, 0.3);
+}
+
+/* ползунок скроллбара */
+.modalContainer::-webkit-scrollbar-thumb {
+    background-color: rgb(247, 82, 41);
+}
+
+.modalContainer::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(248, 53, 5);
+}
