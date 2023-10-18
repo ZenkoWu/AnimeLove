@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { useGetSearchedAnimeListQuery } from "../../redux/services/animeApi"
+import { useGetSearchedAnimeListQuery } from "../../../redux/services/animeApi"
 import Search from "../SearchModal/Search/Search"
-import { useGetSearchedMangaListQuery } from "../../redux/services/mangaApi"
+import { useGetSearchedMangaListQuery } from "../../../redux/services/mangaApi"
 
 const searchLimit = 3
 const SearchContainer = () => {

@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import s from './Header.module.css'
 import { NavLink, Navigate, useLocation, useNavigate } from "react-router-dom";
+import SearchContainer from './SearchContainer/SearchContainer';
 
 const getRandomAnime = (navigate, totalAnimeCount) => {
     const randomAnimeId = Math.floor(Math.random() * totalAnimeCount) + 1;
@@ -26,9 +27,13 @@ const Header = () => {
                     </p>
                 </div>
             </div>
-            <NavLink to='/favorites' className={s.title}>❤</NavLink>
+            <div className='d-flex align-items-center gap-4'>
+                <SearchContainer/>
+                <NavLink to='/favorites' className={s.title}>❤</NavLink>
+            </div>
         </header>
     )
 }
 
 export default Header;
+

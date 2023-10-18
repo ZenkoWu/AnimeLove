@@ -22,12 +22,17 @@ export const animeApi = createApi({
                     ? { data: response.map((anime) => anime.data)}
                     : { error: response[0].error};
             },
-          })
+          }),
+        getSearchedAnimeList: builder.query({query: ({input, limit}) => (
+            `${API_ROUTES.anime}?q=${input}&limit=${limit}`
+        )}),
     })
 })
 
 export const {
     useGetAnimeListQuery,
-    useGetAnimeFullByIdQuery 
+    useGetAnimeFullByIdQuery,
+    useGetFavoritesAnimeQuery,
+    useGetSearchedAnimeListQuery
 } = animeApi;
 
