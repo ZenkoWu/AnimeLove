@@ -2,13 +2,15 @@
     padding: 10px 0;
     border-top: 1px solid rgb(199, 172, 172);
     background-color: white;
+    /* height: 100%;
+    align-items: center; */
 }
 
 .poster {
    height: 315px;
    object-fit: cover;
-   width: 220px;
-
+   width: 220px; 
+   padding: 10px 0;
 }
 
 .animeContent {
@@ -16,7 +18,7 @@
 }
 
 .animeDescription {
-    padding-top: 15px;
     text-align: justify;
+    padding-right: 10px;
 }
 
