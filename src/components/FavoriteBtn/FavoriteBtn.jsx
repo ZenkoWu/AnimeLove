@@ -2,17 +2,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { favoritesActions } from "../../redux/features/favorites";
 import { selectFavorites } from "../../redux/features/favorites/selector";
 
-const FavoriteBtn = ({id}) => {
+const FavoriteBtn = ({category, id}) => {
     const dispatch = useDispatch()
     const favorites = useSelector((state) => selectFavorites(state))
 
-    const isFavorite = favorites[id] 
+    const isFavorite = favorites[category][id] 
+    
     const addToFavorites = (id) => {
-        dispatch(favoritesActions.like(id))
+        dispatch(favoritesActions.like({category, id}))
     }
 
     const deleteFromFavorites = (id) => {
-        dispatch(favoritesActions.unlike(id))
+        dispatch(favoritesActions.unlike({category, id}))
     }
 
     return (

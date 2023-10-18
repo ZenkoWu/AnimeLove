@@ -1,7 +1,10 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
-    favorites: {}, //??
+    favorites: { //??
+        anime: {},
+        manga: {},
+    }, 
     favoritesCount: 0
 }
 
@@ -11,13 +14,13 @@ const favoritesSlice = createSlice({
     reducers: {
         like: (state, {payload}) => {
             // state.favorites.push(payload)
-            state.favorites[payload] = true
+            state.favorites[payload.category][payload.id] = true
             ++state.favoritesCount;
             return;
         },
         unlike: (state, {payload}) => {
             // state.favorites = state.favorites.filter(payload)
-            delete state.favorites[payload]
+            delete state.favorites[payload.category][payload.id]
             --state.ticketsCount
             return;
         },

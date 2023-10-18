@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux"
-import {  selectFavoritesModule } from "../../redux/features/favorites/selector"
-import { useGetFavoritesAnimeQuery } from "../../redux/services/animeApi"
+import { selectFavoritesModule } from "../../redux/features/favorites/selector"
 import {ElementCard} from "../ElementCard/ElementCard"
 import Preloader from "../../Preloader/Preloader"
 

@@ -4,7 +4,14 @@ import s from './List.module.css'
 import { useState } from 'react';
 import {ElementCard} from '../ElementCard/ElementCard';
 
-export const List = ({elementList, changeCurrentPage, currentPage, totalElementCount, title, pageSize}) => {
+export const List = ({
+    elementList, 
+    changeCurrentPage, 
+    currentPage, 
+    totalElementCount, 
+    title, 
+    pageSize
+}) => {
     const [isFullCard, setIsFullCard] = useState(false) // todo save this state localy
 
     return (
@@ -26,11 +33,25 @@ export const List = ({elementList, changeCurrentPage, currentPage, totalElementC
                 {
                     isFullCard ? 
                     <div>
-                      { elementList.data.map((el) => <ElementCardFull data={el} key={el.mal_id}/>) }
+                        { 
+                            elementList.data.map((el) => 
+                                <ElementCardFull 
+                                    category={title.toLowerCase()} 
+                                    data={el} 
+                                    key={el.mal_id}
+                                />)
+                        }
                     </div>
                     :
                     <div className='d-flex justify-between flex-wrap'>  
-                        { elementList.data.map((el) => <ElementCard element={el} key={el.mal_id}/>) }
+                        { 
+                            elementList.data.map((el) => 
+                                <ElementCard 
+                                    category={title.toLowerCase()} 
+                                    element={el} 
+                                    key={el.mal_id}
+                                />) 
+                        }
                     </div> 
                 }
                 

@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import FavoriteBtn from '../FavoriteBtn/FavoriteBtn';
 import s from './ElementCardFull.module.css'
 
-export const ElementCardFull = ({data}) => {
+export const ElementCardFull = ({category, data}) => {
     return (
         <div className={`d-flex ${s.cardContainer}`}>
             <img src={data.images?.jpg.image_url} className={s.poster}/>
@@ -10,7 +10,7 @@ export const ElementCardFull = ({data}) => {
                 <div className={`d-flex align-center justify-content-between`}>
                     <NavLink to={`${data.mal_id}`} className='text-dark'>
                     <h2>{data.title}</h2></NavLink>
-                    <FavoriteBtn id={data.mal_id}/>
+                    <FavoriteBtn category={category} id={data.mal_id}/>
                 </div>
                 <div className={`d-flex align-center gap-4`}>
                     <p> 
