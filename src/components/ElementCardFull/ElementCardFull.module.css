@@ -1,4 +1,4 @@
-.animeCard {
+.cardContainer {
     padding: 10px 0;
     border-top: 1px solid rgb(199, 172, 172);
     background-color: white;
@@ -13,11 +13,11 @@
    padding: 10px 0;
 }
 
-.animeContent {
+.content {
     padding-left: 20px;
 }
 
-.animeDescription {
+.cardDescription {
     text-align: justify;
     padding-right: 10px;
 }

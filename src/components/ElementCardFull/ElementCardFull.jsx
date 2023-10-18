@@ -1,28 +1,28 @@
 import { NavLink } from 'react-router-dom';
 import FavoriteBtn from '../FavoriteBtn/FavoriteBtn';
-import s from './AnimeCardFull.module.css'
+import s from './ElementCardFull.module.css'
 
-export const AnimeCardFull = ({anime}) => {
+export const ElementCardFull = ({data}) => {
     return (
-        <div className={`d-flex ${s.animeCard}`}>
-            <img src={anime.images?.jpg.image_url} className={s.poster}/>
-            <div className={`${s.animeContent} w-100`}>
+        <div className={`d-flex ${s.cardContainer}`}>
+            <img src={data.images?.jpg.image_url} className={s.poster}/>
+            <div className={`${s.content} w-100`}>
                 <div className={`d-flex align-center justify-content-between`}>
-                    <NavLink to={`${anime.mal_id}`} className='text-dark'>
-                    <h2>{anime.title}</h2></NavLink>
-                    <FavoriteBtn id={anime.mal_id}/>
+                    <NavLink to={`${data.mal_id}`} className='text-dark'>
+                    <h2>{data.title}</h2></NavLink>
+                    <FavoriteBtn id={data.mal_id}/>
                 </div>
                 <div className={`d-flex align-center gap-4`}>
                     <p> 
-                        <span className='text-decoration-underline'>Year:</span> {anime.year ?? 'unknown'}
+                        <span className='text-decoration-underline'>Year:</span> {data.year ?? 'unknown'}
                     </p>
                     <p>
-                        <span className='text-decoration-underline'>Rating:</span> {(anime.score)?.toFixed(0)}/10
+                        <span className='text-decoration-underline'>Rating:</span> {(data.score)?.toFixed(0)}/10
                     </p>
                 </div>
-                <p className={s.animeDescription}>
+                <p className={s.cardDescription}>
                     {
-                        anime.background ?? 
+                        data.background ?? 
                         <>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, sapiente sunt? 
                             Illum, animi consequatur qui, aperiam amet neque vel quas perferendis culpa harum 

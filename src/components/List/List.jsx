@@ -1,17 +1,17 @@
-import Paginator from '../../Paginator/Paginator';
-import {AnimeCardFull} from '../../AnimeCardFull/AnimeCardFull';
-import s from './AnimeList.module.css'
+import Paginator from '../Paginator/Paginator';
+import {ElementCardFull} from '../ElementCardFull/ElementCardFull';
+import s from './List.module.css'
 import { useState } from 'react';
-import AnimeCard from '../../AnimeCard/AnimeCard';
+import {ElementCard} from '../ElementCard/ElementCard';
 
-const AnimeList = ({animeList, changeCurrentPage, currentPage, totalAnimeCount}) => {
+export const List = ({elementList, changeCurrentPage, currentPage, totalElementCount, title, pageSize}) => {
     const [isFullCard, setIsFullCard] = useState(false) // todo save this state localy
 
     return (
         <div className={s.container}>
-            <div className={`${s.animeList}`}>
+            <div className={`${s.elementList}`}>
                 <div className='d-flex justify-content-between align-items-center pt-2 pb-3'>
-                    <span className={s.title}>Anime List</span>
+                    <span className={s.title}>{title} List</span>
                     <div className="form-check form-switch fs-4">
                         <input 
                             className="form-check-input border border-primary" 
@@ -26,17 +26,17 @@ const AnimeList = ({animeList, changeCurrentPage, currentPage, totalAnimeCount})
                 {
                     isFullCard ? 
                     <div>
-                      { animeList.data.map((anime) => <AnimeCardFull anime={anime} key={anime.mal_id}/>) }
+                      { elementList.data.map((el) => <ElementCardFull data={el} key={el.mal_id}/>) }
                     </div>
                     :
                     <div className='d-flex justify-between flex-wrap'>  
-                        { animeList.data.map((anime) => <AnimeCard anime={anime} key={anime.mal_id}/>) }
+                        { elementList.data.map((el) => <ElementCard element={el} key={el.mal_id}/>) }
                     </div> 
                 }
                 
                 <Paginator 
-                    totalAnimeCount={totalAnimeCount} 
-                    pageSize={24} 
+                    totalElementCount={totalElementCount} 
+                    pageSize={pageSize} 
                     onPageChange={changeCurrentPage} 
                     currentPage={currentPage}
                 />
@@ -44,4 +44,3 @@ const AnimeList = ({animeList, changeCurrentPage, currentPage, totalAnimeCount})
         </div> 
     )
 }
-export default AnimeList; 

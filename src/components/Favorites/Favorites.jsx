@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import {  selectFavoritesModule } from "../../redux/features/favorites/selector"
 import { useGetFavoritesAnimeQuery } from "../../redux/services/animeApi"
-import AnimeCard from "../AnimeCard/AnimeCard"
+import {ElementCard} from "../ElementCard/ElementCard"
 import Preloader from "../../Preloader/Preloader"
 
 export const Favorites = () => {
@@ -16,7 +16,7 @@ export const Favorites = () => {
         <div>
             {data && favoritesCount > 0 ? 
             <div className='d-flex justify-between row'>
-                {data.map((favorite) => <AnimeCard anime={favorite}  key={favorite.mal_id}/>)}
+                {data.map((favorite) => <ElementCard element={favorite}  key={favorite.mal_id}/>)}
             </div>
             :
             <p> Favorites is unknown</p>

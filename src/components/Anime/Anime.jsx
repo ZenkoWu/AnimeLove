@@ -1,23 +1,15 @@
-
-import s from './Anime.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { animeListActions } from '../../redux/features/animeList';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useGetAnimeListQuery } from "../../redux/services/animeApi";
 import Preloader from "../../Preloader/Preloader";
-import AnimeList from './AnimeList/AnimeList';
+import {List} from '../List/List';
 
 const Anime = () => {
-    
-    const currentPage = useSelector(state => state.animeList.currentPage)
-    const pageLimit = useSelector(state => state.animeList.pageSize)
+    const {currentPage, pageSize: pageLimit, totalAnimeCount} = useSelector(state => state.animeList)
   
-    // let {data: anime} = useGetAnimeListQuery({currentPage, pageLimit})
-    let anime = {data: [{title: 'One piece', mal_id: 1}], pagination: {items: {total: 250}}}
-    // console.log(anime)
+    let {data: anime} = useGetAnimeListQuery({currentPage, pageLimit})
     const dispatch = useDispatch()
-
-    const totalAnimeCount = useSelector(state => state.animeList.totalAnimeCount)
 
     const changeCurrentPage = useCallback((currentPage) => {
         dispatch(animeListActions.changeCurrentPage(currentPage))
@@ -30,11 +22,13 @@ const Anime = () => {
     dispatch(animeListActions.changeTotalAnimeCount(totalCount))
     return (
         <div className=''>
-            <AnimeList
-                animeList={anime} 
+            <List
+                title='Anime'
+                elementList={anime} 
                 changeCurrentPage={changeCurrentPage} 
                 currentPage={currentPage}
-                totalAnimeCount={totalAnimeCount}
+                totalElementCount={totalAnimeCount}
+                pageSize={pageLimit}
             />
         </div>
     )

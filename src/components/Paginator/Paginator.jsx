@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 
 
-export default function Paginator({totalAnimeCount, pageSize, currentPage, onPageChange}) {
-    let pagesCount = Math.ceil(totalAnimeCount / pageSize)
+export default function Paginator({totalElementCount, pageSize, currentPage, onPageChange}) {
+    let pagesCount = Math.ceil(totalElementCount / pageSize)
     const pages = []
 
     for(let i = 1; i <= pagesCount; i++) {

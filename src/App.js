@@ -4,7 +4,7 @@ import Header from './components/Header/Header';
 import Anime from './components/Anime/Anime';
 import AnimeDescription from './components/Anime/AnimeDescription/AnimeDescription';
 import Footer from './components/Footer/Footer';
-import Manga from './components/Manga/Manga';
+import {Manga} from './components/Manga/Manga';
 import Home from './components/Home/Home';
 import { Favorites } from './components/Favorites/Favorites';
 import { MainContent } from './components/MainContent/MainContent';
@@ -22,6 +22,7 @@ function App() {
                     </Route>
                     
                     <Route path='anime/:animeId' element={<AnimeDescription/>}/>
+                    {/* <Route path='manga/:mangaId' element={<AnimeDescription/>}/> */}
                     <Route path='favorites' element={<Favorites/>}/>
                 </Routes>
             </div>
