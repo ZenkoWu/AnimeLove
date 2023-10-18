@@ -3,7 +3,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
-    pageSize: 10,
+    pageSize: 12,
     totalAnimeCount: 0,
     currentPage: 1,
 }

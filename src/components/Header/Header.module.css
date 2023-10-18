@@ -5,6 +5,7 @@
     position: sticky;
     top: 0;
     min-height: 8vh;
+    z-index: 5000;
 }
 
 .title {

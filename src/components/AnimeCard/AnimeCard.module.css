@@ -1,6 +1,28 @@
 .poster {
     height: 315px;
     object-fit: cover;
-    width: 220px;
+    width: 100%;
 }
- 
+.favBtn, .background  {
+    position: absolute;
+    opacity: 0;
+}
+.background {
+   top: 0;
+   height: 100%;
+   width: 100%;
+}
+
+.favBtn {
+    right: 20px;
+    top: 10px;
+}
+
+.cardContainer:hover .background {
+    background-color: rgba(33, 32, 34, 0.7);
+}
+
+.cardContainer:hover .favBtn, 
+.cardContainer:hover .background {
+    opacity: 1;
+}

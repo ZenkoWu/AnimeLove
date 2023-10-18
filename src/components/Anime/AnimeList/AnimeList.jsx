@@ -14,7 +14,7 @@ const AnimeList = ({animeList, changeCurrentPage, currentPage, totalAnimeCount})
                     <span className={s.title}>Anime List</span>
                     <div className="form-check form-switch fs-4">
                         <input 
-                            className="form-check-input" 
+                            className="form-check-input border border-primary" 
                             type="checkbox" 
                             role="switch" 
                             id="flexSwitchCheckDefault"
@@ -29,7 +29,7 @@ const AnimeList = ({animeList, changeCurrentPage, currentPage, totalAnimeCount})
                       { animeList.data.map((anime) => <AnimeCardFull anime={anime} key={anime.mal_id}/>) }
                     </div>
                     :
-                    <div className='d-flex justify-between row'> 
+                    <div className='d-flex justify-between flex-wrap'>  
                         { animeList.data.map((anime) => <AnimeCard anime={anime} key={anime.mal_id}/>) }
                     </div> 
                 }
