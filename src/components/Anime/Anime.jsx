@@ -4,7 +4,7 @@ import { useCallback, useReducer, useState } from 'react';
 import { useGetAnimeListQuery } from "../../redux/services/animeApi";
 import Preloader from "../../Preloader/Preloader";
 import {List} from '../List/List';
-import { Filter } from '../Filter/Filter';
+import { Filter, statusAC, ratingAC, orderByAC, typeChangeAC} from '../Filter/Filter';
 import { ContentContainer } from '../ContentContainer/ContentContainer';
 
 export const ageRating = {
@@ -20,7 +20,7 @@ export const status = {
     'ongoing': 'airing',
     'announce': 'upcoming'
 }
-const reducer = (state, {type, payload}) => {
+export const reducer = (state, {type, payload}) => {
     switch(type) {
         case 'setType': 
         return {
@@ -54,7 +54,45 @@ const initialState = {
 
 const Anime = () => {
     const [state, dis] = useReducer(reducer, initialState)
+      const onChange = useCallback(actionCreator => 
+        (payload) => dis(actionCreator(payload)), 
+    [])
 
+    const selects = [
+        {
+            title: 'Order by', 
+            placeholder: state.orderBy,
+            options: ['popularity', 'title', 'start_date', 'end_date', 'favorites', 'episodes']?.map((el) => ({id: el, name: el})),
+            value: state.orderBy,
+            setValue: onChange(orderByAC),
+            zIndex: 5
+        },
+        {
+            title: 'Type', 
+            placeholder: state.type,
+            options: ['tv', 'ova', 'movie', 'special', 'music']?.map((el) => ({id: el, name: el})),
+            value: state.type,
+            setValue: onChange(typeChangeAC),
+            zIndex: 3
+        },
+        {
+            title: 'Age rating', 
+            placeholder: state.rating,
+            options: [...Object.keys(ageRating)]?.map((el) => ({id: el, name: el})),
+            value: state.rating,
+            setValue: onChange(ratingAC),
+            zIndex: 2
+        },
+        {
+            title: 'Status', 
+            placeholder: state.status,
+            options: [...Object.keys(status)]?.map((el) => ({id: el, name: el})),
+            value: state.status,
+            setValue: onChange(statusAC),
+            zIndex: 1
+        },
+        
+    ]
     const {currentPage, pageSize: pageLimit, totalAnimeCount} = useSelector(state => state.animeList)
     const dispatch = useDispatch()
 
@@ -86,7 +124,7 @@ const Anime = () => {
                     totalElementCount={totalAnimeCount}
                     pageSize={pageLimit}
                 />
-                <Filter state={state} dispatch={dis}/>
+                <Filter state={state} dispatch={dis} selects={selects}/>
             </ContentContainer>
         </div>
     )
