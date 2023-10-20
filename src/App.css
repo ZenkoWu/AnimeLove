@@ -34,3 +34,6 @@ a {
     border: 2px solid red;
 }
 
+.borderGrey {
+    border: 1px solid rgb(185, 183, 183);
+}

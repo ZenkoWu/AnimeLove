@@ -5,8 +5,8 @@ export const animeApi = createApi({
     reducerPath: 'anime',
     baseQuery: fetchBaseQuery({baseUrl: BASE_URL}),
     endpoints: (builder) => ({
-        getAnimeList: builder.query({query: ({pageLimit, currentPage}) => (
-            `${API_ROUTES.anime}?limit=${pageLimit}&page=${currentPage}`
+        getAnimeList: builder.query({query: ({pageLimit, currentPage, type, rating, orderBy, status}) => (
+            `${API_ROUTES.anime}?limit=${pageLimit}&page=${currentPage}&type=${type}&rating=${rating}&order_by=${orderBy}&status=${status}`
         )}),
         getAnimeFullById: builder.query({query: (id) => (
             `${API_ROUTES.anime}/${id}/full`

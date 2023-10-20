@@ -1,0 +1,10 @@
+.border_default {
+    border: 1px solid rgb(189, 182, 182);
+}
+
+.border_red {
+    border: 1px solid #dd5e38;
+}
+.padding {
+    padding: 10px 16px;
+}

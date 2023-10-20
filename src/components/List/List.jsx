@@ -30,7 +30,9 @@ export const List = ({
                         {/* <label className="form-check-label" for="flexSwitchCheckDefault">Show full info</label> */}
                     </div>
                 </div>
-                {
+                {/* {elementList.length < 1 &&
+                    <p className='text-dark'>Sorry we didn't find anything :\</p> } */}
+                {   
                     isFullCard ? 
                     <div>
                         { 
