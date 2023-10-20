@@ -16,7 +16,7 @@ export const Selects = ({options, setValue, zIndex, active}) => {
                     <div 
                         key={el.id}
                         className={`${s.py_12} rounded-3`}
-                        style={{backgroundColor: active == el.name? '###cecdcd': 'white'}}
+                        style={{backgroundColor: active == el.name? '#bdb7b7': 'white'}}
                         onClick={() => setValue(el.name)} 
                     >
                         {el.name} 
