@@ -1,8 +1,16 @@
 import { useState } from "react"
 import s from './Search.module.css'
-import SearchBlock from "./SearchBlock/SearchBlock"
+import SearchBlock, { TSearchBlock } from "./SearchBlock/SearchBlock"
+import loupe from '../../../../imges/loupeBtn.svg'
+import closeBtn from '../../../../imges/closeSearch.svg'
 
-const Search = ({searchBlocks, setInput, input}) => {
+export type TSearch = {
+    searchBlocks: TSearchBlock[], 
+    setInput: (input: string)=> void, 
+    input: string
+}
+
+export const Search = ({searchBlocks, setInput, input}: TSearch) => {
     const [searched, setSearched] = useState(false)
     const [searchText, setSearchText] = useState('')
     return (
@@ -17,8 +25,7 @@ const Search = ({searchBlocks, setInput, input}) => {
                     >
                         search
                     </button>
-                    <div className='' style={{width: '360px'}}>
-                        {/* <form action="/search/all" method="GET" id="search"> */}
+                    <div className={s.searchInput}>
                             <input 
                                 type="search" 
                                 placeholder='Search anime, manga, characters...' 
@@ -26,7 +33,6 @@ const Search = ({searchBlocks, setInput, input}) => {
                                 onChange={(e)=> setSearchText(e.target.value)}
                                 value={searchText}
                             />
-                        {/* </form> */}
                         {
                            input && searchBlocks[0]?.searchResult?.data.length > 0 &&
                             <div className={`bg-white text-dark rounded-1 px-3 py-2 ${s.modalContainer}`}>
@@ -34,9 +40,9 @@ const Search = ({searchBlocks, setInput, input}) => {
                                     searchBlocks.map(block =>( 
                                         <SearchBlock 
                                             key={block.title}
-                                            block={block.title} 
-                                            searchResult={block.searchResult
-                                        }/>
+                                            title={block.title} 
+                                            searchResult={block.searchResult}
+                                        />
                                     ))
                                 }
                             </div>
@@ -45,24 +51,16 @@ const Search = ({searchBlocks, setInput, input}) => {
 
                     <div onClick={()=> {
                         setSearched(false)
-                        setSearchText()
+                        setSearchText('')
                     }}>
-                        <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g id="Menu / Close_SM">
-                            <path id="Vector" d="M16 16L12 12M12 12L8 8M12 12L16 8M12 12L8 16" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                            </g>
-                        </svg>
+                       <img src={closeBtn} alt="closeBtn" />
                     </div>
                 </div>
                 :
                 <div className='' onClick={()=> setSearched(true)}>
-                    <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                  <img src={loupe} alt="loupe" />
                 </div>
             }
         </div>
     )
 }
-
-export default Search;
