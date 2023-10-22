@@ -2,22 +2,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { favoritesActions } from "../../redux/features/favorites";
 import { selectFavorites } from "../../redux/features/favorites/selector";
 
-const FavoriteBtn = ({category, id}) => {
+const FavoriteBtn = ({category, id}: {category: 'anime' | 'manga', id: number}) => {
     const dispatch = useDispatch()
     const favorites = useSelector((state) => selectFavorites(state))
 
     const isFavorite = favorites[category][id] 
     
-    const addToFavorites = (id) => {
+    const addToFavorites = (id: number) => {
         dispatch(favoritesActions.like({category, id}))
     }
 
-    const deleteFromFavorites = (id) => {
+    const deleteFromFavorites = (id: number) => {
         dispatch(favoritesActions.unlike({category, id}))
     }
 
     return (
-        <div className={``} onClick={() => isFavorite ? deleteFromFavorites(id) : addToFavorites(id)}>
+        <div  onClick={() => isFavorite ? deleteFromFavorites(id) : addToFavorites(id)}>
             <svg width="32px" height="32px" viewBox="0 0 24 24" fill={isFavorite ?  'red' : 'none'} xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd" clipRule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="red" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>  

@@ -1,8 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import FavoriteBtn from '../FavoriteBtn/FavoriteBtn';
 import s from './ElementCardFull.module.css'
+import { TAnimeInfo, TMangaInfo } from '@/types/mainElementsTypes';
 
-export const ElementCardFull = ({category, data}) => {
+type TElementCard = {
+    category: 'anime' | 'manga',
+    data: TAnimeInfo | TMangaInfo
+}
+
+export const ElementCardFull = ({category, data}: TElementCard) => {
     return (
         <div className={`d-flex ${s.cardContainer}`}>
             <img src={data.images?.jpg.image_url} className={s.poster}/>

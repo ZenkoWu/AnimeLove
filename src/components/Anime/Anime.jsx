@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { animeListActions } from '../../redux/features/animeList';
-import { useCallback, useReducer, useState } from 'react';
+import { useCallback, useReducer } from 'react';
 import { useGetAnimeListQuery } from "../../redux/services/animeApi";
 import Preloader from "../../Preloader/Preloader";
 import {List} from '../List/List';

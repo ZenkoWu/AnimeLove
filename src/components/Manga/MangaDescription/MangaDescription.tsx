@@ -2,19 +2,22 @@ import { useParams } from "react-router-dom"
 import { useGetMangaFullByIdQuery } from "../../../redux/services/mangaApi"
 import Preloader from "../../../Preloader/Preloader"
 import s from './MangaDescription.module.css'
+import starSymbol from '../../../imges/starScore.svg'
+import { getScoreColor } from "@/utils.js/getScoreColor"
+import { TMangaInfo } from "@/types/mainElementsTypes"
 
 export const MangaDescription = () => {
     const params = useParams()
-    console.log(params)
+
     const {data} = useGetMangaFullByIdQuery(params.mangaId)
-    console.log(data)
     
     if(!data) {
         return <Preloader/>
-    }
-    const manga = data.data
+    } 
+    const manga: TMangaInfo = data.data
 
-    const scoreColor = Math.round(manga.score) > 7 ? 'orange' : Math.round(manga.score) < 5 ? 'red' : null
+    const scoreColor = getScoreColor(manga)
+    
     return (
         <div className={s.container}>
             <div className={s.cardBackground}>
@@ -22,10 +25,12 @@ export const MangaDescription = () => {
                     <div className="d-flex gap-4 pb-4">
                         <img src={manga.images.jpg.image_url} alt="manga-img"  className={s.mangaPic}/>
                         <div className=""> 
-                            <p className="m-0">
-                                <span className='fs-2' style={{color:'orange'}}>&#9733;</span>
-                                <span className='fs-4' style={{backgroundColor: scoreColor}}>{(manga.score)?.toFixed(1)}</span>/10
-                            </p>
+                            <div>
+                                <img src={starSymbol} alt='starSymbol' className="pb-2"/>
+                                <span className={`fs-4 ${scoreColor}`}>
+                                    {(manga.score)?.toFixed(1)}
+                                </span>/10
+                            </div>
                             <h1 className='fw-bold fs-2' >{manga.title}</h1>
                             <p style={{borderBottom: '1px solid #ced4da'}} className="">{manga.title_japanese}</p>
                             <div className={s.mangaInfo}>
