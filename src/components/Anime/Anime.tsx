@@ -4,47 +4,18 @@ import { useCallback, useReducer } from 'react';
 import { useGetAnimeListQuery } from "../../redux/services/animeApi";
 import Preloader from "../../Preloader/Preloader";
 import {List} from '../List/List';
-import { Filter, statusAC, ratingAC, orderByAC, typeChangeAC} from '../Filter/Filter';
+import { Filter, statusAC, ratingAC, orderByAC, typeChangeAC, reducer} from '../Filter/Filter';
 import { ContentContainer } from '../ContentContainer/ContentContainer';
+import { ageRating, animeOrderBy, animeType, status } from '../../constants';
+import { TState } from '../../redux/store';
 
-export const ageRating = {
-    ['all ages']: 'g',
-    'children': 'pg',
-    ['teens 13 or older']: 'pg13',
-    '17+ (violence)': 'r17',
-    '18+': 'r'
+export type TAnimeFilterState = {
+    type: typeof animeType[number],
+    rating: keyof typeof ageRating,
+    orderBy:  typeof animeOrderBy[number],
+    status: keyof typeof status
 }
 
-export const status = {
-    'finished': 'complete',
-    'ongoing': 'airing',
-    'announce': 'upcoming'
-}
-export const reducer = (state, {type, payload}) => {
-    switch(type) {
-        case 'setType': 
-        return {
-            ...state,
-            type: payload
-        }
-        case 'setRating': 
-        return {
-            ...state,
-            rating: payload
-        }
-        case 'setOrderBy': 
-        return {
-            ...state,
-            orderBy: payload
-        }
-        case 'setStatus': 
-        return {
-            ...state,
-            status: payload
-        }
-        default: return state;
-    }
-}
 const initialState = {
     type: 'tv',
     rating: 'teens 13 or older',
@@ -53,16 +24,17 @@ const initialState = {
 }
 
 const Anime = () => {
-    const [state, dis] = useReducer(reducer, initialState)
-      const onChange = useCallback(actionCreator => 
-        (payload) => dis(actionCreator(payload)), 
+    const [state, dis]: [TAnimeFilterState, any] = useReducer(reducer, initialState)// todo type for dispatch
+
+    const onChange = useCallback((actionCreator: (payload: string) => ({type: string, payload: string})) => 
+        (payload: string) => dis(actionCreator(payload)), 
     [])
 
     const selects = [
         {
             title: 'Order by', 
             placeholder: state.orderBy,
-            options: ['popularity', 'title', 'start_date', 'end_date', 'favorites', 'episodes']?.map((el) => ({id: el, name: el})),
+            options: animeOrderBy,
             value: state.orderBy,
             setValue: onChange(orderByAC),
             zIndex: 5
@@ -70,7 +42,7 @@ const Anime = () => {
         {
             title: 'Type', 
             placeholder: state.type,
-            options: ['tv', 'ova', 'movie', 'special', 'music']?.map((el) => ({id: el, name: el})),
+            options: animeType,
             value: state.type,
             setValue: onChange(typeChangeAC),
             zIndex: 3
@@ -78,7 +50,7 @@ const Anime = () => {
         {
             title: 'Age rating', 
             placeholder: state.rating,
-            options: [...Object.keys(ageRating)]?.map((el) => ({id: el, name: el})),
+            options: [...Object.keys(ageRating)],
             value: state.rating,
             setValue: onChange(ratingAC),
             zIndex: 2
@@ -86,14 +58,15 @@ const Anime = () => {
         {
             title: 'Status', 
             placeholder: state.status,
-            options: [...Object.keys(status)]?.map((el) => ({id: el, name: el})),
+            options: [...Object.keys(status)],
             value: state.status,
             setValue: onChange(statusAC),
             zIndex: 1
         },
         
     ]
-    const {currentPage, pageSize: pageLimit, totalAnimeCount} = useSelector(state => state.animeList)
+
+    const {currentPage, pageSize: pageLimit, totalAnimeCount} = useSelector((state: TState )=> state.animeList)
     const dispatch = useDispatch()
 
     const {data: anime} = useGetAnimeListQuery({
@@ -104,7 +77,7 @@ const Anime = () => {
         status: status[state.status]
     })
     
-    const changeCurrentPage = useCallback((currentPage) => {
+    const changeCurrentPage = useCallback((currentPage: number) => {
         dispatch(animeListActions.changeCurrentPage(currentPage))
     }, [currentPage])
 
@@ -113,18 +86,19 @@ const Anime = () => {
     }
     const totalCount = anime.pagination.items.total 
     dispatch(animeListActions.changeTotalAnimeCount(totalCount))
+    
     return (
-        <div className=''>
+        <div>
             <ContentContainer>
                 <List
                     title='Anime'
-                    elementList={anime} 
+                    elementsList={anime.data} 
                     changeCurrentPage={changeCurrentPage} 
                     currentPage={currentPage}
                     totalElementCount={totalAnimeCount}
                     pageSize={pageLimit}
                 />
-                <Filter state={state} dispatch={dis} selects={selects}/>
+                <Filter selects={selects}/>
             </ContentContainer>
         </div>
     )

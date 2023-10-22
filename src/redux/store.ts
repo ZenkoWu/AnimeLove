@@ -6,6 +6,26 @@ import { animeListReducer } from './features/animeList'
 import { mangaApi } from './services/mangaApi'
 import { mangaListReducer } from './features/mangaList'
 
+export interface TState {
+    animeList: {
+        pageSize: number,
+        totalAnimeCount: number,
+        currentPage: number,
+    },
+    mangaList: {
+        pageSize: number,
+        totalMangaCount: number,
+        currentPage: number,
+    },
+    favorites:  { 
+        favorites: {
+            anime: object,
+            manga: object,
+        }
+        favoritesCount: number
+    }, 
+}
+
 export const store = configureStore({
     reducer: {
         animeList: animeListReducer,

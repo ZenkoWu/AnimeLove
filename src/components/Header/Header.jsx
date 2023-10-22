@@ -13,7 +13,7 @@ export const Header = () => {
     const totalAnimeCount = useSelector(state => state.animeList.totalAnimeCount)
 
     return (
-        <header className={`d-flex align-items-center justify-content-between ${s.container}`} >
+        <header className={`d-flex align-items-center justify-content-between bgMainRed ${s.container}`} >
             <div className={`d-flex align-center gap-4`}>
                 <NavLink to='/' className={s.title}>AnimeLove</NavLink>
                 <div className={`d-flex align-items-center gap-4`}>

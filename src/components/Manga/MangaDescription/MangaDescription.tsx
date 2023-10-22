@@ -3,7 +3,7 @@ import { useGetMangaFullByIdQuery } from "../../../redux/services/mangaApi"
 import Preloader from "../../../Preloader/Preloader"
 import s from './MangaDescription.module.css'
 import starSymbol from '../../../imges/starScore.svg'
-import { getScoreColor } from "@/utils.js/getScoreColor"
+import { getScoreColor } from "../../../utils.js/getScoreColor"
 import { TMangaInfo } from "@/types/mainElementsTypes"
 
 export const MangaDescription = () => {

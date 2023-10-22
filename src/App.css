@@ -15,8 +15,6 @@ body {
 }
 
 .content { 
-    /* background-color: #e9ebee; */
-    /* filter: brightness(40%); */
     flex: 1 0 auto;
     background: url('https://foni.club/uploads/posts/2023-02/1675216118_foni-club-p-fon-bogatstvo-anime-23.jpg ') no-repeat center center fixed; 
     -webkit-background-size: cover;
@@ -25,7 +23,6 @@ body {
     background-size: cover;
 }
 
-/* d-flex align-center justify-content-between */
 a {
     text-decoration: none;
     color: inherit;
@@ -40,4 +37,8 @@ a {
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.bgMainRed {
+    background-color: rgb(247, 82, 41);
 }

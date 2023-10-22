@@ -5,10 +5,11 @@ import { useGetMangaListQuery } from "../../redux/services/mangaApi";
 import Preloader from "../../Preloader/Preloader";
 import {List} from '../List/List';
 import { ContentContainer } from '../ContentContainer/ContentContainer';
-import { reducer } from '../Anime/Anime';
-import { Filter, statusAC, orderByAC, typeChangeAC } from '../Filter/Filter';
+import { Filter, statusAC, orderByAC, typeChangeAC, reducer } from '../Filter/Filter';
+import { mangaOrderBy, mangaStatus, mangaTypes } from '../../constants';
+import { TState } from '../../redux/store';
 
-const status = ["publishing","complete", "hiatus", "discontinued", "upcoming"] //todo rewrite to more readeble types
+
 const initialState = {
     type: 'manga',
     orderBy: 'popularity',
@@ -17,17 +18,16 @@ const initialState = {
 
 export const Manga = () => {
     const [state, dis] = useReducer(reducer, initialState)
-    const {currentPage, pageSize: pageLimit, totalMangaCount} = useSelector(state => state.mangaList)
+    const {currentPage, pageSize: pageLimit, totalMangaCount} = useSelector((state :TState) => state.mangaList)
 
-    const onChange = useCallback(actionCreator => 
-        (payload) => dis(actionCreator(payload)), 
-    [])
-
+    const onChange = useCallback((actionCreator: (payload: string) => ({type: string, payload: string})) => 
+        (payload: string) => dis(actionCreator(payload)), 
+    []) //todo вынести в отдельный файл  
     const selects = [
         {
             title: 'Order by', 
             placeholder: state.orderBy,
-            options: ['popularity', 'title', 'start_date', 'end_date', 'favorites', 'episodes']?.map((el) => ({id: el, name: el})), //todo вынести в отдельный экспорт массив
+            options: mangaOrderBy,
             value: state.orderBy,
             setValue: onChange(orderByAC),
             zIndex: 5
@@ -35,7 +35,7 @@ export const Manga = () => {
         {
             title: 'Type', 
             placeholder: state.type,
-            options: [ "manga", "novel", "lightnovel", "oneshot", "doujin", "manhwa", "manhua"]?.map((el) => ({id: el, name: el})),
+            options: mangaTypes,
             value: state.type,
             setValue: onChange(typeChangeAC),
             zIndex: 3
@@ -43,7 +43,7 @@ export const Manga = () => {
         {
             title: 'Status', 
             placeholder: state.status,
-            options: status?.map((el) => ({id: el, name: el})),
+            options: mangaStatus,
             value: state.status,
             setValue: onChange(statusAC),
             zIndex: 1
@@ -57,10 +57,10 @@ export const Manga = () => {
         orderBy: state.orderBy, 
         status: state.status
     })
-    console.log(manga)
+
     const dispatch = useDispatch()
 
-    const changeCurrentPage = useCallback((currentPage) => {
+    const changeCurrentPage = useCallback((currentPage: number) => {
         dispatch(mangaListActions.changeCurrentPage(currentPage))
     }, [currentPage])
 
@@ -75,13 +75,13 @@ export const Manga = () => {
             <ContentContainer>
                 <List
                     title='Manga'
-                    elementList={manga} 
+                    elementsList={manga.data} 
                     changeCurrentPage={changeCurrentPage} 
                     currentPage={currentPage}
                     totalElementCount={totalMangaCount}
                     pageSize={pageLimit}
                 />
-                <Filter state={state} dispatch={dis} selects={selects}/>
+                <Filter selects={selects}/>
             </ContentContainer>
         </div>
     )

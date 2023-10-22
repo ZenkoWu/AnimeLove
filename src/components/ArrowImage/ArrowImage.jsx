@@ -1,20 +1,10 @@
-import arr from '../../imges/arrowDown.svg'
+import arrowDown from '../../imges/arrowDown.svg'
+import arrowUp from '../../imges/arrowUp.svg'
 
-const ArrowImage = ({opened, color, width}) => {
-    const blackArrows = ['/icons/arrowUp.svg', '/icons/arrowDown.svg']
-    const greyArrows = ['/icons/greyArrowUp.svg', '/icons/greyArrowDown.svg']
-
-    const arrows = color === 'grey' ? greyArrows : blackArrows
+const ArrowImage = ({opened}) => {
     return (
-        // <Image 
-        //     className='pointer'
-        //     src={opened ? arrows[0] : arrows[1]}
-        //     alt="arrow"
-        //     width={width ? width : 32}
-        //     height={32}
-        //     priority
         <div>
-            <img src={arr} alt="" />
+            <img src={opened ?  arrowUp :  arrowDown  } alt="arrow" />
         </div>
         
     )

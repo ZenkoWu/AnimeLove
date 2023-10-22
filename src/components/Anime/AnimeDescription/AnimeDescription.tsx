@@ -4,7 +4,7 @@ import Preloader from "../../../Preloader/Preloader"
 import s from './AnimeDescription.module.css'
 import starSymbol from '../../../imges/starScore.svg'
 import { TAnimeInfo } from "@/types/mainElementsTypes"
-import { getScoreColor } from "@/utils.js/getScoreColor"
+import { getScoreColor } from "../../../utils.js/getScoreColor"
 
 export const AnimeDescription = () => {
     const params = useParams()

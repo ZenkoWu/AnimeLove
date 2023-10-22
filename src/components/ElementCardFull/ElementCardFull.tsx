@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import FavoriteBtn from '../FavoriteBtn/FavoriteBtn';
 import s from './ElementCardFull.module.css'
 import { TAnimeInfo, TMangaInfo } from '@/types/mainElementsTypes';
+import { createFlexStyle } from '../../utils.js/createFlexStyle';
 
 type TElementCard = {
     category: 'anime' | 'manga',
@@ -13,7 +14,7 @@ export const ElementCardFull = ({category, data}: TElementCard) => {
         <div className={`d-flex ${s.cardContainer}`}>
             <img src={data.images?.jpg.image_url} className={s.poster}/>
             <div className={`${s.content} w-100`}>
-                <div className={`d-flex align-center justify-content-between`}>
+                <div className={`${createFlexStyle()}`}>
                     <NavLink to={`${data.mal_id}`} className='text-dark'>
                     <h2>{data.title}</h2></NavLink>
                     <FavoriteBtn category={category} id={data.mal_id}/>

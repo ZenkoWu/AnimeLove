@@ -1,3 +1,4 @@
+import { TState } from '@/redux/store';
 import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
@@ -10,11 +11,11 @@ const mangaListSlice = createSlice({
     name: 'mangaList',
     initialState, 
     reducers: {
-        changeCurrentPage: (state, {payload}) => {
+        changeCurrentPage: (state: TState['mangaList'], {payload} : {payload: number}) => {
             state.currentPage = payload
             return;
         },
-        changeTotalMangaCount: (state, {payload}) => {
+        changeTotalMangaCount: (state: TState['mangaList'], {payload}: {payload: number}) => {
             state.totalMangaCount = payload
             return;
         }

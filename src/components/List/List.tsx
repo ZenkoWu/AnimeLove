@@ -3,15 +3,25 @@ import {ElementCardFull} from '../ElementCardFull/ElementCardFull';
 import s from './List.module.css'
 import { useState } from 'react';
 import {ElementCard} from '../ElementCard/ElementCard';
+import { TMangaInfo,TAnimeInfo } from '../../types/mainElementsTypes';
+
+type TList = {
+    elementsList: TAnimeInfo[] | TMangaInfo[], 
+    changeCurrentPage: (p: number) => void, 
+    currentPage: number, 
+    totalElementCount: number, 
+    title: 'Anime' | 'Manga', 
+    pageSize: number 
+}
 
 export const List = ({
-    elementList, 
+    elementsList, 
     changeCurrentPage, 
     currentPage, 
     totalElementCount, 
     title, 
     pageSize
-}) => {
+}: TList) => {
     const [isFullCard, setIsFullCard] = useState(false) // todo save this state localy
 
     return (
@@ -27,18 +37,17 @@ export const List = ({
                             id="flexSwitchCheckDefault"
                             onClick={()=> setIsFullCard(prev => !prev)}
                         />
-                        {/* <label className="form-check-label" for="flexSwitchCheckDefault">Show full info</label> */}
                     </div>
                 </div>
-                {/* {elementList.length < 1 &&
-                    <p className='text-dark'>Sorry we didn't find anything :\</p> } */}
+                {/* {elementList.length < 1 && //todo
+                    <p className='text-dark'>Sorry we didn't find anything :\</p> } */} 
                 {   
                     isFullCard ? 
                     <div>
                         { 
-                            elementList.data.map((el) => 
+                            elementsList.map((el) => 
                                 <ElementCardFull 
-                                    category={title.toLowerCase()} 
+                                    category={title.toLowerCase() as 'manga' | 'anime'}  //todo fix this type
                                     data={el} 
                                     key={el.mal_id}
                                 />)
@@ -47,12 +56,13 @@ export const List = ({
                     :
                     <div className='d-flex justify-between flex-wrap'>  
                         { 
-                            elementList.data.map((el) => 
+                            elementsList.map((el) => 
                                 <ElementCard 
-                                    category={title.toLowerCase()} 
-                                    element={el} 
+                                    category={title.toLowerCase() as 'manga' | 'anime'} 
+                                    data={el} 
                                     key={el.mal_id}
-                                />) 
+                                />
+                            ) 
                         }
                     </div> 
                 }
