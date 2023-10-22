@@ -4,6 +4,7 @@ import s from './List.module.css'
 import { useState } from 'react';
 import {ElementCard} from '../ElementCard/ElementCard';
 import { TMangaInfo,TAnimeInfo } from '../../types/mainElementsTypes';
+import { createFlexStyle } from '../../utils.js/createFlexStyle';
 
 type TList = {
     elementsList: TAnimeInfo[] | TMangaInfo[], 
@@ -27,7 +28,7 @@ export const List = ({
     return (
         <div className={s.container}>
             <div className={`${s.elementList}`}>
-                <div className='d-flex justify-content-between align-items-center pt-2 pb-3'>
+                <div className={`${createFlexStyle()} pt-2 pb-3`}>
                     <span className={s.title}>{title} List</span>
                     <div className="form-check form-switch fs-4">
                         <input 

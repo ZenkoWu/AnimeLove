@@ -11,13 +11,17 @@ const mangaListSlice = createSlice({
     name: 'mangaList',
     initialState, 
     reducers: {
-        changeCurrentPage: (state: TState['mangaList'], {payload} : {payload: number}) => {
-            state.currentPage = payload
-            return;
+        changeCurrentPage: (
+            state: TState['mangaList'], 
+            {payload} : {payload: number}
+        ) => {
+            state.currentPage = payload;
         },
-        changeTotalMangaCount: (state: TState['mangaList'], {payload}: {payload: number}) => {
-            state.totalMangaCount = payload
-            return;
+        changeTotalMangaCount: (
+            state: TState['mangaList'], 
+            {payload}: {payload: number}
+        ) => {
+            state.totalMangaCount = payload;
         }
     }
 })

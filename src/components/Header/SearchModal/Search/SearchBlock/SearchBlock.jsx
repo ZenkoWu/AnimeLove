@@ -16,7 +16,7 @@ const SearchBlock = ({block, searchResult}) => {
                         { 
                             searchResult.data.map((el, i) => (
                                 <div className={`py-2 d-flex ${i < 2 && s.greyBorderBottom}`} key={el.mal_id}>
-                                    <img src={el.images.jpg.image_url} className='px-2 w-25'/>
+                                    <img src={el.images.jpg.image_url} alt='poster' className='px-2 w-25'/>
 
                                     <div className=''>
                                         <div>

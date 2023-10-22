@@ -11,13 +11,17 @@ const animeListSlice = createSlice({
     name: 'animeList',
     initialState, 
     reducers: {
-        changeCurrentPage: (state: TState['animeList'], {payload} :{payload: number}) => {
-            state.currentPage = payload
-            return;
+        changeCurrentPage: (
+            state: TState['animeList'], 
+            {payload} :{payload: number}
+        ) => {
+            state.currentPage = payload;
         },
-        changeTotalAnimeCount: (state: TState['animeList'], {payload} :{payload: number}) => {
-            state.totalAnimeCount = payload
-            return;
+        changeTotalAnimeCount: (
+            state: TState['animeList'], 
+            {payload} :{payload: number}
+        ) => {
+            state.totalAnimeCount = payload;
         }
     }
 })

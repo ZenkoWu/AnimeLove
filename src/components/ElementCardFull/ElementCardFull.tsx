@@ -12,7 +12,7 @@ type TElementCard = {
 export const ElementCardFull = ({category, data}: TElementCard) => {
     return (
         <div className={`d-flex ${s.cardContainer}`}>
-            <img src={data.images?.jpg.image_url} className={s.poster}/>
+            <img src={data.images?.jpg.image_url} alt='poster' className={s.poster}/>
             <div className={`${s.content} w-100`}>
                 <div className={`${createFlexStyle()}`}>
                     <NavLink to={`${data.mal_id}`} className='text-dark'>
