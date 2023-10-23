@@ -1,5 +1,6 @@
+import { ANIME_TYPE, MANGA_TYPES } from './../constants';
 
-export const animeRatings = [
+export const ANIME_RATING = [
     'G - All Ages',
     'PG - Children',
     'PG-13 - Teens 13 or older',
@@ -7,16 +8,12 @@ export const animeRatings = [
     'R+ - Mild Nudity'
 ] as const;
 
-const animeStatus =  ['Finished Airing', 'Currently Airing', 'Not yet aired'] as const;
-const mangaStatus =  ['Finished', 'Publishing', 'On Hiatus', 'Discontinued'] as const;
+const ANIME_STATUS =  ['Finished Airing', 'Currently Airing', 'Not yet aired'] as const;
+const MANGA_STATUS =  ['Finished', 'Publishing', 'On Hiatus', 'Discontinued'] as const;
 
 interface TElementInfo {
-    background: string,
-    duration: string,
-    type: 'TV' | 'ova' | 'movie' | 'special' | 'music',
-    episodes: number,
-    favorites: number,
-    genres: {mal_id: number, type: string, name: string}[],
+    mal_id: number,
+    title: string,
     images: {
         jpg: {
             image_url: string,
@@ -24,27 +21,31 @@ interface TElementInfo {
             large_image_url: string
         }
     },
-    mal_id: number,
-    popularity: number,
-    rank: number,
-    year: number,
-    source: string,
-    score: number,
-    title: string,
-    title_japanese: string,
+    background?: string,
+    duration?: string,  
+    episodes?: number,
+    favorites?: number,
+    genres?: {mal_id: number, type: string, name: string}[],
+    popularity?: number,
+    rank?: number,
+    year?: number,
+    source?: string,
+    score?: number,
+    title_japanese?: string,
 }
 
 export interface TAnimeInfo extends TElementInfo {
-    rating:  typeof animeRatings[number],
-    status: typeof animeStatus[number],
-    trailer: {
+    type?: keyof typeof ANIME_TYPE;
+    rating?:  typeof ANIME_RATING[number],
+    status?: typeof ANIME_STATUS[number],
+    trailer?: {
         embed_url: string,
         url: string
     }
 }
 
-
 export interface TMangaInfo extends TElementInfo {
-    chapters: number,
-    status: typeof mangaStatus[number]
+    type?: keyof typeof MANGA_TYPES,
+    chapters?: number,
+    status?: typeof MANGA_STATUS[number],
 }
