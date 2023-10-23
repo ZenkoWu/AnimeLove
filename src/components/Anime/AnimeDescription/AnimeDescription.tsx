@@ -4,7 +4,7 @@ import Preloader from "../../Preloader/Preloader"
 import s from './AnimeDescription.module.css'
 import starSymbol from '../../../imges/starScore.svg'
 import { TAnimeInfo } from "@/types/mainElementsTypes"
-import { getScoreColor } from "../../../utils.js/getScoreColor"
+import { getScoreColor } from "../../../utils/getScoreColor"
 
 export const AnimeDescription = () => {
     const params = useParams()
@@ -23,11 +23,11 @@ export const AnimeDescription = () => {
         {title: 'Source', value: anime.source },
         {title: 'Episodes', value: anime.episodes },
         {title: 'Rating', value: anime.rating },
-        {title: 'Genre', value: anime.genres.map((g) => g.name).join(', ')},
+        {title: 'Genre', value: anime.genres?.map((g) => g.name).join(', ')},
         {title: 'Status', value: anime.status },
     ]
 
-    const scoreColor = getScoreColor(anime)
+    const scoreColor = anime.score && getScoreColor(anime.score)
 
     return (
         <div className={s.container}>
@@ -69,7 +69,7 @@ export const AnimeDescription = () => {
                         </div>
                     }
                     {
-                        anime.trailer.embed_url ?
+                        anime.trailer?.embed_url ?
                         <iframe 
                             width="80%" 
                             height="550px" 

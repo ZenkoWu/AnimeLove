@@ -2,7 +2,7 @@ import { useState } from "react"
 import { TextFieldWrapper } from "../TextFieldWrapper/TextFieldWrapper"
 import ArrowImage from "../../ArrowImage/ArrowImage"
 import { SelectModal } from "../SelectModal/SelectModal"
-import { createFlexStyle } from "../../../utils.js/createFlexStyle"
+import { createFlexStyle } from "../../../utils/createFlexStyle"
 
 type TSelectField = {
     value: string, 

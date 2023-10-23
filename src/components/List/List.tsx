@@ -4,7 +4,7 @@ import s from './List.module.css'
 import { useState } from 'react';
 import {ElementCard} from '../ElementCard/ElementCard';
 import { TMangaInfo,TAnimeInfo } from '../../types/mainElementsTypes';
-import { createFlexStyle } from '../../utils.js/createFlexStyle';
+import { createFlexStyle } from '../../utils/createFlexStyle';
 
 type TList = {
     elementsList: TAnimeInfo[] | TMangaInfo[], 

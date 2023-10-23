@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import s from './Header.module.css'
 import { NavLink, useNavigate } from "react-router-dom";
 import SearchContainer from './SearchContainer/SearchContainer';
-import { createFlexStyle } from '../../utils.js/createFlexStyle';
+import { createFlexStyle } from '../../utils/createFlexStyle';
 
 const getRandomAnime = (navigate, totalAnimeCount) => {
     const randomAnimeId = Math.floor(Math.random() * totalAnimeCount) + 1;

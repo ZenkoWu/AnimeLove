@@ -3,7 +3,7 @@ import { useGetMangaFullByIdQuery } from "../../../redux/services/mangaApi"
 import Preloader from "../../Preloader/Preloader"
 import s from './MangaDescription.module.css'
 import starSymbol from '../../../imges/starScore.svg'
-import { getScoreColor } from "../../../utils.js/getScoreColor"
+import { getScoreColor } from "../../../utils/getScoreColor"
 import { TMangaInfo } from "@/types/mainElementsTypes"
 
 export const MangaDescription = () => {
@@ -16,7 +16,7 @@ export const MangaDescription = () => {
     } 
     const manga: TMangaInfo = data.data
 
-    const scoreColor = getScoreColor(manga)
+    const scoreColor = manga.score && getScoreColor(manga.score)
     
     return (
         <div className={s.container}>
@@ -38,7 +38,7 @@ export const MangaDescription = () => {
                                     <dt className="col-6 col-sm-4 fw-normal text-secondary">Chapters</dt>
                                     <dd className="col-6 col-sm-8 mb-1 text-danger">{manga.chapters ?? 'unknown'}</dd>
                                     <dt className="col-6 col-sm-4 fw-normal text-secondary">Genre</dt>
-                                    <dd className="col-6 col-sm-8 mb-1">{manga.genres.map(g => g.name).join(', ')}</dd>
+                                    <dd className="col-6 col-sm-8 mb-1">{manga.genres?.map(g => g.name).join(', ')}</dd>
                                     <dt className="col-6 col-sm-4 fw-normal text-secondary">Status</dt>
                                     <dd className="col-6 col-sm-8 mb-1">{manga.status}</dd>
                                 </dl>

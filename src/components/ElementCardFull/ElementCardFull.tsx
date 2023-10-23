@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import FavoriteBtn from '../FavoriteBtn/FavoriteBtn';
 import s from './ElementCardFull.module.css'
 import { TAnimeInfo, TMangaInfo } from '@/types/mainElementsTypes';
-import { createFlexStyle } from '../../utils.js/createFlexStyle';
+import { createFlexStyle } from '../../utils/createFlexStyle';
 
 type TElementCard = {
     category: 'anime' | 'manga',
