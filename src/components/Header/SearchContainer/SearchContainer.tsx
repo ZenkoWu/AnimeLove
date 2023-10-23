@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useGetSearchedAnimeListQuery } from "../../../redux/services/animeApi"
 import {Search} from "../SearchModal/Search/Search"
 import { useGetSearchedMangaListQuery } from "../../../redux/services/mangaApi"
+import { TSearchBlock } from "../SearchModal/Search/SearchBlock/SearchBlock"
 
 const searchLimit = 3
 
@@ -12,10 +13,10 @@ const SearchContainer = () => {
     if(anime) console.log(anime)
     
 
-    const searchBlocks = [
+    const searchBlocks: TSearchBlock[] = [
         {title: 'anime', searchResult: anime},  
         {title: 'manga',  searchResult: manga}, 
-        {title: 'characters',  searchResult: null}
+        // {title: 'characters',  searchResult: null} //todo add characters info
     ]
     return (
         <Search 

@@ -19,9 +19,9 @@
         "name": "next"
       }
     ],
-    // "paths": {
-    //   "@/*": ["./src/*"]
-    // }
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   // "include": [ "**/*"],
   "exclude": ["node_modules"]

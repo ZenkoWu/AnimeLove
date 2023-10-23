@@ -3,15 +3,19 @@ import s from './Header.module.css'
 import { NavLink, useNavigate } from "react-router-dom";
 import SearchContainer from './SearchContainer/SearchContainer';
 import { createFlexStyle } from '../../utils/createFlexStyle';
+import { TState } from '../../redux/store';
 
-const getRandomAnime = (navigate, totalAnimeCount) => {
+const getRandomAnime = (
+    navigate: (link: string, extra: {replace: boolean})=> void, 
+    totalAnimeCount: number
+) => {
     const randomAnimeId = Math.floor(Math.random() * totalAnimeCount) + 1;
     navigate(`anime/${randomAnimeId}`,{ replace: true })
 }
 
 export const Header = () => {
     const navigate = useNavigate();
-    const totalAnimeCount = useSelector(state => state.animeList.totalAnimeCount)
+    const totalAnimeCount = useSelector((state: TState) => state.animeList.totalAnimeCount)
 
     return (
         <header className={`bgMainRed ${s.container} ${createFlexStyle()}`} >
@@ -22,9 +26,8 @@ export const Header = () => {
                     <NavLink to='/manga' className={s.link}>Manga</NavLink>
                     <NavLink to='/characters' className={s.link}>Characters</NavLink>
                     <p 
-                        className={`${s.link} m-0`}
+                        className={`${s.link} m-0 cursor-pointer`}
                         onClick={()=>getRandomAnime(navigate, totalAnimeCount)}
-                        type='button'
                     >
                         Random anime
                     </p>

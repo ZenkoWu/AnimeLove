@@ -13,14 +13,14 @@ export const Favorites = () => {
     }
     return (
         <div>
-            {data && favoritesCount > 0 ? 
+            {/* {data && favoritesCount > 0 ? 
             <div className='d-flex justify-between row'>
                 {data.map((favorite) => <ElementCard element={favorite}  key={favorite.mal_id}/>)}
             </div>
             :
             <p> Favorites is unknown</p>
             
-            }
+            } */} //todo
         </div>
     )
 }
