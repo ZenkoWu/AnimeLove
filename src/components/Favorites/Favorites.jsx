@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { selectFavoritesModule } from "../../redux/features/favorites/selector"
 import {ElementCard} from "../ElementCard/ElementCard"
-import Preloader from "../../Preloader/Preloader"
+import Preloader from "../Preloader/Preloader"
 
 export const Favorites = () => {
     

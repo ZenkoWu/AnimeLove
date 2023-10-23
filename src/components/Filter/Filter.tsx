@@ -10,7 +10,7 @@ export const ratingAC = (payload: string) => ({type: 'setRating', payload})
 export const statusAC = (payload: string) => ({type: 'setStatus', payload})
 
 type TFilterReducer = {
-    state: any,
+    state: any, //todo 
     action: {type: string, payload: string}
 }
 

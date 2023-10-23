@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useGetMangaFullByIdQuery } from "../../../redux/services/mangaApi"
-import Preloader from "../../../Preloader/Preloader"
+import Preloader from "../../Preloader/Preloader"
 import s from './MangaDescription.module.css'
 import starSymbol from '../../../imges/starScore.svg'
 import { getScoreColor } from "../../../utils.js/getScoreColor"

@@ -2,13 +2,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { mangaListActions } from '../../redux/features/mangaList';
 import { useCallback, useReducer } from 'react';
 import { useGetMangaListQuery } from "../../redux/services/mangaApi";
-import Preloader from "../../Preloader/Preloader";
+import Preloader from "../Preloader/Preloader";
 import {List} from '../List/List';
 import { ContentContainer } from '../ContentContainer/ContentContainer';
 import { Filter, statusAC, orderByAC, typeChangeAC, reducer } from '../Filter/Filter';
-import { mangaOrderBy, mangaStatus, mangaTypes } from '../../constants';
+import { MANGA_ORDER_BY, MANGA_STATUS, MANGA_TYPES } from '../../constants';
 import { TState } from '../../redux/store';
 
+export type TMangaFilterState = {
+    type: keyof typeof MANGA_TYPES,
+    orderBy: keyof typeof  MANGA_ORDER_BY,
+    status: keyof typeof MANGA_STATUS
+}
 
 const initialState = {
     type: 'manga',
@@ -17,7 +22,7 @@ const initialState = {
 }
 
 export const Manga = () => {
-    const [state, dis] = useReducer(reducer, initialState)
+    const [state, dis]: [TMangaFilterState, any] = useReducer(reducer, initialState)
     const {currentPage, pageSize: pageLimit, totalMangaCount} = useSelector((state :TState) => state.mangaList)
 
     const onChange = useCallback((actionCreator: (payload: string) => ({type: string, payload: string})) => 
@@ -27,7 +32,7 @@ export const Manga = () => {
         {
             title: 'Order by', 
             placeholder: state.orderBy,
-            options: mangaOrderBy,
+            options:  Object.keys(MANGA_ORDER_BY),
             value: state.orderBy,
             setValue: onChange(orderByAC),
             zIndex: 5
@@ -35,7 +40,7 @@ export const Manga = () => {
         {
             title: 'Type', 
             placeholder: state.type,
-            options: mangaTypes,
+            options:  Object.keys(MANGA_TYPES),
             value: state.type,
             setValue: onChange(typeChangeAC),
             zIndex: 3
@@ -43,7 +48,7 @@ export const Manga = () => {
         {
             title: 'Status', 
             placeholder: state.status,
-            options: mangaStatus,
+            options:  Object.keys(MANGA_STATUS),
             value: state.status,
             setValue: onChange(statusAC),
             zIndex: 1
@@ -53,9 +58,9 @@ export const Manga = () => {
     const {data: manga} = useGetMangaListQuery({
         currentPage, 
         pageLimit,
-        type: state.type,
-        orderBy: state.orderBy, 
-        status: state.status
+        type: MANGA_TYPES[state.type],
+        orderBy: MANGA_ORDER_BY[state.orderBy], 
+        status: MANGA_STATUS[state.status]
     })
 
     const dispatch = useDispatch()
