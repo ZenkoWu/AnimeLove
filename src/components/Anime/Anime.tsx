@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { animeListActions } from '../../redux/features/animeList';
+import { animeActions } from '../../redux/features/animeList';
 import { useCallback, useReducer } from 'react';
-import { useGetAnimeListQuery } from "../../redux/services/animeApi";
+import { getAnime } from "../../redux/services/animeApi";
 import Preloader from "../Preloader/Preloader";
 import {List} from '../List/List';
 import { Filter, statusAC, ratingAC, orderByAC, typeChangeAC, reducer} from '../Filter/Filter';
@@ -69,7 +69,7 @@ const Anime = () => {
     const {currentPage, pageSize: pageLimit, totalAnimeCount} = useSelector((state: TState )=> state.animeList)
     const dispatch = useDispatch()
 
-    const {data: anime} = useGetAnimeListQuery({
+    const {data: anime} = getAnime({
         currentPage, pageLimit, 
         type: ANIME_TYPE[state.type], 
         rating: AGE_RATING[state.rating],
@@ -78,14 +78,14 @@ const Anime = () => {
     })
     
     const changeCurrentPage = useCallback((currentPage: number) => {
-        dispatch(animeListActions.changeCurrentPage(currentPage))
+        dispatch(animeActions.changeCurrentPage(currentPage))
     }, [currentPage])
 
     if(!anime) {
         return <Preloader/>
     }
     const totalCount = anime.pagination.items.total 
-    dispatch(animeListActions.changeTotalAnimeCount(totalCount))
+    dispatch(animeActions.changeTotalAnimeCount(totalCount))
     
     return (
         <div>

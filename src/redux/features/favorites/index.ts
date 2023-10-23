@@ -1,6 +1,7 @@
+import { TState } from '@/redux/store';
 import {createSlice} from '@reduxjs/toolkit';
 
-const initialState = {
+const initialState: TState['favorites'] = {
     favorites: { //??
         anime: {},
         manga: {},
@@ -8,7 +9,7 @@ const initialState = {
     favoritesCount: 0
 }
 
-const favoritesSlice = createSlice({
+const favoritesSlice = createSlice({ //todo 
     name: 'favorites',
     initialState, 
     reducers: {
@@ -21,7 +22,7 @@ const favoritesSlice = createSlice({
         unlike: (state, {payload}) => {
             // state.favorites = state.favorites.filter(payload)
             delete state.favorites[payload.category][payload.id]
-            --state.ticketsCount
+            --state.favoritesCount
             return;
         },
     }

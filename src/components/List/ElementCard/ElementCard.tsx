@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import FavoriteBtn from '../FavoriteBtn/FavoriteBtn';
+import FavoriteBtn from '../../Favorites/FavoriteBtn/FavoriteBtn';
 import s from './ElementCard.module.css'
 import { TAnimeInfo, TMangaInfo } from '@/types/mainElementsTypes';
 

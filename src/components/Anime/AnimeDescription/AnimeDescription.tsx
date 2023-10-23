@@ -3,7 +3,7 @@ import { useGetAnimeFullByIdQuery } from "../../../redux/services/animeApi"
 import Preloader from "../../Preloader/Preloader"
 import s from './AnimeDescription.module.css'
 import starSymbol from '../../../imges/starScore.svg'
-import { TAnimeInfo } from "@/types/mainElementsTypes"
+import { TAnimeInfo } from "../../../types/mainElementsTypes"
 import { getScoreColor } from "../../../utils/getScoreColor"
 
 export const AnimeDescription = () => {

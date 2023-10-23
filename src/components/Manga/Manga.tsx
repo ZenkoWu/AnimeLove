@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { mangaListActions } from '../../redux/features/mangaList';
+import { mangaActions } from '../../redux/features/mangaList';
 import { useCallback, useReducer } from 'react';
 import { useGetMangaListQuery } from "../../redux/services/mangaApi";
 import Preloader from "../Preloader/Preloader";
@@ -66,14 +66,14 @@ export const Manga = () => {
     const dispatch = useDispatch()
 
     const changeCurrentPage = useCallback((currentPage: number) => {
-        dispatch(mangaListActions.changeCurrentPage(currentPage))
+        dispatch(mangaActions.changeCurrentPage(currentPage))
     }, [currentPage])
 
     if(!manga) {
         return <Preloader/>
     }
     const totalCount = manga.pagination.items.total 
-    dispatch(mangaListActions.changeTotalMangaCount(totalCount))
+    dispatch(mangaActions.changeTotalMangaCount(totalCount))
 
     return (
         <div>

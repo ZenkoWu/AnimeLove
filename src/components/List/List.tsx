@@ -1,8 +1,8 @@
 import Paginator from '../Paginator/Paginator';
-import {ElementCardFull} from '../ElementCardFull/ElementCardFull';
+import {ElementCardFull} from './ElementCardFull/ElementCardFull';
 import s from './List.module.css'
 import { useState } from 'react';
-import {ElementCard} from '../ElementCard/ElementCard';
+import {ElementCard} from './ElementCard/ElementCard';
 import { TMangaInfo,TAnimeInfo } from '../../types/mainElementsTypes';
 import { createFlexStyle } from '../../utils/createFlexStyle';
 

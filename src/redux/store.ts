@@ -2,9 +2,9 @@ import { configureStore } from '@reduxjs/toolkit'
 import { favoritesReducer } from './features/favorites'
 import {logger} from './middlewares/logger'
 import { animeApi } from './services/animeApi'
-import { animeListReducer } from './features/animeList'
+import { animeReducer } from './features/animeList'
 import { mangaApi } from './services/mangaApi'
-import { mangaListReducer } from './features/mangaList'
+import { mangaReducer } from './features/mangaList'
 
 export interface TState {
     animeList: {
@@ -18,23 +18,24 @@ export interface TState {
         currentPage: number,
     },
     favorites:  { 
-        favorites: {
-            anime: object,
-            manga: object,
-        }
+        favorites:any // todo!
+        //  {
+        //     anime: object,
+        //     manga: object,
+        // }
         favoritesCount: number
     }, 
 }
 
 export const store = configureStore({
     reducer: {
-        animeList: animeListReducer,
-        mangaList: mangaListReducer,
+        animeList: animeReducer,
+        mangaList: mangaReducer,
         favorites: favoritesReducer,
         [animeApi.reducerPath]: animeApi.reducer, 
         [mangaApi.reducerPath]: mangaApi.reducer, 
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([
+    middleware: (getMiddleware) => getMiddleware().concat([
         animeApi.middleware, 
         mangaApi.middleware,
         // logger
