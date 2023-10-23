@@ -1,25 +1,25 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {API_ROUTES, BASE_URL} from './apiRoutes/apiRoutes'
-
-export const mangaApi = createApi({
+//todo typescript
+// todo вынести в функцию и передавать другой апиРоут - функции похожи на аниме 
+export const mangaApi = createApi({ 
     reducerPath: 'manga',
     baseQuery: fetchBaseQuery({baseUrl: BASE_URL}),
     endpoints: (builder) => ({
-        getMangaList: builder.query({query: ({pageLimit, currentPage, type, orderBy, status}) => (
+        getManga: builder.query({query: ({pageLimit, currentPage, type, orderBy, status}) => (
             `${API_ROUTES.manga}?limit=${pageLimit}&page=${currentPage}&type=${type}&order_by=${orderBy}&status=${status}`
         )}),
-        getMangaFullById: builder.query({query: (id) => (
+        getMangaById: builder.query({query: (id) => (
             `${API_ROUTES.manga}/${id}/full`
         )}),
-        getSearchedMangaList: builder.query({query: ({input, limit}) => (
+        getSearchedManga: builder.query({query: ({input, limit}) => (
             `${API_ROUTES.manga}?q=${input}&limit=${limit}`
         )}),
     })
 })
 
 export const {
-    useGetMangaListQuery,
-    useGetMangaFullByIdQuery,
-    useGetSearchedMangaListQuery
+    useGetMangaQuery,
+    useGetMangaByIdQuery,
+    useGetSearchedMangaQuery
 } = mangaApi;
-

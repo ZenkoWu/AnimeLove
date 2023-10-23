@@ -1,15 +1,15 @@
 import { useParams } from "react-router-dom"
-import { useGetMangaFullByIdQuery } from "../../../redux/services/mangaApi"
 import Preloader from "../../Preloader/Preloader"
 import s from './MangaDescription.module.css'
 import starSymbol from '../../../imges/starScore.svg'
 import { getScoreColor } from "../../../utils/getScoreColor"
 import { TMangaInfo } from "@/types/mainElementsTypes"
+import { api } from "../../../redux/services/api/api"
 
 export const MangaDescription = () => {
     const params = useParams()
 
-    const {data} = useGetMangaFullByIdQuery(params.mangaId)
+    const {data} = api.manga.getById(params.mangaId)
     
     if(!data) {
         return <Preloader/>

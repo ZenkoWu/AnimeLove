@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { animeActions } from '../../redux/features/animeList';
 import { useCallback, useReducer } from 'react';
-import { getAnime } from "../../redux/services/animeApi";
+import { api } from "../../redux/services/api/api";
 import Preloader from "../Preloader/Preloader";
 import {List} from '../List/List';
 import { Filter, statusAC, ratingAC, orderByAC, typeChangeAC, reducer} from '../Filter/Filter';
@@ -69,7 +69,7 @@ const Anime = () => {
     const {currentPage, pageSize: pageLimit, totalAnimeCount} = useSelector((state: TState )=> state.animeList)
     const dispatch = useDispatch()
 
-    const {data: anime} = getAnime({
+    const {data: anime} = api.anime.getList({
         currentPage, pageLimit, 
         type: ANIME_TYPE[state.type], 
         rating: AGE_RATING[state.rating],

@@ -1,15 +1,15 @@
 import { useParams } from "react-router-dom"
-import { useGetAnimeFullByIdQuery } from "../../../redux/services/animeApi"
 import Preloader from "../../Preloader/Preloader"
 import s from './AnimeDescription.module.css'
 import starSymbol from '../../../imges/starScore.svg'
 import { TAnimeInfo } from "../../../types/mainElementsTypes"
 import { getScoreColor } from "../../../utils/getScoreColor"
+import { api } from "../../../redux/services/api/api"
 
 export const AnimeDescription = () => {
     const params = useParams()
 
-    const {data} = useGetAnimeFullByIdQuery(params.animeId)
+    const {data} = api.anime.getById(params.animeId)
 
     if(!data) {
         return <Preloader/>

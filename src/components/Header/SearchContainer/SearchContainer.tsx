@@ -1,15 +1,14 @@
 import { useState } from "react"
-import { useGetSearchedAnimeListQuery } from "../../../redux/services/animeApi"
 import {Search} from "../SearchModal/Search/Search"
-import { useGetSearchedMangaListQuery } from "../../../redux/services/mangaApi"
 import { TSearchBlock } from "../SearchModal/Search/SearchBlock/SearchBlock"
+import { api } from "../../../redux/services/api/api"
 
 const searchLimit = 3
 
 const SearchContainer = () => {
     const [input, setInput] = useState('')
-    const {data: anime} =  useGetSearchedAnimeListQuery({input, limit: searchLimit}) 
-    const {data: manga} = useGetSearchedMangaListQuery({input, limit: searchLimit})
+    const {data: anime} =  api.anime.getSearched({input, limit: searchLimit}) 
+    const {data: manga} = api.manga.getSearched({input, limit: searchLimit})
     if(anime) console.log(anime)
     
 

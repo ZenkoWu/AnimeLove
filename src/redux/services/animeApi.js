@@ -1,16 +1,18 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {API_ROUTES, BASE_URL} from './apiRoutes/apiRoutes'
 
-export const animeApi = createApi({
+export const animeApi = createApi({ //todo вынести в отдельные функции 
     reducerPath: 'anime',
     baseQuery: fetchBaseQuery({baseUrl: BASE_URL}),
     endpoints: (builder) => ({
-        getAnimeList: builder.query({query: ({pageLimit, currentPage, type, rating, orderBy, status}) => (
+        getAnime: builder.query({query: ({pageLimit, currentPage, type, rating, orderBy, status}) => (
             `${API_ROUTES.anime}?limit=${pageLimit}&page=${currentPage}&type=${type}&rating=${rating}&order_by=${orderBy}&status=${status}`
         )}),
-        getAnimeFullById: builder.query({query: (id) => (
+
+        getAnimeById: builder.query({query: (id) => (
             `${API_ROUTES.anime}/${id}/full`
         )}),
+
         getFavoritesAnime: builder.query({
             async queryFn(ids, _queryApi, _extraOptions, fetchWithBQ) {
                 ids = Object.keys(ids) //???
@@ -22,17 +24,19 @@ export const animeApi = createApi({
                     ? { data: response.map((anime) => anime.data)}
                     : { error: response[0].error};
             },
-          }),
-        getSearchedAnimeList: builder.query({query: ({input, limit}) => (
+        }),
+        
+        getSearchedAnime: builder.query({query: ({input, limit}) => (
             `${API_ROUTES.anime}?q=${input}&limit=${limit}`
         )}),
     })
 })
 
 export const {
-    useGetAnimeListQuery,
-    useGetAnimeFullByIdQuery,
+    useGetAnimeQuery,
+    useGetAnimeByIdQuery,
     useGetFavoritesAnimeQuery,
-    useGetSearchedAnimeListQuery
+    useGetSearchedAnimeQuery
 } = animeApi;
+
 

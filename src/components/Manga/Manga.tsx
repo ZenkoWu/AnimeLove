@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { mangaActions } from '../../redux/features/mangaList';
 import { useCallback, useReducer } from 'react';
-import { useGetMangaListQuery } from "../../redux/services/mangaApi";
 import Preloader from "../Preloader/Preloader";
 import {List} from '../List/List';
 import { ContentContainer } from '../ContentContainer/ContentContainer';
 import { Filter, statusAC, orderByAC, typeChangeAC, reducer } from '../Filter/Filter';
 import { MANGA_ORDER_BY, MANGA_STATUS, MANGA_TYPES } from '../../constants';
 import { TState } from '../../redux/store';
+import { api } from '../../redux/services/api/api';
 
 export type TMangaFilterState = {
     type: keyof typeof MANGA_TYPES,
@@ -55,7 +55,7 @@ export const Manga = () => {
         },
         
     ]
-    const {data: manga} = useGetMangaListQuery({
+    const {data: manga} = api.manga.getList({
         currentPage, 
         pageLimit,
         type: MANGA_TYPES[state.type],
