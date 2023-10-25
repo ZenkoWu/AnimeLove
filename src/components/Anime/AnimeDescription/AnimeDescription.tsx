@@ -5,6 +5,8 @@ import starSymbol from '../../../imges/starScore.svg'
 import { TAnimeInfo } from "../../../types/mainElementsTypes"
 import { getScoreColor } from "../../../utils/getScoreColor"
 import { api } from "../../../redux/services/api/api"
+import FavoriteBtn from "../../../components/Favorites/FavoriteBtn/FavoriteBtn"
+import { createFlexStyle } from "../../../utils/createFlexStyle"
 
 export const AnimeDescription = () => {
     const params = useParams()
@@ -36,11 +38,21 @@ export const AnimeDescription = () => {
                     <div className="d-flex gap-4 pb-4">
                         <img src={anime.images.jpg.image_url} alt="anime-img" className={s.animePic}/>
                         <div className=""> 
-                            <div>
-                                <img src={starSymbol} alt='starSymbol' className="pb-2"/>
-                                <span className={`fs-4 ${scoreColor}`}>
-                                    {(anime.score)?.toFixed(1)}
-                                </span>/10
+                            <div className={`${createFlexStyle()}`}>
+                                <div className=" d-flex">
+                                    <img src={starSymbol} alt='starSymbol'/>
+                                    <div>
+                                        <span className={`fs-4 ${scoreColor}`}>
+                                            {(anime.score)?.toFixed(1)}
+                                        </span>/10
+                                    </div>
+                                </div>
+                               
+                                <FavoriteBtn category="anime" info={{
+                                    mal_id: anime.mal_id,
+                                    images: anime.images,
+                                    title: anime.title
+                                }}/>
                             </div>
                             <h1 className='fw-bold fs-2' >{anime.title}</h1>
                             <p className={s.borderBottomGrey}>{anime.title_japanese}</p>

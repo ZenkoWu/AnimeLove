@@ -16,6 +16,7 @@ const getRandomAnime = (
 export const Header = () => {
     const navigate = useNavigate();
     const totalAnimeCount = useSelector((state: TState) => state.animeList.totalAnimeCount)
+    const favCount = useSelector((state: TState) => state.favorites.favoritesCount)
 
     return (
         <header className={`bgMainRed ${s.container} ${createFlexStyle()}`} >
@@ -35,7 +36,9 @@ export const Header = () => {
             </div>
             <div className='d-flex align-items-center gap-4'>
                 <SearchContainer/>
-                <NavLink to='/favorites' className={s.title}>❤</NavLink>
+                <NavLink to='/favorites' className={s.title}>❤
+                    <span className='fs-5'>{favCount}</span>
+                </NavLink>
             </div>
         </header>
     )

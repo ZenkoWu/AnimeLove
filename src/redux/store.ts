@@ -5,6 +5,7 @@ import { animeApi } from './services/animeApi'
 import { animeReducer } from './features/animeList'
 import { mangaApi } from './services/mangaApi'
 import { mangaReducer } from './features/mangaList'
+import { TAnimeInfo, TMangaInfo } from '@/types/mainElementsTypes'
 
 export interface TState {
     animeList: {
@@ -18,11 +19,14 @@ export interface TState {
         currentPage: number,
     },
     favorites:  { 
-        favorites:any // todo!
-        //  {
-        //     anime: object,
-        //     manga: object,
-        // }
+        favorites: {
+            anime: {
+              [key in string]: TAnimeInfo
+            },
+            manga: {
+                [key in string]: TMangaInfo
+            },
+        }
         favoritesCount: number
     }, 
 }

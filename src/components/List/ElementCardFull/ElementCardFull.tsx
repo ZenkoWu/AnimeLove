@@ -17,7 +17,11 @@ export const ElementCardFull = ({category, data}: TElementCard) => {
                 <div className={`${createFlexStyle()}`}>
                     <NavLink to={`${data.mal_id}`} className='text-dark'>
                     <h2>{data.title}</h2></NavLink>
-                    <FavoriteBtn category={category} id={data.mal_id}/>
+                    <FavoriteBtn category={category} info={{
+                        mal_id: data.mal_id,
+                        images: data.images,
+                        title: data.title
+                    }}/>
                 </div>
                 <div className={`d-flex align-center gap-4`}>
                     <p> 

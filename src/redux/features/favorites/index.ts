@@ -2,11 +2,8 @@ import { TState } from '@/redux/store';
 import {createSlice} from '@reduxjs/toolkit';
 
 const initialState: TState['favorites'] = {
-    favorites: { //??
-        anime: {},
-        manga: {},
-    }, 
-    favoritesCount: 0
+    favorites: JSON.parse(localStorage.getItem('favorites')!) || {}, 
+    favoritesCount:  JSON.parse(localStorage.getItem('favoritesCount')!) || 0,
 }
 
 const favoritesSlice = createSlice({ //todo 
@@ -14,16 +11,40 @@ const favoritesSlice = createSlice({ //todo
     initialState, 
     reducers: {
         like: (state, {payload}) => {
-            // state.favorites.push(payload)
-            state.favorites[payload.category][payload.id] = true
-            ++state.favoritesCount;
-            return;
+            let newFavorites;
+            let favorites = localStorage.getItem('favorites')
+            if(!favorites) {
+                newFavorites = {
+                [payload.category]: {
+                    [payload.info.mal_id]: payload.info
+                }
+               } 
+                
+            }else {
+                
+                newFavorites = JSON.parse(favorites)
+                newFavorites[payload.category][payload.info.mal_id]= payload.info
+                
+            }
+            localStorage.setItem('favorites', JSON.stringify(newFavorites))
+            
+            state.favorites = JSON.parse(localStorage.getItem('favorites')!)
+            let count = JSON.parse(localStorage.getItem('favoritesCount')!) || 0
+            count++
+            localStorage.setItem('favoritesCount', `${count}`)
+            state.favoritesCount = JSON.parse(localStorage.getItem('favoritesCount')!) 
         },
         unlike: (state, {payload}) => {
-            // state.favorites = state.favorites.filter(payload)
-            delete state.favorites[payload.category][payload.id]
-            --state.favoritesCount
-            return;
+            let favorites = localStorage.getItem('favorites')!
+            let newFavorites = JSON.parse(favorites)
+            delete  newFavorites[payload.category][payload.info.mal_id]
+            localStorage.setItem('favorites', JSON.stringify(newFavorites))
+
+            state.favorites = JSON.parse(localStorage.getItem('favorites')!)
+            let count = JSON.parse(localStorage.getItem('favoritesCount')!)
+            count--
+            localStorage.setItem('favoritesCount', `${count}`)
+            state.favoritesCount = JSON.parse(localStorage.getItem('favoritesCount')!) 
         },
     }
 })
