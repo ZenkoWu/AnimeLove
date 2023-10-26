@@ -37,7 +37,7 @@ export const AnimeDescription = () => {
                 <div className='p-4 w-100'>
                     <div className="d-flex gap-4 pb-4">
                         <img src={anime.images.jpg.image_url} alt="anime-img" className={s.animePic}/>
-                        <div className=""> 
+                        <div className="w-100"> 
                             <div className={`${createFlexStyle()}`}>
                                 <div className=" d-flex">
                                     <img src={starSymbol} alt='starSymbol'/>

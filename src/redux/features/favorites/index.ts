@@ -11,21 +11,18 @@ const favoritesSlice = createSlice({ //todo
     initialState, 
     reducers: {
         like: (state, {payload}) => {
-            let newFavorites;
-            let favorites = localStorage.getItem('favorites')
-            if(!favorites) {
-                newFavorites = {
-                [payload.category]: {
-                    [payload.info.mal_id]: payload.info
+            const favorites = localStorage.getItem('favorites')
+            const newFavorites = favorites ?  JSON.parse(favorites) : {}
+
+            if(!newFavorites[payload.category]) {
+                newFavorites[payload.category] = {
+                    items: {},
+                    count: 0
                 }
-               } 
-                
-            }else {
-                
-                newFavorites = JSON.parse(favorites)
-                newFavorites[payload.category][payload.info.mal_id]= payload.info
-                
             }
+
+            newFavorites[payload.category].items[payload.info.mal_id]= payload.info
+            newFavorites[payload.category].count++
             localStorage.setItem('favorites', JSON.stringify(newFavorites))
             
             state.favorites = JSON.parse(localStorage.getItem('favorites')!)
@@ -37,7 +34,8 @@ const favoritesSlice = createSlice({ //todo
         unlike: (state, {payload}) => {
             let favorites = localStorage.getItem('favorites')!
             let newFavorites = JSON.parse(favorites)
-            delete  newFavorites[payload.category][payload.info.mal_id]
+            delete newFavorites[payload.category].items[payload.info.mal_id]
+            newFavorites[payload.category].count--
             localStorage.setItem('favorites', JSON.stringify(newFavorites))
 
             state.favorites = JSON.parse(localStorage.getItem('favorites')!)
@@ -46,6 +44,14 @@ const favoritesSlice = createSlice({ //todo
             localStorage.setItem('favoritesCount', `${count}`)
             state.favoritesCount = JSON.parse(localStorage.getItem('favoritesCount')!) 
         },
+        deleteFavorites: (state) => {
+            localStorage.removeItem('favorites')
+            localStorage.removeItem('favoritesCount')
+            
+            state.favorites = {}
+            state.favoritesCount = 0
+
+        }
     }
 })
 

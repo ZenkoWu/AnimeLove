@@ -1,59 +1,70 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import {useState} from 'react'
 import { selectFavoritesModule } from "../../redux/features/favorites/selector"
 import {ElementCard} from "../List/ElementCard/ElementCard"
 import { TState } from "@/redux/store"
+import s from './Favorites.module.css'
+import { favoritesActions } from "../../redux/features/favorites"
 
 export const Favorites = () => {
-    const [active, setActive] = useState('anime')
+    const [active, setActive]= useState<'anime' | 'manga'>('anime')
 
     const {favorites, favoritesCount} = useSelector((state: TState) => selectFavoritesModule(state))
+    const dispatch = useDispatch()
     return (
-        <div  style={{padding: '50px 150px'}}>
-           
-           
-           
-                {    
-                    favorites.anime ||  favorites.manga ? 
-                    <div className="bg-white p-4">
-                        <h2>Favorites</h2>
-                        <div className=" d-flex justify-content-between">
-
-                       
+        <div className={s.container}>
+                <div className="bg-white p-4">
+                    <h2>Favorites</h2>
+                    <div className=" d-flex justify-content-between">
                         <ul className="nav nav-tabs w-100">
-                            <li className="nav-item">
-                                <div className={"nav-link " + `${active == 'anime' && 'active'}` } aria-current="page" onClick={()=> setActive('anime')}>Anime</div>
+                            <li className="nav-item cursor-pointer">
+                                <div 
+                                    className={`nav-link ${active == 'anime' && 'active'}`} 
+                                    aria-current="page" 
+                                    onClick={()=> setActive('anime')}
+                                >
+                                    Anime
+                                </div>
                             </li>
-                            <li className="nav-item">
-                                <div className={"nav-link " + `${active == 'manga' && 'active'}` } onClick={()=> setActive('manga')}>Manga</div>
+                            <li className="nav-item cursor-pointer">
+                                <div 
+                                    className={`nav-link ${active == 'manga' && 'active'}`} 
+                                    onClick={()=> setActive('manga')}
+                                >
+                                    Manga
+                                </div>
                             </li>
-                           
                         </ul>
-                            <button onClick={()=> localStorage.clear()} className="btn btn-primary" style={{whiteSpace:'nowrap'}}>
-                                    delete all 
-                                </button>
-                        </div>
-                    {   
-                        <div className="pt-4">
-                        { active == 'anime' ? 
-                        <div className="d-flex p-2 w-100 d-flex justify-between flex-wrap" >
-                           { Object.values(favorites.anime).map(el => (
-                            // <div className=' red w-25'>
-                                <ElementCard category="anime" data={el}/>
-                                // </div>
-                            ))}
-                        </div>
+                        <button onClick={()=> dispatch(favoritesActions.deleteFavorites())} className="btn btn-primary" style={{whiteSpace:'nowrap'}}>
+                                delete all 
+                            </button>
+                    </div>  
+                    <div className="pt-4">
+                        <div className="d-flex p-2 w-100 d-flex justify-between flex-wrap">
+                        { 
+                            active == 'manga' && favorites.manga?.count ?
+                                Object.values(favorites.manga.items).map(el => (
+                                // <div className=' red w-25'>
+                                    <ElementCard category={active} data={el}/>
+                                    // </div>
+                                ))  
                             : 
-                            'manga'
+                            active == 'anime' && favorites.anime?.count ?
+                            Object.values(favorites.anime.items).map(el => (
+                            // <div className=' red w-25'>
+                                <ElementCard category={active} data={el}/>
+                                // </div>
+                            ))  
+                            : 
+                            <div>No favorite {active} </div>
+                            
                         }
                         </div>
-                    }
-                    
-                   
-                
                     </div>
-            :  <p> Favorites is unknown</p>
-        }
+                
+            
+                </div>
+            
         </div>
     )
 }

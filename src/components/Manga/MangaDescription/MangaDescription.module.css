@@ -7,3 +7,6 @@
     border: 1px solid rgb(209, 204, 204);
 }
 
+.borderBottomGrey {
+    border-bottom: 1px solid #ced4da;
+}

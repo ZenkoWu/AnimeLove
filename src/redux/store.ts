@@ -20,11 +20,18 @@ export interface TState {
     },
     favorites:  { 
         favorites: {
-            anime: {
-              [key in string]: TAnimeInfo
+            anime?: {
+                items: {
+                    [key in string]: TAnimeInfo
+                },
+                count: number
+                
             },
-            manga: {
-                [key in string]: TMangaInfo
+            manga?: {
+                items: {
+                    [key in string]: TMangaInfo
+                },
+                count: number
             },
         }
         favoritesCount: number

@@ -9,7 +9,7 @@ const FavoriteBtn = ({category, info}: {category: 'anime' | 'manga', info: any})
     const dispatch = useDispatch()
     const favorites = useSelector((state: TState) => state.favorites.favorites)
 
-    const isFavorite = favorites?.[category]?.[info.mal_id] ? true : false
+    const isFavorite = favorites[category]?.items?.[info.mal_id] ? true : false
     
     const addToFavorites = (info: TAnimeInfo | TMangaInfo) => {
         dispatch(favoritesActions.like({category, info}))
