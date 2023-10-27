@@ -5,14 +5,29 @@ import {ElementCard} from "../List/ElementCard/ElementCard"
 import { TState } from "@/redux/store"
 import s from './Favorites.module.css'
 import { favoritesActions } from "../../redux/features/favorites"
+import DeleteFavorites from "./DeleteFavorites/DeleteFavorites"
 
 export const Favorites = () => {
     const [active, setActive]= useState<'anime' | 'manga'>('anime')
-
+    const [opened, setOpened] = useState(false)
     const {favorites, favoritesCount} = useSelector((state: TState) => selectFavoritesModule(state))
     const dispatch = useDispatch()
+
+    const deleteFavorites = (category: 'anime' | 'manga') => {
+        dispatch(favoritesActions.deleteFavorites(category))
+    }
+
     return (
         <div className={s.container}>
+            {
+                opened && 
+                <DeleteFavorites 
+                    opened={opened} 
+                    setOpened={setOpened}  
+                    onAccept={()=> deleteFavorites(active)}
+                    question={`Are you sure you want to delete all favorites ${active}?`}
+                />
+            }
                 <div className="bg-white p-4">
                     <h2>Favorites</h2>
                     <div className=" d-flex justify-content-between">
@@ -35,9 +50,14 @@ export const Favorites = () => {
                                 </div>
                             </li>
                         </ul>
-                        <button onClick={()=> dispatch(favoritesActions.deleteFavorites())} className="btn btn-primary" style={{whiteSpace:'nowrap'}}>
-                                delete all 
-                            </button>
+                        <button 
+                            onClick={()=> setOpened(true)} 
+                            className="btn btn-primary" 
+                            style={{whiteSpace:'nowrap'}}
+                            disabled={favoritesCount === 0}
+                        >
+                            delete all {active}
+                        </button>
                     </div>  
                     <div className="pt-4">
                         <div className="d-flex p-2 w-100 d-flex justify-between flex-wrap">

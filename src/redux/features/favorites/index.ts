@@ -1,5 +1,6 @@
 import { TState } from '@/redux/store';
 import {createSlice} from '@reduxjs/toolkit';
+import { json } from 'stream/consumers';
 
 const initialState: TState['favorites'] = {
     favorites: JSON.parse(localStorage.getItem('favorites')!) || {}, 
@@ -44,12 +45,15 @@ const favoritesSlice = createSlice({ //todo
             localStorage.setItem('favoritesCount', `${count}`)
             state.favoritesCount = JSON.parse(localStorage.getItem('favoritesCount')!) 
         },
-        deleteFavorites: (state) => {
-            localStorage.removeItem('favorites')
-            localStorage.removeItem('favoritesCount')
-            
-            state.favorites = {}
-            state.favoritesCount = 0
+        deleteFavorites: (state, {payload}) => {
+            let favorites = JSON.parse(localStorage.getItem('favorites')!)
+            let count = favorites[payload].count
+            delete favorites[payload]
+            localStorage.setItem('favorites', JSON.stringify(favorites))
+            const favoritesCount = localStorage.getItem('favoritesCount')!
+            localStorage.setItem('favoritesCount', (+favoritesCount - count).toString())
+            state.favorites = JSON.parse(localStorage.getItem('favorites')!)
+            state.favoritesCount = JSON.parse(localStorage.getItem('favoritesCount')!)
 
         }
     }
