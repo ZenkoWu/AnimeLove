@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 import s from './SearchBlock.module.css'
-import { TAnimeInfo, TMangaInfo } from "@/types/mainElementsTypes";
+import { TAnimeInfo, TCharactersInfo, TMangaInfo } from "@/types/mainElementsTypes";
 
 export type TSearchBlock = {
     title: 'anime'| 'manga' | 'characters',
     searchResult: {
-        data: TAnimeInfo[] | TMangaInfo[],
+        data: TAnimeInfo[] | TMangaInfo[] | TCharactersInfo[],
         pagination:  {
             items: {
                 total: number
@@ -34,19 +34,20 @@ const SearchBlock = ({title, searchResult}: TSearchBlock) => {
                                     <div className=''>
                                         <div>
                                             <h5 className={`${s.cardTitle} ${s.redColor}`}>
-                                                <NavLink to={`${title}/${el.mal_id}`} className={s.title}>{el.title}</NavLink>
+                                                <NavLink to={`${title}/${el.mal_id}`} className={s.title}>{ 'title' in el ? el.title : el.name}</NavLink>
                                             </h5>
-                                            <p className={`${s.cardTitle} `}>{el.title_japanese}</p>
+                                            <p className={`${s.cardTitle} `}>{'title_japanese' in el && el.title_japanese ||  'name_kanji' in el && el.name_kanji}</p>
                                         </div>
-
+                                        {   'genres' in el &&
                                         <div className={`d-flex align-items-end h-50 ${s.cardTitle}`}>
-                                            <span className='text-decoration-underline'>Genres</span>:  
-                                                {
-                                                    el.genres?.length ? 
-                                                    el.genres.map(g => g.name).join(', ') : 
-                                                    'unknown'
-                                                }
+                                            <span className='text-decoration-underline'>Genres</span>:   
+                                                
+                                                    { el.genres?.length ? 
+                                                    el.genres?.map(g => g.name).join(', ')
+                                                    :  ' unknown' }
+                                                
                                         </div>
+                                        }
                                     </div>
                                 </div>
                             ))

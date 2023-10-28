@@ -7,15 +7,15 @@ const searchLimit = 3
 
 const SearchContainer = () => {
     const [input, setInput] = useState('')
+
     const {data: anime} =  api.anime.getSearched({input, limit: searchLimit}) 
     const {data: manga} = api.manga.getSearched({input, limit: searchLimit})
-    if(anime) console.log(anime)
-    
-
+    const {data: characters} = api.characters.getSearched({input, limit: searchLimit})
+  
     const searchBlocks: TSearchBlock[] = [
         {title: 'anime', searchResult: anime},  
         {title: 'manga',  searchResult: manga}, 
-        // {title: 'characters',  searchResult: null} //todo add characters info
+        {title: 'characters',  searchResult: characters} 
     ]
     return (
         <Search 
