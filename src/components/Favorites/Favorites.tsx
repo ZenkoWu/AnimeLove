@@ -8,12 +8,12 @@ import { favoritesActions } from "../../redux/features/favorites"
 import DeleteFavorites from "./DeleteFavorites/DeleteFavorites"
 
 export const Favorites = () => {
-    const [active, setActive]= useState<'anime' | 'manga'>('anime')
+    const [active, setActive]= useState<'anime' | 'manga'| 'characters'>('anime')
     const [opened, setOpened] = useState(false)
     const {favorites, favoritesCount} = useSelector((state: TState) => selectFavoritesModule(state))
     const dispatch = useDispatch()
 
-    const deleteFavorites = (category: 'anime' | 'manga') => {
+    const deleteFavorites = (category: 'anime' | 'manga'| 'characters') => { //todo вынести в отдельный тип
         dispatch(favoritesActions.deleteFavorites(category))
     }
 
@@ -49,6 +49,14 @@ export const Favorites = () => {
                                     Manga
                                 </div>
                             </li>
+                            <li className="nav-item cursor-pointer">
+                                <div 
+                                    className={`nav-link ${active == 'characters' && 'active'}`} 
+                                    onClick={()=> setActive('characters')}
+                                >
+                                    Characters
+                                </div>
+                            </li>
                         </ul>
                         <button 
                             onClick={()=> setOpened(true)} 
@@ -71,6 +79,13 @@ export const Favorites = () => {
                             : 
                             active == 'anime' && favorites.anime?.count ?
                             Object.values(favorites.anime.items).map(el => (
+                            // <div className=' red w-25'>
+                                <ElementCard category={active} data={el}/>
+                                // </div>
+                            )) 
+                            :
+                            active == 'characters' && favorites.characters?.count ?
+                            Object.values(favorites.characters.items).map(el => (
                             // <div className=' red w-25'>
                                 <ElementCard category={active} data={el}/>
                                 // </div>

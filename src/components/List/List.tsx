@@ -11,7 +11,7 @@ type TList = {
     changeCurrentPage: (p: number) => void, 
     currentPage: number, 
     totalElementCount: number, 
-    title: 'Anime' | 'Manga', 
+    title: string, 
     pageSize: number 
 }
 
@@ -29,7 +29,7 @@ export const List = ({
         <div className={s.container}>
             <div className={`${s.elementList}`}>
                 <div className={`${createFlexStyle()} pt-2 pb-3`}>
-                    <span className={s.title}>{title} List</span>
+                    <h2 className={s.title}>{title} List</h2>
                     <div className="form-check form-switch fs-4">
                         <input 
                             className="form-check-input border border-primary" 

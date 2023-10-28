@@ -57,4 +57,3 @@ export const MANGA_TYPES = {
     'manhwa': 'manhwa',
     'manhua': 'manhua'
 } as const;
-    

@@ -49,3 +49,19 @@ export interface TMangaInfo extends TElementInfo {
     chapters?: number,
     status?: typeof MANGA_STATUS[number],
 }
+
+export type TCharactersInfo = {
+    mal_id: number,
+    name: string,
+    images: {
+        jpg: {
+            image_url: string,
+            small_image_url: string,
+            large_image_url: string
+        }
+    },
+    about?: string,
+    favorites?: number,
+    name_kanji?: string,
+    nicknames?: string[]
+}

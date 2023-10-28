@@ -1,7 +1,7 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 import {API_ROUTES, BASE_URL} from './apiRoutes/apiRoutes'
 
-export const animeApi = createApi({ //todo вынести в отдельные функции 
+export const animeApi = createApi({ //todo вынести в отдельные функции и вынести в независимые фунции т к идет дублкация апи
     reducerPath: 'anime',
     baseQuery: fetchBaseQuery({baseUrl: BASE_URL}),
     endpoints: (builder) => ({
@@ -12,19 +12,6 @@ export const animeApi = createApi({ //todo вынести в отдельные 
         getAnimeById: builder.query({query: (id) => (
             `${API_ROUTES.anime}/${id}/full`
         )}),
-
-        getFavoritesAnime: builder.query({
-            async queryFn(ids, _queryApi, _extraOptions, fetchWithBQ) {
-                ids = Object.keys(ids) //???
-                const response = await Promise.all(
-                    ids.map((animeId) => fetchWithBQ( `${API_ROUTES.anime}/${animeId}/full`))
-                );
-                
-                return response[0].data
-                    ? { data: response.map((anime) => anime.data)}
-                    : { error: response[0].error};
-            },
-        }),
         
         getSearchedAnime: builder.query({query: ({input, limit}) => (
             `${API_ROUTES.anime}?q=${input}&limit=${limit}`
@@ -35,7 +22,6 @@ export const animeApi = createApi({ //todo вынести в отдельные 
 export const {
     useGetAnimeQuery,
     useGetAnimeByIdQuery,
-    useGetFavoritesAnimeQuery,
     useGetSearchedAnimeQuery
 } = animeApi;
 

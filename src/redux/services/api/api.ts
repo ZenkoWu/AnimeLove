@@ -1,7 +1,6 @@
 import { 
     useGetAnimeByIdQuery, 
     useGetAnimeQuery, 
-    useGetFavoritesAnimeQuery, 
     useGetSearchedAnimeQuery 
 } from "../animeApi";
 import { 
@@ -9,18 +8,27 @@ import {
     useGetMangaQuery, 
     useGetSearchedMangaQuery 
 } from "../mangaApi";
+import { 
+    useGetCharactersQuery, 
+    useGetCharacterByIdQuery,
+    useGetSearchedCharactersQuery
+} from "../charactersApi";
 
 
 export const api = {
     anime: { 
         getList: useGetAnimeQuery,
         getById: useGetAnimeByIdQuery,
-        getFavorites: useGetFavoritesAnimeQuery,
         getSearched: useGetSearchedAnimeQuery
     },
     manga: {
         getList: useGetMangaQuery,
         getById: useGetMangaByIdQuery,
         getSearched: useGetSearchedMangaQuery
+    },
+    characters: {
+        getList: useGetCharactersQuery,
+        getById: useGetCharacterByIdQuery,
+        getSearched: useGetSearchedCharactersQuery
     }
 }

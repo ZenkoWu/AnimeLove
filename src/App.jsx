@@ -8,6 +8,8 @@ import {Manga} from './components/Manga/Manga';
 import Home from './components/Home/Home';
 import { Favorites } from './components/Favorites/Favorites';
 import { MangaDescription } from './components/Manga/MangaDescription/MangaDescription';
+import { Characters } from './components/Characters/Characters';
+import { CharactersDescription } from './components/Characters/CharactersDescription/CharactersDescription';
 
 function App() {
     return (
@@ -20,6 +22,8 @@ function App() {
                     <Route path='anime/:animeId' element={<AnimeDescription/>}/>
                     <Route path='manga' element={<Manga/>}/>
                     <Route path='manga/:mangaId' element={<MangaDescription/>}/>
+                    <Route path='characters' element={<Characters/>}/>
+                    <Route path='characters/:charactersId' element={<CharactersDescription/>}/>
                     <Route path='favorites' element={<Favorites/>}/>
                 </Routes>
             </div>

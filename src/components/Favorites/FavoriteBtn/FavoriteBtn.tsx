@@ -5,7 +5,7 @@ import { HeartBtn } from "./HeartBtn";
 import { TState } from "@/redux/store";
 import { TAnimeInfo, TMangaInfo } from "@/types/mainElementsTypes";
 
-const FavoriteBtn = ({category, info}: {category: 'anime' | 'manga', info: any}) => {
+const FavoriteBtn = ({category, info}: {category: 'anime' | 'manga' | 'characters', info: any}) => {
     const dispatch = useDispatch()
     const favorites = useSelector((state: TState) => state.favorites.favorites)
 

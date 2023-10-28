@@ -6,6 +6,7 @@ import { animeReducer } from './features/animeList'
 import { mangaApi } from './services/mangaApi'
 import { mangaReducer } from './features/mangaList'
 import { TAnimeInfo, TMangaInfo } from '@/types/mainElementsTypes'
+import { charactersApi } from './services/charactersApi'
 
 export interface TState {
     animeList: {
@@ -33,6 +34,12 @@ export interface TState {
                 },
                 count: number
             },
+            characters?: {
+                items: {
+                    [key in string]: TMangaInfo
+                },
+                count: number
+            }
         }
         favoritesCount: number
     }, 
@@ -45,10 +52,12 @@ export const store = configureStore({
         favorites: favoritesReducer,
         [animeApi.reducerPath]: animeApi.reducer, 
         [mangaApi.reducerPath]: mangaApi.reducer, 
+        [charactersApi.reducerPath]: charactersApi.reducer
     },
     middleware: (getMiddleware) => getMiddleware().concat([
         animeApi.middleware, 
         mangaApi.middleware,
+        charactersApi.middleware
         // logger
     ])
 })

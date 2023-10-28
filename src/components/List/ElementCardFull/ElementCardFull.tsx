@@ -1,39 +1,45 @@
 import { NavLink } from 'react-router-dom';
 import FavoriteBtn from '../../Favorites/FavoriteBtn/FavoriteBtn';
 import s from './ElementCardFull.module.css'
-import { TAnimeInfo, TMangaInfo } from '@/types/mainElementsTypes';
+import { TAnimeInfo, TCharactersInfo, TMangaInfo } from '@/types/mainElementsTypes';
 import { createFlexStyle } from '../../../utils/createFlexStyle';
 
-type TElementCard = {
-    category: 'anime' | 'manga',
-    data: TAnimeInfo | TMangaInfo
+type TElementCard = { //todo вынести в один тип с другой карточкой 
+    category: 'anime' | 'manga' | 'characters',
+    data: TAnimeInfo | TMangaInfo | TCharactersInfo
 }
 
 export const ElementCardFull = ({category, data}: TElementCard) => {
+    const title = 'title' in data ? data.title : data.name
+    const description = 'background' in data ? data.background : 'about' in data ? data.about : null
+
     return (
         <div className={`d-flex ${s.cardContainer}`}>
             <img src={data.images?.jpg.image_url} alt='poster' className={s.poster}/>
             <div className={`${s.content} w-100`}>
                 <div className={`${createFlexStyle()}`}>
                     <NavLink to={`${data.mal_id}`} className='text-dark'>
-                    <h2>{data.title}</h2></NavLink>
+                    <h2>{title}</h2></NavLink>
                     <FavoriteBtn category={category} info={{
                         mal_id: data.mal_id,
                         images: data.images,
-                        title: data.title
+                        title
                     }}/>
                 </div>
-                <div className={`d-flex align-center gap-4`}>
-                    <p> 
-                        <span className='text-decoration-underline'>Year:</span> {data.year ?? 'unknown'}
-                    </p>
-                    <p>
-                        <span className='text-decoration-underline'>Rating:</span> {(data.score)?.toFixed(0)}/10
-                    </p>
-                </div>
+               { 
+                    'title' in data  &&
+                    <div className={`d-flex align-center gap-4`}>
+                        <p> 
+                            <span className='text-decoration-underline'>Year:</span> {data.year ?? 'unknown'}
+                        </p>
+                        <p>
+                            <span className='text-decoration-underline'>Rating:</span> {(data.score)?.toFixed(0)}/10
+                        </p>
+                    </div>
+                }
                 <p className={s.cardDescription}>
                     {
-                        data.background ?? 
+                        description ?? 
                         <>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, sapiente sunt? 
                             Illum, animi consequatur qui, aperiam amet neque vel quas perferendis culpa harum 
