@@ -6,7 +6,7 @@ import { TAnimeInfo } from "../../../types/mainElementsTypes"
 import { getScoreColor } from "../../../utils/getScoreColor"
 import { api } from "../../../redux/services/api/api"
 import FavoriteBtn from "../../../components/Favorites/FavoriteBtn/FavoriteBtn"
-import { createFlexStyle } from "../../../utils/createFlexStyle"
+import { flexPlace } from "../../../utils/flexPlace"
 import {Carousel} from "../../../components/Carousel/Carousel"
 
 export const AnimeDescription = () => {
@@ -41,7 +41,7 @@ export const AnimeDescription = () => {
                     <div className="d-flex gap-4 pb-4">
                         <img src={anime.images.jpg.image_url} alt="anime-img" className={s.animePic}/>
                         <div className="w-100"> 
-                            <div className={`${createFlexStyle()}`}>
+                            <div className={`${flexPlace('between', 'center')}`}>
                                 <div className=" d-flex">
                                     <img src={starSymbol} alt='starSymbol'/>
                                     <div>

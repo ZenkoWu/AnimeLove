@@ -4,7 +4,7 @@ import s from './List.module.css'
 import { useState } from 'react';
 import {ElementCard} from './ElementCard/ElementCard';
 import { TMangaInfo,TAnimeInfo } from '../../types/mainElementsTypes';
-import { createFlexStyle } from '../../utils/createFlexStyle';
+import { flexPlace } from '../../utils/flexPlace';
 
 type TList = {
     elementsList: TAnimeInfo[] | TMangaInfo[], 
@@ -28,7 +28,7 @@ export const List = ({
     return (
         <div className={s.container}>
             <div className={`${s.elementList}`}>
-                <div className={`${createFlexStyle()} pt-2 pb-3`}>
+                <div className={`${flexPlace('between', 'center')} pt-2 pb-3`}>
                     <h2 className={s.title}>{title} List</h2>
                     <div className="form-check form-switch fs-4">
                         <input 

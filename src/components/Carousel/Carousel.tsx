@@ -1,4 +1,4 @@
-import { createFlexStyle } from '../../utils/createFlexStyle'
+import { flexPlace } from '../../utils/flexPlace'
 import React, {useState} from 'react'
 import { NavLink } from 'react-router-dom'
 
@@ -27,7 +27,7 @@ export function Carousel({carouselItems, to, title, itemsCount}: TCarousel) {
     return (
         <div className='pb-5'>
             <h3 className='fw-bold text-center'>{title}</h3>
-            <div className={`${createFlexStyle()}`}>
+            <div className={`${flexPlace('between', 'center')}`}>
                 <button
                     disabled={offset == 0}
                     className={' me-2 p-1 border cursor-pointer ' + (offset != 0 && ' bg-primary text-white')}
@@ -35,7 +35,7 @@ export function Carousel({carouselItems, to, title, itemsCount}: TCarousel) {
                 >
                     {'<'}
                 </button>
-                <div className='d-flex justify-content-center align-items-top w-100 border'>
+                <div className={`${flexPlace('center', 'start')} w-100 border`}>
                 {
                     carouselItems
                         .filter((el, i, arr) =>  offset <= i && i < itemsCount + offset)
@@ -49,11 +49,11 @@ export function Carousel({carouselItems, to, title, itemsCount}: TCarousel) {
                                     >
                                         <div className=' rounded-3 text-center'> 
                                             <img 
-                                                style={{maxHeight:'200px'}}
-                                                className='mw-100 rounded-3'
+                                                style={{height:'180px', objectFit:'cover'}}
+                                                className=' rounded-3'
                                                 src={el.images.jpg.image_url} 
                                             />
-                                            <h6 className='fw-bold'>{el.title}</h6>
+                                            <h6 className='fw-bold' >{el.title}</h6>
                                         </div>
                                     </NavLink>
                                 </div>
@@ -61,14 +61,12 @@ export function Carousel({carouselItems, to, title, itemsCount}: TCarousel) {
                         ))
                 }
                 </div>
-                <div>
                 <button
-                    className=' ms-2 p-1 bg-primary text-white border '
-                    style={{cursor:'pointer'}}
+                    className='ms-2 p-1 bg-primary text-white border cursor-pointer'
                     onClick={() => setOffset(prev => prev == carouselItems.length - itemsCount ? prev = 0 : prev + 1)}
-                >{'>'}</button>
-                
-                </div>
+                >
+                    {'>'}
+                </button>
             </div>   
         </div>
     )

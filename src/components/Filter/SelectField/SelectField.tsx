@@ -2,7 +2,7 @@ import { useState } from "react"
 import { TextFieldWrapper } from "../TextFieldWrapper/TextFieldWrapper"
 import ArrowImage from "../../ArrowImage/ArrowImage"
 import { SelectModal } from "../SelectModal/SelectModal"
-import { createFlexStyle } from "../../../utils/createFlexStyle"
+import { flexPlace } from "../../../utils/flexPlace"
 
 type TSelectField = {
     value: string, 
@@ -27,7 +27,7 @@ export const SelectField = ({
         <div id={title} className="pb-3 position-relative">
             <TextFieldWrapper title={title} opened={opened}>
                 <div 
-                    className={`w-100 fs-14 text_field m-0 ${createFlexStyle()}`} 
+                    className={`w-100 fs-14 text_field m-0 ${flexPlace('between', 'center')}`} 
                     onClick={()=> setOpened((prev) => !prev)}
                 >
                     {value ?? placeholder}

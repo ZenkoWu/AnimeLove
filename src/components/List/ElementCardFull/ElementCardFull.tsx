@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import FavoriteBtn from '../../Favorites/FavoriteBtn/FavoriteBtn';
 import s from './ElementCardFull.module.css'
 import { TAnimeInfo, TCharactersInfo, TMangaInfo } from '@/types/mainElementsTypes';
-import { createFlexStyle } from '../../../utils/createFlexStyle';
+import { flexPlace } from '../../../utils/flexPlace';
 
 type TElementCard = { //todo вынести в один тип с другой карточкой 
     category: 'anime' | 'manga' | 'characters',
@@ -17,7 +17,7 @@ export const ElementCardFull = ({category, data}: TElementCard) => {
         <div className={`d-flex ${s.cardContainer}`}>
             <img src={data.images?.jpg.image_url} alt='poster' className={s.poster}/>
             <div className={`${s.content} w-100`}>
-                <div className={`${createFlexStyle()}`}>
+                <div className={`${flexPlace('between', 'center')}`}>
                     <NavLink to={`${data.mal_id}`} className='text-dark'>
                     <h2>{title}</h2></NavLink>
                     <FavoriteBtn category={category} info={{

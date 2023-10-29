@@ -6,7 +6,7 @@ import { TCharactersInfo } from "../../../types/mainElementsTypes"
 import { getScoreColor } from "../../../utils/getScoreColor"
 import { api } from "../../../redux/services/api/api"
 import FavoriteBtn from "../../Favorites/FavoriteBtn/FavoriteBtn"
-import { createFlexStyle } from "../../../utils/createFlexStyle"
+import { flexPlace } from "../../../utils/flexPlace"
 
 export const CharactersDescription = () => {
     const params = useParams()
@@ -27,7 +27,7 @@ export const CharactersDescription = () => {
                 <img src={anime.images.jpg.image_url} alt="anime-img" className={'pe-4 pb-2'} style={{float:'left'}}/>
                 <div className="pb-4" >
                 <div className="w-100"> 
-                    <div className={`${createFlexStyle()}`}>
+                    <div className={`${flexPlace('between', 'center')}`}>
                         
                         
                         

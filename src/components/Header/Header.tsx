@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import s from './Header.module.css'
 import { NavLink, useNavigate } from "react-router-dom";
 import SearchContainer from './SearchContainer/SearchContainer';
-import { createFlexStyle } from '../../utils/createFlexStyle';
+import { flexPlace } from '../../utils/flexPlace';
 import { TState } from '../../redux/store';
 
 const getRandomAnime = (
@@ -19,7 +19,7 @@ export const Header = () => {
     const favCount = useSelector((state: TState) => state.favorites.favoritesCount)
 
     return (
-        <header className={`bgMainRed ${s.container} ${createFlexStyle()}`} >
+        <header className={`bgMainRed ${s.container} ${flexPlace('between', 'center')}`} >
             <div className={`d-flex align-items-center gap-4`}>
                 <NavLink to='/' className={s.title}>AnimeLove</NavLink>
                 <div className={`d-flex align-items-center gap-4`}>

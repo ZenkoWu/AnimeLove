@@ -5,7 +5,7 @@ import starSymbol from '../../../imges/starScore.svg'
 import { getScoreColor } from "../../../utils/getScoreColor"
 import { TMangaInfo } from "@/types/mainElementsTypes"
 import { api } from "../../../redux/services/api/api"
-import { createFlexStyle } from "../../../utils/createFlexStyle"
+import { flexPlace } from "../../../utils/flexPlace"
 import FavoriteBtn from "../../../components/Favorites/FavoriteBtn/FavoriteBtn"
 
 export const MangaDescription = () => {
@@ -27,7 +27,7 @@ export const MangaDescription = () => {
                     <div className="d-flex gap-4 pb-4">
                         <img src={manga.images.jpg.image_url} alt="manga-img" className={s.mangaPic}/>
                         <div className="w-100"> 
-                            <div className={`${createFlexStyle()}`}>
+                            <div className={`${flexPlace('between', 'center')}`}>
                                 <div className=" d-flex">
                                     <img src={starSymbol} alt='starSymbol'/>
                                     <div>
