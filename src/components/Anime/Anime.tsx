@@ -8,6 +8,7 @@ import { Filter, statusAC, ratingAC, orderByAC, typeChangeAC, reducer} from '../
 import { ContentContainer } from '../ContentContainer/ContentContainer';
 import { AGE_RATING, ANIME_ORDER_BY, ANIME_TYPE, ANIME_STATUS } from '../../constants';
 import { TState } from '../../redux/store';
+import {Modal} from '../Modal/Modal';
 
 export type TAnimeFilterState = {
     type: keyof typeof ANIME_TYPE,
@@ -26,6 +27,8 @@ const initialState = {
 const Anime = () => {
     const [state, dis]: [TAnimeFilterState, any] = useReducer(reducer, initialState)// todo type for dispatch
     const [safeContent, setSafeContent] = useState(true)
+    const [opened, setOpened] = useState(false)
+
     const onChange = useCallback((actionCreator: (payload: string) => ({type: string, payload: string})) => 
         (payload: string) => dis(actionCreator(payload)), 
     [])
@@ -88,8 +91,19 @@ const Anime = () => {
     const totalCount = anime.pagination.items.total 
     dispatch(animeActions.changeTotalAnimeCount(totalCount))
     
+    const changeContentMode = () => safeContent ? setOpened(true) : setSafeContent(true)
     return (
         <div>
+             {
+                opened &&  
+                <Modal
+                    opened={opened} 
+                    setOpened={setOpened}  
+                    onAccept={()=> setSafeContent(false)}
+                    question={`Are you sure you want to allow adult content and confirm that you are 18+?`}
+                    title={'Сonfirmation'}
+                />
+            }
             <ContentContainer>
                 <List
                     title='Anime'
@@ -99,7 +113,11 @@ const Anime = () => {
                     totalElementCount={totalAnimeCount}
                     pageSize={pageLimit}
                 />
-                <Filter selects={selects} switchToggle={()=> setSafeContent(prev => !prev)}/>
+                <Filter 
+                    selects={selects} 
+                    switchToggle={changeContentMode} 
+                    checked={!safeContent}
+                />
             </ContentContainer>
         </div>
     )

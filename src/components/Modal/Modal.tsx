@@ -1,15 +1,16 @@
 import { useDispatch } from "react-redux";
-import s from './DeleteFavorites.module.css';
-import { favoritesActions } from "../../../redux/features/favorites";
+import s from './Modal.module.css';
+import { favoritesActions } from "../../redux/features/favorites";
 
 type TDeleteTicket = {
     opened: boolean,
     setOpened:(open: boolean) => void,
     onAccept:() => void,
-    question: string
+    question: string,
+    title: string
 }
 
-const DeleteFavorites = ({setOpened, opened, onAccept, question}: TDeleteTicket) => {
+export const Modal = ({setOpened, opened, onAccept, question, title}: TDeleteTicket) => {
     const dispatch = useDispatch()
     
     const onAcceptClick = () => {
@@ -31,7 +32,7 @@ const DeleteFavorites = ({setOpened, opened, onAccept, question}: TDeleteTicket)
         >
             <div className={`bg-white rounded-3 p-4 ${s.modal}`}>
                 <div className='d-flex justify-content-between align-center pb-16 btn' onClick={()=> setOpened(false)}>
-                    <p className='fs20 fw-600'>Delete favorite</p>
+                    <p className='fs20 fw-600'>{title}</p>
                    x
                 </div>
 
@@ -56,4 +57,3 @@ const DeleteFavorites = ({setOpened, opened, onAccept, question}: TDeleteTicket)
         </div>
     )
 }
-export default DeleteFavorites;

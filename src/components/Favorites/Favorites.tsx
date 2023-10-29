@@ -5,7 +5,7 @@ import {ElementCard} from "../List/ElementCard/ElementCard"
 import { TState } from "@/redux/store"
 import s from './Favorites.module.css'
 import { favoritesActions } from "../../redux/features/favorites"
-import DeleteFavorites from "./DeleteFavorites/DeleteFavorites"
+import {Modal} from "../Modal/Modal"
 
 export const Favorites = () => {
     const [active, setActive]= useState<'anime' | 'manga'| 'characters'>('anime')
@@ -21,11 +21,12 @@ export const Favorites = () => {
         <div className={s.container}>
             {
                 opened && 
-                <DeleteFavorites 
+                <Modal 
                     opened={opened} 
                     setOpened={setOpened}  
                     onAccept={()=> deleteFavorites(active)}
                     question={`Are you sure you want to delete all favorites ${active}?`}
+                    title={'Delete favorite'}
                 />
             }
                 <div className="bg-white p-4">

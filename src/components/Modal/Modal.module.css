@@ -16,7 +16,7 @@ cursor: pointer;
     display: inline-block; 
     cursor: default;
     position: absolute;
-    left: 38vw;
+    left: 30vw;
     top: 35vh;
     z-index: 501;
     animation: appear 500ms ease-in-out 1;

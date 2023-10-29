@@ -53,9 +53,10 @@ export type TFilter = {
         // setValue: (payload: string) => void,
         // zIndex: number,
         any[], // todo typescript
-    switchToggle: ()=> void 
+    switchToggle: ()=> void,
+    checked: boolean
 }
-export const Filter = ({selects, switchToggle}: TFilter) => {
+export const Filter = ({selects, switchToggle, checked}: TFilter) => {
    
     return (
         <div className={s.container}>
@@ -68,6 +69,7 @@ export const Filter = ({selects, switchToggle}: TFilter) => {
                         role="switch" 
                         id="flexSwitchCheckDefault"
                         onClick={switchToggle}
+                        checked={checked}
                     />
                 </div>
             </div>
