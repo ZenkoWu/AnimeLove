@@ -36,8 +36,8 @@ export const Header = () => {
             </div>
             <div className='d-flex align-items-center gap-4'>
                 <SearchContainer/>
-                <NavLink to='/favorites' className={s.title}>❤
-                    <span className='fs-5'>{favCount}</span>
+                <NavLink to='/favorites' className={s.title}>
+                    ❤<span className='fs-5'>{favCount}</span>
                 </NavLink>
             </div>
         </header>

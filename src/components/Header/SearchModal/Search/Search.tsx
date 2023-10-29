@@ -57,7 +57,7 @@ export const Search = ({searchBlocks, setInput, input}: TSearch) => {
                     </div>
                 </div>
                 :
-                <div className='' onClick={()=> setSearched(true)}>
+                <div className='cursor-pointer' onClick={()=> setSearched(true)}>
                   <img src={loupe} alt="loupe" />
                 </div>
             }
