@@ -1,7 +1,8 @@
 import { 
     useGetAnimeByIdQuery, 
     useGetAnimeQuery, 
-    useGetSearchedAnimeQuery 
+    useGetSearchedAnimeQuery,
+    useGetRecommendationsQuery
 } from "../animeApi";
 import { 
     useGetMangaByIdQuery, 
@@ -19,7 +20,8 @@ export const api = {
     anime: { 
         getList: useGetAnimeQuery,
         getById: useGetAnimeByIdQuery,
-        getSearched: useGetSearchedAnimeQuery
+        getSearched: useGetSearchedAnimeQuery,
+        getRecommendations: useGetRecommendationsQuery
     },
     manga: {
         getList: useGetMangaQuery,

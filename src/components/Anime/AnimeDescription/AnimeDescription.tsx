@@ -7,16 +7,19 @@ import { getScoreColor } from "../../../utils/getScoreColor"
 import { api } from "../../../redux/services/api/api"
 import FavoriteBtn from "../../../components/Favorites/FavoriteBtn/FavoriteBtn"
 import { createFlexStyle } from "../../../utils/createFlexStyle"
+import {Carousel} from "../../../components/Carousel/Carousel"
 
 export const AnimeDescription = () => {
     const params = useParams()
 
     const {data} = api.anime.getById(params.animeId)
+    const {data: rec} = api.anime.getRecommendations(params.animeId)
 
-    if(!data) {
+    if(!data || !rec) {
         return <Preloader/>
     }
-
+    console.log(rec)
+    const recommends = rec.data.map((el: any) => el.entry)
     const anime: TAnimeInfo = data.data
 
     const moreInfo = [
@@ -93,6 +96,14 @@ export const AnimeDescription = () => {
                             We will add trailer soon ^-^
                         </p>
                     }
+                    <div className="pt-4">
+                        <Carousel 
+                            carouselItems={recommends} 
+                            to={'/anime/'} 
+                            title={'Recommendations'}
+                            itemsCount={6}
+                        />
+                    </div>
                 </div>
             </div>
         </div>

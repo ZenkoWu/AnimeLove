@@ -16,13 +16,17 @@ export const animeApi = createApi({ //todo вынести в отдельные 
         getSearchedAnime: builder.query({query: ({input, limit}) => (
             `${API_ROUTES.anime}?q=${input}&limit=${limit}`
         )}),
+        getRecommendations: builder.query({query: (id) => (
+            `${API_ROUTES.anime}/${id}/recommendations`
+        )}),
     })
 })
 
 export const {
     useGetAnimeQuery,
     useGetAnimeByIdQuery,
-    useGetSearchedAnimeQuery
+    useGetSearchedAnimeQuery,
+    useGetRecommendationsQuery
 } = animeApi;
 
 
