@@ -70,14 +70,17 @@ export const MangaDescription = () => {
                             <p className="text-justify">{manga.background}</p>
                         </div>
                     }
-                     <div className="pt-4">
-                        <Carousel
-                            carouselItems={recommends} 
-                            to={'/manga/'} 
-                            title={'Recommendations'}
-                            itemsCount={7}
-                        />
-                    </div>
+                    { 
+                        recommends.length > 0 &&
+                        <div className="pt-4">
+                            <Carousel
+                                carouselItems={recommends} 
+                                to={'/manga/'} 
+                                title={'Recommendations'}
+                                itemsCount={7}
+                            />
+                        </div>
+                    }
                     
                 </div>
             </div>

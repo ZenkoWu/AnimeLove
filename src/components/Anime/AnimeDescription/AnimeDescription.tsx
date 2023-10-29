@@ -96,14 +96,17 @@ export const AnimeDescription = () => {
                             We will add trailer soon ^-^
                         </p>
                     }
-                    <div className="pt-4">
-                        <Carousel 
-                            carouselItems={recommends} 
-                            to={'/anime/'} 
-                            title={'Recommendations'}
-                            itemsCount={7}
-                        />
-                    </div>
+                    {    
+                        recommends.length > 0 &&
+                        <div className="pt-4">
+                            <Carousel 
+                                carouselItems={recommends} 
+                                to={'/anime/'} 
+                                title={'Recommendations'}
+                                itemsCount={7}
+                            />
+                        </div>
+                    }
                 </div>
             </div>
         </div>
