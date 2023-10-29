@@ -7,7 +7,8 @@ import {
 import { 
     useGetMangaByIdQuery, 
     useGetMangaQuery, 
-    useGetSearchedMangaQuery 
+    useGetSearchedMangaQuery,
+    useGetMangaRecommendsQuery
 } from "../mangaApi";
 import { 
     useGetCharactersQuery, 
@@ -26,7 +27,8 @@ export const api = {
     manga: {
         getList: useGetMangaQuery,
         getById: useGetMangaByIdQuery,
-        getSearched: useGetSearchedMangaQuery
+        getSearched: useGetSearchedMangaQuery,
+        getRecommendations: useGetMangaRecommendsQuery
     },
     characters: {
         getList: useGetCharactersQuery,

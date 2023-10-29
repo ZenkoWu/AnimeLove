@@ -7,15 +7,20 @@ import { TMangaInfo } from "@/types/mainElementsTypes"
 import { api } from "../../../redux/services/api/api"
 import { flexPlace } from "../../../utils/flexPlace"
 import FavoriteBtn from "../../../components/Favorites/FavoriteBtn/FavoriteBtn"
+import { Carousel } from "../../../components/Carousel/Carousel"
 
 export const MangaDescription = () => {
     const params = useParams()
 
     const {data} = api.manga.getById(params.mangaId)
-    
-    if(!data) {
+    const {data: rec} = api.manga.getRecommendations(params.mangaId)
+
+    if(!data || !rec) {
         return <Preloader/>
-    } 
+    }
+
+    const recommends = rec.data.map((el: any) => el.entry)
+
     const manga: TMangaInfo = data.data
 
     const scoreColor = manga.score && getScoreColor(manga.score)
@@ -65,6 +70,14 @@ export const MangaDescription = () => {
                             <p className="text-justify">{manga.background}</p>
                         </div>
                     }
+                     <div className="pt-4">
+                        <Carousel
+                            carouselItems={recommends} 
+                            to={'/manga/'} 
+                            title={'Recommendations'}
+                            itemsCount={7}
+                        />
+                    </div>
                     
                 </div>
             </div>

@@ -101,7 +101,7 @@ export const AnimeDescription = () => {
                             carouselItems={recommends} 
                             to={'/anime/'} 
                             title={'Recommendations'}
-                            itemsCount={6}
+                            itemsCount={7}
                         />
                     </div>
                 </div>

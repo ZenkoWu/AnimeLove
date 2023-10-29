@@ -15,11 +15,15 @@ export const mangaApi = createApi({
         getSearchedManga: builder.query({query: ({input, limit}) => (
             `${API_ROUTES.manga}?q=${input}&limit=${limit}`
         )}),
+        getMangaRecommends: builder.query({query: (id) => (
+            `${API_ROUTES.manga}/${id}/recommendations`
+        )}),
     })
 })
 
 export const {
     useGetMangaQuery,
     useGetMangaByIdQuery,
-    useGetSearchedMangaQuery
+    useGetSearchedMangaQuery,
+    useGetMangaRecommendsQuery
 } = mangaApi;

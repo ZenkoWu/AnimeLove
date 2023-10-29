@@ -25,9 +25,9 @@ export function Carousel({carouselItems, to, title, itemsCount}: TCarousel) {
     const [offset, setOffset] = useState(0)
   
     return (
-        <div className='pb-5'>
+        <div className='pb-5 px-2'>
             <h3 className='fw-bold text-center'>{title}</h3>
-            <div className={`${flexPlace('between', 'center')}`}>
+            <div className={`${flexPlace('between', 'center')} border px-2`}>
                 <button
                     disabled={offset == 0}
                     className={' me-2 p-1 border cursor-pointer ' + (offset != 0 && ' bg-primary text-white')}
@@ -35,21 +35,21 @@ export function Carousel({carouselItems, to, title, itemsCount}: TCarousel) {
                 >
                     {'<'}
                 </button>
-                <div className={`${flexPlace('center', 'start')} w-100 border`}>
+                <div className={`${flexPlace('start', 'start')}`} style={{overflow:'hidden'}}>
                 {
                     carouselItems
-                        .filter((el, i, arr) =>  offset <= i && i < itemsCount + offset)
-                        .map(el => (
-                            <div >
+                        .map((el, i )=> (
+                            offset <= i && i < itemsCount + offset &&
+                            <div className=''>
                                 <div className='p-3'>
                                     <NavLink 
                                         to={to + el.mal_id} 
                                         className='text-decoration-none text-muted'
                                         onClick={()=> window.scrollTo({top: 0})}
                                     >
-                                        <div className=' rounded-3 text-center'> 
+                                        <div className='rounded-3 text-center' style={{width:'130px'}}> 
                                             <img 
-                                                style={{height:'180px', objectFit:'cover'}}
+                                                style={{height:'180px'}}
                                                 className=' rounded-3'
                                                 src={el.images.jpg.image_url} 
                                             />
@@ -62,7 +62,7 @@ export function Carousel({carouselItems, to, title, itemsCount}: TCarousel) {
                 }
                 </div>
                 <button
-                    className='ms-2 p-1 bg-primary text-white border cursor-pointer'
+                    className='ms- p-1 bg-primary text-white border cursor-pointer'
                     onClick={() => setOffset(prev => prev == carouselItems.length - itemsCount ? prev = 0 : prev + 1)}
                 >
                     {'>'}
