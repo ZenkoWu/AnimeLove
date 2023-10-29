@@ -1,3 +1,4 @@
+import { flexPlace } from '../../utils/flexPlace'
 import s from './Filter.module.css'
 import { SelectField } from './SelectField/SelectField'
 
@@ -50,14 +51,26 @@ export type TFilter = {
         // options: string[],
         // value: string,
         // setValue: (payload: string) => void,
-        // zIndex: number
-        any[] // todo typescript
+        // zIndex: number,
+        any[], // todo typescript
+    switchToggle: ()=> void 
 }
-export const Filter = ({selects}: TFilter) => {
+export const Filter = ({selects, switchToggle}: TFilter) => {
    
     return (
         <div className={s.container}>
-            <h4 className='p-2 text-white bgMainRed'>Filter</h4>
+            <div className={'bgMainRed p-2' + flexPlace('between', 'center')} >
+                <h4 className='p-0 m-0 text-white'>Filter</h4>
+                <div className="form-check form-switch fs-4">
+                    <input 
+                        className="form-check-input border border-primary" 
+                        type="checkbox" 
+                        role="switch" 
+                        id="flexSwitchCheckDefault"
+                        onClick={switchToggle}
+                    />
+                </div>
+            </div>
             <div  className='px-3'>
                 {
                     selects.map((el) => 

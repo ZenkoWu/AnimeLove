@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { mangaActions } from '../../redux/features/mangaList';
-import { useCallback, useReducer } from 'react';
+import { useCallback, useReducer, useState } from 'react';
 import Preloader from "../Preloader/Preloader";
 import {List} from '../List/List';
 import { ContentContainer } from '../ContentContainer/ContentContainer';
@@ -24,6 +24,7 @@ const initialState = {
 export const Manga = () => {
     const [state, dis]: [TMangaFilterState, any] = useReducer(reducer, initialState)
     const {currentPage, pageSize: pageLimit, totalMangaCount} = useSelector((state :TState) => state.mangaList)
+    const [safeContent, setSafeContent] = useState(true)
 
     const onChange = useCallback((actionCreator: (payload: string) => ({type: string, payload: string})) => 
         (payload: string) => dis(actionCreator(payload)), 
@@ -60,7 +61,8 @@ export const Manga = () => {
         pageLimit,
         type: MANGA_TYPES[state.type],
         orderBy: MANGA_ORDER_BY[state.orderBy], 
-        status: MANGA_STATUS[state.status]
+        status: MANGA_STATUS[state.status],
+        sfw: safeContent ? 'sfw': ''
     })
 
     const dispatch = useDispatch()
@@ -86,7 +88,7 @@ export const Manga = () => {
                     totalElementCount={totalMangaCount}
                     pageSize={pageLimit}
                 />
-                <Filter selects={selects}/>
+                <Filter selects={selects} switchToggle={()=> setSafeContent(prev => !prev)}/>
             </ContentContainer>
         </div>
     )

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { animeActions } from '../../redux/features/animeList';
-import { useCallback, useReducer } from 'react';
+import { useCallback, useReducer, useState } from 'react';
 import { api } from "../../redux/services/api/api";
 import Preloader from "../Preloader/Preloader";
 import {List} from '../List/List';
@@ -25,7 +25,7 @@ const initialState = {
 
 const Anime = () => {
     const [state, dis]: [TAnimeFilterState, any] = useReducer(reducer, initialState)// todo type for dispatch
-
+    const [safeContent, setSafeContent] = useState(true)
     const onChange = useCallback((actionCreator: (payload: string) => ({type: string, payload: string})) => 
         (payload: string) => dis(actionCreator(payload)), 
     [])
@@ -74,7 +74,8 @@ const Anime = () => {
         type: ANIME_TYPE[state.type], 
         rating: AGE_RATING[state.rating],
         orderBy: ANIME_ORDER_BY[state.orderBy],
-        status: ANIME_STATUS[state.status]
+        status: ANIME_STATUS[state.status],
+        sfw: safeContent ? 'sfw' : ''
     })
     
     const changeCurrentPage = useCallback((currentPage: number) => {
@@ -98,7 +99,7 @@ const Anime = () => {
                     totalElementCount={totalAnimeCount}
                     pageSize={pageLimit}
                 />
-                <Filter selects={selects}/>
+                <Filter selects={selects} switchToggle={()=> setSafeContent(prev => !prev)}/>
             </ContentContainer>
         </div>
     )

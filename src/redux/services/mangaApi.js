@@ -6,8 +6,8 @@ export const mangaApi = createApi({
     reducerPath: 'manga',
     baseQuery: fetchBaseQuery({baseUrl: BASE_URL}),
     endpoints: (builder) => ({
-        getManga: builder.query({query: ({pageLimit, currentPage, type, orderBy, status}) => (
-            `${API_ROUTES.manga}?limit=${pageLimit}&page=${currentPage}&type=${type}&order_by=${orderBy}&status=${status}`
+        getManga: builder.query({query: ({pageLimit, currentPage, type, orderBy, status, sfw}) => (
+            `${API_ROUTES.manga}?limit=${pageLimit}&page=${currentPage}&type=${type}&order_by=${orderBy}&status=${status}&${sfw}`
         )}),
         getMangaById: builder.query({query: (id) => (
             `${API_ROUTES.manga}/${id}/full`
