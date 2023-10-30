@@ -4,7 +4,7 @@ import { json } from 'stream/consumers';
 
 const initialState: TState['favorites'] = {
     favorites: JSON.parse(localStorage.getItem('favorites')!) || {}, 
-    favoritesCount:  JSON.parse(localStorage.getItem('favoritesCount')!) || 0,
+    count:  JSON.parse(localStorage.getItem('favoritesCount')!) || 0,
 }
 
 const favoritesSlice = createSlice({ //todo 
@@ -30,7 +30,7 @@ const favoritesSlice = createSlice({ //todo
             let count = JSON.parse(localStorage.getItem('favoritesCount')!) || 0
             count++
             localStorage.setItem('favoritesCount', `${count}`)
-            state.favoritesCount = JSON.parse(localStorage.getItem('favoritesCount')!) 
+            state.count = JSON.parse(localStorage.getItem('favoritesCount')!) 
         },
         unlike: (state, {payload}) => {
             let favorites = localStorage.getItem('favorites')!
@@ -43,7 +43,7 @@ const favoritesSlice = createSlice({ //todo
             let count = JSON.parse(localStorage.getItem('favoritesCount')!)
             count--
             localStorage.setItem('favoritesCount', `${count}`)
-            state.favoritesCount = JSON.parse(localStorage.getItem('favoritesCount')!) 
+            state.count = JSON.parse(localStorage.getItem('favoritesCount')!) 
         },
         deleteFavorites: (state, {payload}) => {
             let favorites = JSON.parse(localStorage.getItem('favorites')!)
@@ -53,7 +53,7 @@ const favoritesSlice = createSlice({ //todo
             const favoritesCount = localStorage.getItem('favoritesCount')!
             localStorage.setItem('favoritesCount', (+favoritesCount - count).toString())
             state.favorites = JSON.parse(localStorage.getItem('favorites')!)
-            state.favoritesCount = JSON.parse(localStorage.getItem('favoritesCount')!)
+            state.count = JSON.parse(localStorage.getItem('favoritesCount')!)
 
         }
     }
@@ -61,5 +61,3 @@ const favoritesSlice = createSlice({ //todo
 
 export const favoritesReducer = favoritesSlice.reducer;
 export const favoritesActions = favoritesSlice.actions; 
-
-// в слайсе есть и экшены и редьюсеры - удобная форма создания всего и сразу 

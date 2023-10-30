@@ -45,7 +45,7 @@ export interface TState {
                 count: number
             }
         }
-        favoritesCount: number
+        count: number
     }, 
 }
 

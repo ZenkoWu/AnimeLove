@@ -10,7 +10,7 @@ import {Modal} from "../Modal/Modal"
 export const Favorites = () => {
     const [active, setActive]= useState<'anime' | 'manga'| 'characters'>('anime')
     const [opened, setOpened] = useState(false)
-    const {favorites, favoritesCount} = useSelector((state: TState) => selectFavoritesModule(state))
+    const {favorites, count} = useSelector((state: TState) => selectFavoritesModule(state))
     const dispatch = useDispatch()
 
     const deleteFavorites = (category: 'anime' | 'manga'| 'characters') => { //todo вынести в отдельный тип
@@ -63,7 +63,7 @@ export const Favorites = () => {
                             onClick={()=> setOpened(true)} 
                             className="btn btn-primary" 
                             style={{whiteSpace:'nowrap'}}
-                            disabled={favoritesCount === 0}
+                            disabled={count === 0}
                         >
                             delete all {active}
                         </button>
