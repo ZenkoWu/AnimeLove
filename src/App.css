@@ -16,7 +16,6 @@ body {
 
 .content { 
     flex: 1 0 auto;
-    height: 500px;
     background: url('https://foni.club/uploads/posts/2023-02/1675216118_foni-club-p-fon-bogatstvo-anime-23.jpg ') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
