@@ -40,8 +40,10 @@ export const List = ({
                         />
                     </div>
                 </div>
-                {/* {elementList.length < 1 && //todo
-                    <p className='text-dark'>Sorry we didn't find anything :\</p> } */} 
+                {
+                    elementsList.length < 1 && 
+                    <p className='text-dark fs-5'>Sorry we didn't find anything :\</p> 
+                } 
                 {   
                     isFullCard ? 
                     <div>
