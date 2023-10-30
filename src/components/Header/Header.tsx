@@ -54,7 +54,7 @@ export const Header = () => {
                     </p>
                 </div>
             </div>
-            <div className='d-flex align-items-center gap-4'>
+            <div className='d-flex align-items-center gap-3'>
                 <div className="form-check form-switch fs-5 pb-1 ">
                     <input 
                         className={"form-check-input border" + (!isSafeContent + 'border-primary')} 
@@ -67,7 +67,7 @@ export const Header = () => {
                 </div>
                 <SearchContainer/>
                 <NavLink to='/favorites' className={s.title}>
-                    ❤<span className='fs-5'>{favCount}</span>
+                    ❤<span className='fs-5'>{favCount > 0 && favCount}</span>
                 </NavLink>
             </div>
         </header>
