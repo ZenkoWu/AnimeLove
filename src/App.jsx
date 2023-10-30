@@ -5,7 +5,7 @@ import Anime from './components/Anime/Anime';
 import {AnimeDescription} from './components/Anime/AnimeDescription/AnimeDescription';
 import {Footer} from './components/Footer/Footer';
 import {Manga} from './components/Manga/Manga';
-import Home from './components/Home/Home';
+import {Home} from './components/Home/Home';
 import { Favorites } from './components/Favorites/Favorites';
 import { MangaDescription } from './components/Manga/MangaDescription/MangaDescription';
 import { Characters } from './components/Characters/Characters';
