@@ -13,8 +13,8 @@ export const animeApi = createApi({ //todo вынести в отдельные 
             `${API_ROUTES.anime}/${id}/full`
         )}),
         
-        getSearchedAnime: builder.query({query: ({input, limit}) => (
-            `${API_ROUTES.anime}?q=${input}&limit=${limit}`
+        getSearchedAnime: builder.query({query: ({input, limit, sfw}) => (
+            `${API_ROUTES.anime}?q=${input}&limit=${limit}&${sfw}`
         )}),
         getRecommendations: builder.query({query: (id) => (
             `${API_ROUTES.anime}/${id}/recommendations`

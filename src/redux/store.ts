@@ -7,8 +7,12 @@ import { mangaApi } from './services/mangaApi'
 import { mangaReducer } from './features/mangaList'
 import { TAnimeInfo, TMangaInfo } from '@/types/mainElementsTypes'
 import { charactersApi } from './services/charactersApi'
+import { commonReducer } from './features/common'
 
 export interface TState {
+    common: {
+        isSafeContent: boolean
+    },
     animeList: {
         pageSize: number,
         totalAnimeCount: number,
@@ -50,6 +54,7 @@ export const store = configureStore({
         animeList: animeReducer,
         mangaList: mangaReducer,
         favorites: favoritesReducer,
+        common: commonReducer,
         [animeApi.reducerPath]: animeApi.reducer, 
         [mangaApi.reducerPath]: mangaApi.reducer, 
         [charactersApi.reducerPath]: charactersApi.reducer

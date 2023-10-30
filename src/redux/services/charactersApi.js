@@ -12,8 +12,8 @@ export const charactersApi = createApi({ //todo вынести в отдельн
         getCharacterById: builder.query({query: (id) => (
             `${API_ROUTES.characters}/${id}/full`
         )}),
-        getSearchedCharacters: builder.query({query: ({input, limit}) => (
-            `${API_ROUTES.characters}?q=${input}&limit=${limit}`
+        getSearchedCharacters: builder.query({query: ({input, limit, sfw}) => (
+            `${API_ROUTES.characters}?q=${input}&limit=${limit}&${sfw}`
         )}),
     })
 })

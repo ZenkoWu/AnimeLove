@@ -12,8 +12,8 @@ export const mangaApi = createApi({
         getMangaById: builder.query({query: (id) => (
             `${API_ROUTES.manga}/${id}/full`
         )}),
-        getSearchedManga: builder.query({query: ({input, limit}) => (
-            `${API_ROUTES.manga}?q=${input}&limit=${limit}`
+        getSearchedManga: builder.query({query: ({input, limit, sfw}) => (
+            `${API_ROUTES.manga}?q=${input}&limit=${limit}&${sfw}`
         )}),
         getMangaRecommends: builder.query({query: (id) => (
             `${API_ROUTES.manga}/${id}/recommendations`
