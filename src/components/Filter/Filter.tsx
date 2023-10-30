@@ -53,25 +53,13 @@ export type TFilter = {
         // setValue: (payload: string) => void,
         // zIndex: number,
         any[], // todo typescript
-    switchToggle: ()=> void,
-    checked: boolean
 }
-export const Filter = ({selects, switchToggle, checked}: TFilter) => {
+export const Filter = ({selects}: TFilter) => {
    
     return (
         <div className={s.container}>
             <div className={'bgMainRed p-2' + flexPlace('between', 'center')} >
                 <h4 className='p-0 m-0 text-white'>Filter</h4>
-                <div className="form-check form-switch fs-4">
-                    <input 
-                        className="form-check-input border border-primary" 
-                        type="checkbox" 
-                        role="switch" 
-                        id="flexSwitchCheckDefault"
-                        onClick={switchToggle}
-                        checked={checked}
-                    />
-                </div>
             </div>
             <div  className='px-3'>
                 {

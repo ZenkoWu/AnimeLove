@@ -15,7 +15,7 @@ function App() {
     return (
         <BrowserRouter>
             <Header/>
-            <div className="content">
+            <div className="content" id='content'>
                 <Routes>
                     <Route path='/' element={<Home/>}/>
                     <Route path='anime' element={<Anime/>}/>

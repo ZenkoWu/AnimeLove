@@ -9,6 +9,7 @@ import { MANGA_ORDER_BY, MANGA_STATUS, MANGA_TYPES } from '../../constants';
 import { TState } from '../../redux/store';
 import { api } from '../../redux/services/api/api';
 import {Modal} from '../Modal/Modal';
+import { commonActions } from '../../redux/features/common';
 
 export type TMangaFilterState = {
     type: keyof typeof MANGA_TYPES,
@@ -22,11 +23,10 @@ const initialState = {
     status: 'complete'
 }
 
-export const Manga = () => {
+export const Manga = () => {// todo дублирование с аниме убрать
     const [state, dis]: [TMangaFilterState, any] = useReducer(reducer, initialState)
     const {currentPage, pageSize: pageLimit, totalMangaCount} = useSelector((state :TState) => state.mangaList)
-    const [safeContent, setSafeContent] = useState(true)
-    const [opened, setOpened] = useState(false)
+    const isSafeContent = useSelector((state: TState) => state.common.isSafeContent)
 
     const onChange = useCallback((actionCreator: (payload: string) => ({type: string, payload: string})) => 
         (payload: string) => dis(actionCreator(payload)), 
@@ -64,7 +64,7 @@ export const Manga = () => {
         type: MANGA_TYPES[state.type],
         orderBy: MANGA_ORDER_BY[state.orderBy], 
         status: MANGA_STATUS[state.status],
-        sfw: safeContent ? 'sfw': ''
+        sfw: isSafeContent ? 'sfw': ''
     })
 
     const dispatch = useDispatch()
@@ -78,21 +78,9 @@ export const Manga = () => {
     }
     const totalCount = manga.pagination.items.total 
     dispatch(mangaActions.changeTotalMangaCount(totalCount))
-
-    const changeContentMode = () => safeContent ? setOpened(true) : setSafeContent(true)
+    
     return (
         <div>
-            {
-                opened &&  
-                <Modal
-                    opened={opened} 
-                    setOpened={setOpened}  
-                    onAccept={()=> setSafeContent(false)}
-                    question={`Are you sure you want to allow adult content 
-                    and confirm that you are 18+?`}
-                    title={'Сonfirmation'}
-                />
-            }
             <ContentContainer>
                 <List
                     title='Manga'
@@ -102,11 +90,7 @@ export const Manga = () => {
                     totalElementCount={totalMangaCount}
                     pageSize={pageLimit}
                 />
-                <Filter 
-                    selects={selects} 
-                    switchToggle={changeContentMode} 
-                    checked={!safeContent}
-                />
+                <Filter selects={selects} />
             </ContentContainer>
         </div>
     )

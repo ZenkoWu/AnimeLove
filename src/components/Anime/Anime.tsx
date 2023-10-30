@@ -9,6 +9,7 @@ import { ContentContainer } from '../ContentContainer/ContentContainer';
 import { AGE_RATING, ANIME_ORDER_BY, ANIME_TYPE, ANIME_STATUS } from '../../constants';
 import { TState } from '../../redux/store';
 import {Modal} from '../Modal/Modal';
+import { commonActions } from '../../redux/features/common';
 
 export type TAnimeFilterState = {
     type: keyof typeof ANIME_TYPE,
@@ -26,8 +27,7 @@ const initialState = {
 
 const Anime = () => {
     const [state, dis]: [TAnimeFilterState, any] = useReducer(reducer, initialState)// todo type for dispatch
-    const [safeContent, setSafeContent] = useState(true)
-    const [opened, setOpened] = useState(false)
+    const isSafeContent = useSelector((state: TState) => state.common.isSafeContent)
 
     const onChange = useCallback((actionCreator: (payload: string) => ({type: string, payload: string})) => 
         (payload: string) => dis(actionCreator(payload)), 
@@ -78,7 +78,7 @@ const Anime = () => {
         rating: AGE_RATING[state.rating],
         orderBy: ANIME_ORDER_BY[state.orderBy],
         status: ANIME_STATUS[state.status],
-        sfw: safeContent ? 'sfw' : ''
+        sfw: isSafeContent ? 'sfw' : ''
     })
     
     const changeCurrentPage = useCallback((currentPage: number) => {
@@ -91,19 +91,8 @@ const Anime = () => {
     const totalCount = anime.pagination.items.total 
     dispatch(animeActions.changeTotalAnimeCount(totalCount))
     
-    const changeContentMode = () => safeContent ? setOpened(true) : setSafeContent(true)
-    return (
+   return (
         <div>
-             {
-                opened &&  
-                <Modal
-                    opened={opened} 
-                    setOpened={setOpened}  
-                    onAccept={()=> setSafeContent(false)}
-                    question={`Are you sure you want to allow adult content and confirm that you are 18+?`}
-                    title={'Сonfirmation'}
-                />
-            }
             <ContentContainer>
                 <List
                     title='Anime'
@@ -113,11 +102,7 @@ const Anime = () => {
                     totalElementCount={totalAnimeCount}
                     pageSize={pageLimit}
                 />
-                <Filter 
-                    selects={selects} 
-                    switchToggle={changeContentMode} 
-                    checked={!safeContent}
-                />
+                <Filter selects={selects}/>
             </ContentContainer>
         </div>
     )

@@ -18,7 +18,7 @@ cursor: pointer;
     position: absolute;
     left: 30vw;
     top: 35vh;
-    z-index: 501;
+    z-index: 5000;
     animation: appear 500ms ease-in-out 1;
 }
 
