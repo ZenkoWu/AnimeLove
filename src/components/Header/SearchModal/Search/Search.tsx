@@ -12,26 +12,18 @@ export type TSearch = {
 
 export const Search = ({searchBlocks, setInput, input}: TSearch) => {
     const [searched, setSearched] = useState(false)
-    const [searchText, setSearchText] = useState('')
     return (
         <div>
             {
                 searched ? 
                 <div className='d-flex align-items-center gap-2' >
-                    <button 
-                        onClick={()=> setInput(searchText)} 
-                        type='button' 
-                        className={`btn btn-light p-1 ${!searchText && 'disabled'}`}
-                    >
-                        search
-                    </button>
                     <div className={s.searchInput}>
                             <input 
                                 type="search" 
                                 placeholder='Search anime, manga, characters...' 
                                 className='rounded-1 px-3 py-1 w-100 border border-none'
-                                onChange={(e)=> setSearchText(e.target.value)}
-                                value={searchText}
+                                onChange={(e)=> setInput(e.target.value)}
+                                value={input}
                             />
                         {
                            input && searchBlocks[0]?.searchResult?.data.length > 0 &&
@@ -51,7 +43,6 @@ export const Search = ({searchBlocks, setInput, input}: TSearch) => {
 
                     <div onClick={()=> {
                         setSearched(false)
-                        setSearchText('')
                     }}>
                        <img src={closeBtn} alt="closeBtn" />
                     </div>

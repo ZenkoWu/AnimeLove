@@ -26,3 +26,7 @@
 .searchInput {
     width: 360px;
 }
+
+.searchInput input:focus{
+    outline: none;
+}
