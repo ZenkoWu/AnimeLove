@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import FavoriteBtn from '../../Favorites/FavoriteBtn/FavoriteBtn';
 import s from './ElementCard.module.css'
-import { TAnimeInfo, TMangaInfo, TCharactersInfo } from '@/types/mainElementsTypes';
+import { TAnimeInfo, TMangaInfo, TCharactersInfo, TCategories } from '@/types/mainElementsTypes';
 
 type TElementCard = {
-    category: 'anime' | 'manga' | 'characters',
+    category: TCategories,
     data: TAnimeInfo | TMangaInfo | TCharactersInfo
 }
 

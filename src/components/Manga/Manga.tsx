@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { mangaActions } from '../../redux/features/mangaList';
 import { useCallback, useReducer, useState } from 'react';
 import Preloader from "../Preloader/Preloader";
 import {List} from '../List/List';
@@ -8,8 +7,7 @@ import { Filter, statusAC, orderByAC, typeChangeAC, reducer } from '../Filter/Fi
 import { MANGA_ORDER_BY, MANGA_STATUS, MANGA_TYPES } from '../../constants';
 import { TState } from '../../redux/store';
 import { api } from '../../redux/services/api/api';
-import {Modal} from '../Modal/Modal';
-import { commonActions } from '../../redux/features/common';
+import { paginationActions } from '../../redux/features/pagination';
 
 export type TMangaFilterState = {
     type: keyof typeof MANGA_TYPES,
@@ -23,9 +21,8 @@ const initialState = {
     status: 'complete'
 }
 
-export const Manga = () => {// todo дублирование с аниме убрать
+export const Manga = () => {// todo дублирование с аниме and characters убрать
     const [state, dis]: [TMangaFilterState, any] = useReducer(reducer, initialState)
-    const {currentPage, pageSize: pageLimit, totalMangaCount} = useSelector((state :TState) => state.mangaList)
     const isSafeContent = useSelector((state: TState) => state.common.isSafeContent)
 
     const onChange = useCallback((actionCreator: (payload: string) => ({type: string, payload: string})) => 
@@ -58,6 +55,12 @@ export const Manga = () => {// todo дублирование с аниме уб�
         },
         
     ]
+    const {
+        currentPage, 
+        pageSize: pageLimit, 
+        totalAmount
+    } = useSelector((state: TState ) => state.pagination.manga)
+
     const {data: manga} = api.manga.getList({
         currentPage, 
         pageLimit,
@@ -69,16 +72,18 @@ export const Manga = () => {// todo дублирование с аниме уб�
 
     const dispatch = useDispatch()
 
-    const changeCurrentPage = useCallback((currentPage: number) => {
-        dispatch(mangaActions.changeCurrentPage(currentPage))
+    const changeCurrentPage = useCallback((page: number) => {
+        dispatch(paginationActions.changeCurrentPage({category: 'manga', page}))
     }, [currentPage])
 
     if(!manga) {
         return <Preloader/>
     }
-    const totalCount = manga.pagination.items.total 
-    dispatch(mangaActions.changeTotalMangaCount(totalCount))
-    
+
+    dispatch(paginationActions.changeAmount({
+        category: 'manga', 
+        count: manga.pagination.items.total
+    }))
     return (
         <div>
             <ContentContainer>
@@ -87,7 +92,7 @@ export const Manga = () => {// todo дублирование с аниме уб�
                     elementsList={manga.data} 
                     changeCurrentPage={changeCurrentPage} 
                     currentPage={currentPage}
-                    totalElementCount={totalMangaCount}
+                    totalElementCount={totalAmount}
                     pageSize={pageLimit}
                 />
                 <Filter selects={selects} />

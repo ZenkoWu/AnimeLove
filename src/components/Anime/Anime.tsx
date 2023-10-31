@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { animeActions } from '../../redux/features/animeList';
-import { useCallback, useReducer, useState } from 'react';
+import { useCallback, useReducer } from 'react';
 import { api } from "../../redux/services/api/api";
 import Preloader from "../Preloader/Preloader";
 import {List} from '../List/List';
@@ -8,8 +7,8 @@ import { Filter, statusAC, ratingAC, orderByAC, typeChangeAC, reducer} from '../
 import { ContentContainer } from '../ContentContainer/ContentContainer';
 import { AGE_RATING, ANIME_ORDER_BY, ANIME_TYPE, ANIME_STATUS } from '../../constants';
 import { TState } from '../../redux/store';
-import {Modal} from '../Modal/Modal';
-import { commonActions } from '../../redux/features/common';
+import { paginationActions } from '../../redux/features/pagination';
+import { TCategories } from '@/types/mainElementsTypes';
 
 export type TAnimeFilterState = {
     type: keyof typeof ANIME_TYPE,
@@ -68,12 +67,17 @@ const Anime = () => {
         },
         
     ]
-
-    const {currentPage, pageSize: pageLimit, totalAnimeCount} = useSelector((state: TState )=> state.animeList)
+    const {
+        currentPage, 
+        pageSize: pageLimit, 
+        totalAmount
+    } = useSelector((state: TState ) => state.pagination.anime)
+    
     const dispatch = useDispatch()
 
     const {data: anime} = api.anime.getList({
-        currentPage, pageLimit, 
+        currentPage, 
+        pageLimit, 
         type: ANIME_TYPE[state.type], 
         rating: AGE_RATING[state.rating],
         orderBy: ANIME_ORDER_BY[state.orderBy],
@@ -81,16 +85,18 @@ const Anime = () => {
         sfw: isSafeContent ? 'sfw' : ''
     })
     
-    const changeCurrentPage = useCallback((currentPage: number) => {
-        dispatch(animeActions.changeCurrentPage(currentPage))
-    }, [currentPage])
+    const changeCurrentPage = useCallback((page: number) => {
+        dispatch(paginationActions.changeCurrentPage({category: 'anime', page}))
+    }, [currentPage]) // todo вынести - повторяется
 
     if(!anime) {
         return <Preloader/>
     }
-    const totalCount = anime.pagination.items.total 
-    dispatch(animeActions.changeTotalAnimeCount(totalCount))
-    
+
+    dispatch(paginationActions.changeAmount({
+        category: 'anime', 
+        count: anime.pagination.items.total
+    }))
    return (
         <div>
             <ContentContainer>
@@ -99,7 +105,7 @@ const Anime = () => {
                     elementsList={anime.data} 
                     changeCurrentPage={changeCurrentPage} 
                     currentPage={currentPage}
-                    totalElementCount={totalAnimeCount}
+                    totalElementCount={totalAmount}
                     pageSize={pageLimit}
                 />
                 <Filter selects={selects}/>

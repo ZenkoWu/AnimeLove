@@ -65,3 +65,5 @@ export type TCharactersInfo = {
     name_kanji?: string,
     nicknames?: string[]
 }
+
+export type TCategories =  'anime' | 'manga' | 'characters'

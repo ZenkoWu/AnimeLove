@@ -2,27 +2,23 @@ import { configureStore } from '@reduxjs/toolkit'
 import { favoritesReducer } from './features/favorites'
 import {logger} from './middlewares/logger'
 import { animeApi } from './services/animeApi'
-import { animeReducer } from './features/animeList'
 import { mangaApi } from './services/mangaApi'
-import { mangaReducer } from './features/mangaList'
 import { TAnimeInfo, TMangaInfo } from '@/types/mainElementsTypes'
 import { charactersApi } from './services/charactersApi'
 import { commonReducer } from './features/common'
+import { TPaginationData, paginationReducer } from './features/pagination'
 
 export interface TState {
     common: {
         isSafeContent: boolean
     },
-    animeList: {
-        pageSize: number,
-        totalAnimeCount: number,
-        currentPage: number,
+
+    pagination: {
+        anime: TPaginationData,
+        manga: TPaginationData,
+        characters: TPaginationData
     },
-    mangaList: {
-        pageSize: number,
-        totalMangaCount: number,
-        currentPage: number,
-    },
+
     favorites:  { 
         favorites: {
             anime?: {
@@ -51,10 +47,9 @@ export interface TState {
 
 export const store = configureStore({
     reducer: {
-        animeList: animeReducer,
-        mangaList: mangaReducer,
         favorites: favoritesReducer,
         common: commonReducer,
+        pagination: paginationReducer,
         [animeApi.reducerPath]: animeApi.reducer, 
         [mangaApi.reducerPath]: mangaApi.reducer, 
         [charactersApi.reducerPath]: charactersApi.reducer

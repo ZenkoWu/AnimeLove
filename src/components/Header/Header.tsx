@@ -20,7 +20,7 @@ const getRandomAnime = (
 
 export const Header = () => {
     const navigate = useNavigate();
-    const totalAnimeCount = useSelector((state: TState) => state.animeList.totalAnimeCount) //todo переделать на аниме вместо лист
+    const {totalAmount} = useSelector((state: TState) => state.pagination.anime) 
     const favCount = useSelector((state: TState) => state.favorites.count)
     const isSafeContent = useSelector((state: TState) => state.common.isSafeContent)
 
@@ -58,7 +58,7 @@ export const Header = () => {
                     <NavLink to='/characters' className={s.link}>Characters</NavLink>
                     <p 
                         className={`${s.link} m-0 cursor-pointer`}
-                        onClick={()=>getRandomAnime(navigate, totalAnimeCount)}
+                        onClick={()=>getRandomAnime(navigate, totalAmount)}
                     >
                         Random anime
                     </p>

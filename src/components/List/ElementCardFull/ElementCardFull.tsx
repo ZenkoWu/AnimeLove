@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import FavoriteBtn from '../../Favorites/FavoriteBtn/FavoriteBtn';
 import s from './ElementCardFull.module.css'
-import { TAnimeInfo, TCharactersInfo, TMangaInfo } from '@/types/mainElementsTypes';
+import { TAnimeInfo, TCategories, TCharactersInfo, TMangaInfo } from '@/types/mainElementsTypes';
 import { flexPlace } from '../../../utils/flexPlace';
 
 type TElementCard = { //todo вынести в один тип с другой карточкой 
-    category: 'anime' | 'manga' | 'characters',
+    category: TCategories,
     data: TAnimeInfo | TMangaInfo | TCharactersInfo
 }
 

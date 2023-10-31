@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { favoritesActions } from "../../../redux/features/favorites";
-import { selectFavorites } from "../../../redux/features/favorites/selector";
 import { HeartBtn } from "./HeartBtn";
 import { TState } from "@/redux/store";
-import { TAnimeInfo, TMangaInfo } from "@/types/mainElementsTypes";
+import { TAnimeInfo, TCategories, TMangaInfo } from "@/types/mainElementsTypes";
 
-const FavoriteBtn = ({category, info}: {category: 'anime' | 'manga' | 'characters', info: any}) => {
+const FavoriteBtn = ({category, info}: {category: TCategories, info: any}) => {
     const dispatch = useDispatch()
     const favorites = useSelector((state: TState) => state.favorites.favorites)
 
