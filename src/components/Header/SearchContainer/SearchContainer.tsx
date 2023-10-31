@@ -6,6 +6,7 @@ import { useSelector } from "react-redux"
 import { TState } from "@/redux/store"
 import { useDebounce } from "use-debounce"
 import { skipToken } from "@reduxjs/toolkit/query"
+import { API_ROUTES } from "../../../redux/services/apiRoutes/apiRoutes"
 
 const searchLimit = 3
 
@@ -15,11 +16,11 @@ const SearchContainer = () => {
 
     const isSafeContent = useSelector((state: TState) => state.common.isSafeContent)
    
-    const {data: anime} =  api.anime.getSearched(searchTerm ? {input, limit: searchLimit, sfw: isSafeContent ? 'sfw': ''} : skipToken)  // todo сделать один апи метод для получения всех данных чтоб не дергать три
-    const {data: manga} = api.manga.getSearched(searchTerm ? {input, limit: searchLimit,  sfw: isSafeContent ? 'sfw': ''} :  skipToken)
-    const {data: characters} = api.characters.getSearched(searchTerm ? {input, limit: searchLimit,  sfw: isSafeContent ? 'sfw': ''}: skipToken)
+    const {data: anime} =  api.getSearched(searchTerm ? {route: API_ROUTES.ANIME, input, limit: searchLimit, sfw: isSafeContent ? 'sfw': ''} : skipToken)  // todo сделать один апи метод для получения всех данных чтоб не дергать три
+    const {data: manga} = api.getSearched(searchTerm ? {route: API_ROUTES.MANGA, input, limit: searchLimit,  sfw: isSafeContent ? 'sfw': ''} :  skipToken)
+    const {data: characters} = api.getSearched(searchTerm ? {route: API_ROUTES.CHARACTERS, input, limit: searchLimit,  sfw: isSafeContent ? 'sfw': ''}: skipToken)
 
-    // if(!anime && !manga && ! characters) { todo перенести в блоки поиска а не здесь
+    // if(!anime && !manga && ! characters) { //todo перенести в блоки поиска а не здесь
     //     return <Preloader/>
     // }
 

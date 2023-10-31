@@ -8,12 +8,13 @@ import { api } from "../../../redux/services/api/api"
 import { flexPlace } from "../../../utils/flexPlace"
 import FavoriteBtn from "../../../components/Favorites/FavoriteBtn/FavoriteBtn"
 import { Carousel } from "../../../components/Carousel/Carousel"
+import { API_ROUTES } from "../../../redux/services/apiRoutes/apiRoutes"
 
 export const MangaDescription = () => {
     const params = useParams()
 
-    const {data} = api.manga.getById(params.mangaId)
-    const {data: rec} = api.manga.getRecommendations(params.mangaId)
+    const {data} = api.getById({route: API_ROUTES.MANGA, id: params.mangaId})
+    const {data: rec} = api.getRecommendations({route: API_ROUTES.MANGA, id: params.mangaId})
 
     if(!data || !rec) {
         return <Preloader/>

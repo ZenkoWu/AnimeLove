@@ -8,7 +8,7 @@ import { ContentContainer } from '../ContentContainer/ContentContainer';
 import { AGE_RATING, ANIME_ORDER_BY, ANIME_TYPE, ANIME_STATUS } from '../../constants';
 import { TState } from '../../redux/store';
 import { paginationActions } from '../../redux/features/pagination';
-import { TCategories } from '@/types/mainElementsTypes';
+import { API_ROUTES } from '../../redux/services/apiRoutes/apiRoutes';
 
 export type TAnimeFilterState = {
     type: keyof typeof ANIME_TYPE,
@@ -75,7 +75,8 @@ const Anime = () => {
     
     const dispatch = useDispatch()
 
-    const {data: anime} = api.anime.getList({
+    const {data: anime} = api.getList({
+        route: API_ROUTES.ANIME,
         currentPage, 
         pageLimit, 
         type: ANIME_TYPE[state.type], 

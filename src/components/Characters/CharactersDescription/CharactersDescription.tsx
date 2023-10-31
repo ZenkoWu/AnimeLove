@@ -7,11 +7,12 @@ import { getScoreColor } from "../../../utils/getScoreColor"
 import { api } from "../../../redux/services/api/api"
 import FavoriteBtn from "../../Favorites/FavoriteBtn/FavoriteBtn"
 import { flexPlace } from "../../../utils/flexPlace"
+import { API_ROUTES } from "../../../redux/services/apiRoutes/apiRoutes"
 
 export const CharactersDescription = () => {
     const params = useParams()
 
-    const {data} = api.characters.getById(params.charactersId) // todo api.getById('characters', params.id)
+    const {data} = api.getById({route: API_ROUTES.CHARACTERS, id: params.charactersId}) // todo api.getById('characters', params.id)
 
     if(!data) {
         return <Preloader/>

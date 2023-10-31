@@ -8,6 +8,7 @@ import { MANGA_ORDER_BY, MANGA_STATUS, MANGA_TYPES } from '../../constants';
 import { TState } from '../../redux/store';
 import { api } from '../../redux/services/api/api';
 import { paginationActions } from '../../redux/features/pagination';
+import { API_ROUTES } from '../../redux/services/apiRoutes/apiRoutes';
 
 export type TMangaFilterState = {
     type: keyof typeof MANGA_TYPES,
@@ -61,7 +62,8 @@ export const Manga = () => {// todo дублирование с аниме and c
         totalAmount
     } = useSelector((state: TState ) => state.pagination.manga)
 
-    const {data: manga} = api.manga.getList({
+    const {data: manga} = api.getList({
+        route: API_ROUTES.MANGA,
         currentPage, 
         pageLimit,
         type: MANGA_TYPES[state.type],

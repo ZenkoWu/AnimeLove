@@ -1,12 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { favoritesReducer } from './features/favorites'
 import {logger} from './middlewares/logger'
-import { animeApi } from './services/animeApi'
-import { mangaApi } from './services/mangaApi'
 import { TAnimeInfo, TMangaInfo } from '@/types/mainElementsTypes'
-import { charactersApi } from './services/charactersApi'
 import { commonReducer } from './features/common'
 import { TPaginationData, paginationReducer } from './features/pagination'
+import { apiMethods } from './services/apiMethods'
 
 export interface TState {
     common: {
@@ -43,6 +41,7 @@ export interface TState {
         }
         count: number
     }, 
+    apiMethods: any // todo 
 }
 
 export const store = configureStore({
@@ -50,14 +49,10 @@ export const store = configureStore({
         favorites: favoritesReducer,
         common: commonReducer,
         pagination: paginationReducer,
-        [animeApi.reducerPath]: animeApi.reducer, 
-        [mangaApi.reducerPath]: mangaApi.reducer, 
-        [charactersApi.reducerPath]: charactersApi.reducer
+        [apiMethods.reducerPath]: apiMethods.reducer
     },
     middleware: (getMiddleware) => getMiddleware().concat([
-        animeApi.middleware, 
-        mangaApi.middleware,
-        charactersApi.middleware
+        apiMethods.middleware
         // logger
     ])
 })

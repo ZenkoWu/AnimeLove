@@ -6,6 +6,7 @@ import Preloader from "../Preloader/Preloader";
 import {List} from '../List/List';
 import { TState } from '../../redux/store';
 import { paginationActions } from '../../redux/features/pagination';
+import { API_ROUTES } from '../../redux/services/apiRoutes/apiRoutes';
 
 
 export const Characters = () => {
@@ -17,7 +18,8 @@ export const Characters = () => {
 
     const dispatch = useDispatch()
 
-    const {data: characters} = api.characters.getList({
+    const {data: characters} = api.getCharacters({
+        route: API_ROUTES.CHARACTERS,
         currentPage, 
         pageLimit
     })

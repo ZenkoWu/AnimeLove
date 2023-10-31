@@ -15,7 +15,7 @@ const getRandomAnime = (
     totalAnimeCount: number
 ) => {
     const randomAnimeId = Math.floor(Math.random() * totalAnimeCount) + 1;
-    navigate(`${API_ROUTES.anime}/${randomAnimeId}`, { replace: true })
+    navigate(`${API_ROUTES.ANIME}/${randomAnimeId}`, { replace: true })
 }
 
 export const Header = () => {
