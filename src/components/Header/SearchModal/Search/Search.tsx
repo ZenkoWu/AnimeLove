@@ -1,6 +1,6 @@
 import { useState } from "react"
 import s from './Search.module.css'
-import SearchBlock, { TSearchBlock } from "./SearchBlock/SearchBlock"
+import { SearchBlock, TSearchBlock } from "./SearchBlock/SearchBlock"
 import loupe from '../../../../imges/loupeBtn.svg'
 import closeBtn from '../../../../imges/closeSearch.svg'
 
