@@ -5,6 +5,10 @@
 .border_red {
     border: 1px solid #dd5e38;
 }
-.padding {
+.fieldWrapper {
     padding: 10px 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
 }
