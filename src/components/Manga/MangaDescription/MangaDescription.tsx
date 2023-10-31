@@ -48,11 +48,14 @@ export const MangaDescription = () => {
                                     </div>
                                 </div>
                                
-                                <FavoriteBtn category="manga" info={{
-                                    mal_id: manga.mal_id,
-                                    images: manga.images,
-                                    title: manga.title
-                                }}/>
+                                <FavoriteBtn 
+                                    category="manga" 
+                                    info={{
+                                        mal_id: manga.mal_id,
+                                        images: manga.images,
+                                        title: manga.title
+                                    }}
+                                />
                             </div>
                             <h1 className='fw-bold fs-2' >{manga.title}</h1>
                             <p className={s.borderBottomGrey}>{manga.title_japanese}</p>

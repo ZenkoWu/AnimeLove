@@ -14,20 +14,20 @@ export const CharactersDescription = () => {
     if(!params.charactersId) {
         return <ErrorPage/>;
     }
-    const {data} = api.getById({route: API_ROUTES.CHARACTERS, id: params.charactersId}) // todo api.getById('characters', params.id)
+    const {data} = api.getById({route: API_ROUTES.CHARACTERS, id: params.charactersId}) 
 
     if(!data) {
         return <Preloader/>
     }
 
-    const anime: TCharactersInfo = data.data //todo characters
+    const characters: TCharactersInfo = data.data 
 
 
     return (
         <div className={s.container}>
             <div className={s.cardBackground}>
                 <div className='p-4 w-100'>
-                <img src={anime.images.jpg.image_url} alt="anime-img" className={'pe-4 pb-2'} style={{float:'left'}}/>
+                <img src={characters.images.jpg.image_url} alt="anime-img" className={'pe-4 pb-2'} style={{float:'left'}}/>
                 <div className="pb-4" >
                 <div className="w-100"> 
                     <div className={`${flexPlace('between', 'center')}`}>
@@ -35,24 +35,27 @@ export const CharactersDescription = () => {
                         
                         
                     
-                        <h1 className='fw-bold fs-2' >{anime.name}</h1>
+                        <h1 className='fw-bold fs-2' >{characters.name}</h1>
                         
-                    <FavoriteBtn category="characters" info={{
-                            mal_id: anime.mal_id,
-                            images: anime.images,
-                            title: anime.name
-                        }}/>
+                    <FavoriteBtn 
+                        category="characters" 
+                        info={{
+                            mal_id: characters.mal_id,
+                            images: characters.images,
+                            title: characters.name
+                        }}
+                    />
                     </div>
-                    <p className={s.borderBottomGrey}>{anime.name_kanji}</p> 
-                    <p className="p-0 m-0">Nicknames: {anime.nicknames?.map(el => el).join(', ')}</p>
+                    <p className={s.borderBottomGrey}>{characters.name_kanji}</p> 
+                    <p className="p-0 m-0">Nicknames: {characters.nicknames?.map(el => el).join(', ')}</p>
                 </div>
 
                     
                 { 
-                    anime.about &&
+                    characters.about &&
                     <div className="py-3" >
                         <h4>Description</h4>
-                        <p className="text-" style={{textAlign: 'justify'}}>{anime.about}</p>
+                        <p className="text-" style={{textAlign: 'justify'}}>{characters.about}</p>
                     </div>
                 }
                 </div>

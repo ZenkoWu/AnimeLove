@@ -56,11 +56,14 @@ export const AnimeDescription = () => {
                                     </div>
                                 </div>
                                
-                                <FavoriteBtn category="anime" info={{
-                                    mal_id: anime.mal_id,
-                                    images: anime.images,
-                                    title: anime.title
-                                }}/>
+                                <FavoriteBtn 
+                                    category="anime" 
+                                    info={{
+                                        mal_id: anime.mal_id,
+                                        images: anime.images,
+                                        title: anime.title
+                                    }}
+                                />
                             </div>
                             <h1 className='fw-bold fs-2' >{anime.title}</h1>
                             <p className={s.borderBottomGrey}>{anime.title_japanese}</p>
