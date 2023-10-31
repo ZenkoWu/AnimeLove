@@ -75,3 +75,10 @@ export type TSmallCardInfo = {
         }
     }
 }
+
+
+export type TElementCard = {
+    category: TCategories,
+    data: TAnimeInfo | TMangaInfo | TCharactersInfo
+}
+
