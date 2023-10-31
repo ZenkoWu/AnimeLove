@@ -49,7 +49,7 @@ export const MangaDescription = () => {
                                 </div>
                                
                                 <FavoriteBtn 
-                                    category="manga" 
+                                    category={API_ROUTES.MANGA}
                                     info={{
                                         mal_id: manga.mal_id,
                                         images: manga.images,

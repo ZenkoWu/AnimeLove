@@ -38,7 +38,7 @@ export const CharactersDescription = () => {
                         <h1 className='fw-bold fs-2' >{characters.name}</h1>
                         
                     <FavoriteBtn 
-                        category="characters" 
+                        category={API_ROUTES.CHARACTERS}
                         info={{
                             mal_id: characters.mal_id,
                             images: characters.images,

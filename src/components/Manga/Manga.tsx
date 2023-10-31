@@ -75,7 +75,7 @@ export const Manga = () => {// todo дублирование с аниме and c
     const dispatch = useDispatch()
 
     const changeCurrentPage = useCallback((page: number) => {
-        dispatch(paginationActions.changeCurrentPage({category: 'manga', page}))
+        dispatch(paginationActions.changeCurrentPage({category: API_ROUTES.MANGA, page}))
     }, [currentPage])
 
     if(!manga) {
@@ -83,7 +83,7 @@ export const Manga = () => {// todo дублирование с аниме and c
     }
 
     dispatch(paginationActions.changeAmount({
-        category: 'manga', 
+        category: API_ROUTES.MANGA, 
         count: manga.pagination.items.total
     }))
     return (

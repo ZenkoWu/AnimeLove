@@ -20,11 +20,14 @@ export const ElementCardFull = ({category, data}: TElementCard) => {
                 <div className={`${flexPlace('between', 'center')}`}>
                     <NavLink to={`${data.mal_id}`} className='text-dark'>
                     <h2>{title}</h2></NavLink>
-                    <FavoriteBtn category={category} info={{
-                        mal_id: data.mal_id,
-                        images: data.images,
-                        title
-                    }}/>
+                    <FavoriteBtn 
+                        category={category} 
+                        info={{
+                            mal_id: data.mal_id,
+                            images: data.images,
+                            title
+                        }}
+                    />
                 </div>
                { 
                     'title' in data  &&

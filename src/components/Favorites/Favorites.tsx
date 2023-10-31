@@ -6,14 +6,15 @@ import { TState } from "@/redux/store"
 import s from './Favorites.module.css'
 import { favoritesActions } from "../../redux/features/favorites"
 import {Modal} from "../Modal/Modal"
+import { TCategories } from "../../types/mainElementsTypes"
 
 export const Favorites = () => {
-    const [active, setActive]= useState<'anime' | 'manga'| 'characters'>('anime')
+    const [active, setActive]= useState<TCategories>('anime')
     const [opened, setOpened] = useState(false)
     const {favorites, count} = useSelector((state: TState) => selectFavoritesModule(state))
     const dispatch = useDispatch()
 
-    const deleteFavorites = (category: 'anime' | 'manga'| 'characters') => { //todo вынести в отдельный тип
+    const deleteFavorites = (category: TCategories) => {
         dispatch(favoritesActions.deleteFavorites(category))
     }
 

@@ -57,7 +57,7 @@ export const AnimeDescription = () => {
                                 </div>
                                
                                 <FavoriteBtn 
-                                    category="anime" 
+                                    category={API_ROUTES.ANIME}
                                     info={{
                                         mal_id: anime.mal_id,
                                         images: anime.images,

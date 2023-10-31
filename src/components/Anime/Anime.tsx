@@ -87,7 +87,7 @@ const Anime = () => {
     })
     
     const changeCurrentPage = useCallback((page: number) => {
-        dispatch(paginationActions.changeCurrentPage({category: 'anime', page}))
+        dispatch(paginationActions.changeCurrentPage({category: API_ROUTES.ANIME, page}))
     }, [currentPage]) // todo вынести - повторяется
 
     if(!anime) {
@@ -95,7 +95,7 @@ const Anime = () => {
     }
 
     dispatch(paginationActions.changeAmount({
-        category: 'anime',  //todo category constants anime .manga .char API_ROUTES.ANIME
+        category: API_ROUTES.ANIME, 
         count: anime.pagination.items.total
     }))
    return (

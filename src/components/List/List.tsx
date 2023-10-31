@@ -3,7 +3,7 @@ import {ElementCardFull} from './ElementCardFull/ElementCardFull';
 import s from './List.module.css'
 import { useState } from 'react';
 import {ElementCard} from './ElementCard/ElementCard';
-import { TMangaInfo,TAnimeInfo } from '../../types/mainElementsTypes';
+import { TMangaInfo,TAnimeInfo, TCategories } from '../../types/mainElementsTypes';
 import { flexPlace } from '../../utils/flexPlace';
 
 type TList = {
@@ -50,7 +50,7 @@ export const List = ({
                         { 
                             elementsList.map((el) => 
                                 <ElementCardFull 
-                                    category={title.toLowerCase() as 'manga' | 'anime'}  //todo fix this type
+                                    category={title.toLowerCase() as TCategories}
                                     data={el} 
                                     key={el.mal_id}
                                 />)
@@ -61,7 +61,7 @@ export const List = ({
                         { 
                             elementsList.map((el) => 
                                 <ElementCard 
-                                    category={title.toLowerCase() as 'manga' | 'anime'} 
+                                    category={title.toLowerCase()  as TCategories} 
                                     data={el} 
                                     key={el.mal_id}
                                 />

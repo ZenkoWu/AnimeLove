@@ -25,7 +25,7 @@ export const Characters = () => {
     })
     
     const changeCurrentPage = useCallback((page: number) => {
-        dispatch(paginationActions.changeCurrentPage({category: 'characters', page}))
+        dispatch(paginationActions.changeCurrentPage({category: API_ROUTES.CHARACTERS, page}))
     }, [currentPage])
 
     if(!characters) {
@@ -33,7 +33,7 @@ export const Characters = () => {
     }
 
     dispatch(paginationActions.changeAmount({
-        category: 'characters', 
+        category: API_ROUTES.CHARACTERS, 
         count: characters.pagination.items.total
     }))
     

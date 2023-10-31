@@ -21,11 +21,14 @@ export const ElementCard = ({category, data}: TElementCard) => {
                     <div className={s.background}/>
                 </NavLink>
                 <div className={s.favBtn}>
-                    <FavoriteBtn category={category} info={{
-                        mal_id: data.mal_id,
-                        images: data.images,
-                        title
-                    }}/>
+                    <FavoriteBtn 
+                        category={category} 
+                        info={{
+                            mal_id: data.mal_id,
+                            images: data.images,
+                            title
+                        }}
+                    />
                 </div>
             </div>
             <h5>{title}</h5>
