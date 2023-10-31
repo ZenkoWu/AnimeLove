@@ -1,0 +1,16 @@
+.container {
+    padding: 50px 100px;
+}
+
+.cardBackground {
+    background-color: white;
+    border: 1px solid rgb(209, 204, 204);
+}
+
+.borderBottomGrey {
+    border-bottom: 1px solid #ced4da;
+}
+
+h4 ~ p {
+    text-align: justify;
+}
