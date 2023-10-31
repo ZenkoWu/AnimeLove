@@ -9,9 +9,13 @@ import FavoriteBtn from "../../../components/Favorites/FavoriteBtn/FavoriteBtn"
 import { flexPlace } from "../../../utils/flexPlace"
 import {Carousel} from "../../../components/Carousel/Carousel"
 import { API_ROUTES } from "../../../redux/services/apiRoutes/apiRoutes"
+import { ErrorPage } from "../../../components/ErrorPage/ErrorPage"
 
 export const AnimeDescription = () => {
     const params = useParams()
+    if(!params.animeId) {
+        return <ErrorPage/>;
+    }
 
     const {data} = api.getById({route: API_ROUTES.ANIME, id: params.animeId})
     const {data: rec} = api.getRecommendations({route:  API_ROUTES.ANIME, id: params.animeId})

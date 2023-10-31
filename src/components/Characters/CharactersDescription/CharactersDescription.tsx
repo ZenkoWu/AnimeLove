@@ -1,24 +1,26 @@
 import { useParams } from "react-router-dom"
 import Preloader from "../../Preloader/Preloader"
-import s from '../../Anime/AnimeDescription/AnimeDescription.module.css' 
-import starSymbol from '../../../imges/starScore.svg'
+import s from '../../Anime/AnimeDescription/AnimeDescription.module.css'
 import { TCharactersInfo } from "../../../types/mainElementsTypes"
-import { getScoreColor } from "../../../utils/getScoreColor"
 import { api } from "../../../redux/services/api/api"
 import FavoriteBtn from "../../Favorites/FavoriteBtn/FavoriteBtn"
 import { flexPlace } from "../../../utils/flexPlace"
 import { API_ROUTES } from "../../../redux/services/apiRoutes/apiRoutes"
+import { ErrorPage } from "../../../components/ErrorPage/ErrorPage"
 
 export const CharactersDescription = () => {
     const params = useParams()
 
+    if(!params.charactersId) {
+        return <ErrorPage/>;
+    }
     const {data} = api.getById({route: API_ROUTES.CHARACTERS, id: params.charactersId}) // todo api.getById('characters', params.id)
 
     if(!data) {
         return <Preloader/>
     }
 
-    const anime: TCharactersInfo = data.data
+    const anime: TCharactersInfo = data.data //todo characters
 
 
     return (
