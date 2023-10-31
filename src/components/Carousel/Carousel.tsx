@@ -1,21 +1,10 @@
+import { TSmallCardInfo } from '@/types/mainElementsTypes'
 import { flexPlace } from '../../utils/flexPlace'
 import React, {useState} from 'react'
 import { NavLink } from 'react-router-dom'
 
-type TRecommendation = { // todo вынести - похоже на типизацию фаворитов 
-    mal_id: number,
-    title: string,
-    images: {
-        jpg: {
-            image_url: string,
-            small_image_url: string,
-            large_image_url: string
-        }
-    }
-}
-
 type TCarousel = {
-    carouselItems: TRecommendation[], 
+    carouselItems: TSmallCardInfo[], 
     to: string, 
     title: string,
     itemsCount: number

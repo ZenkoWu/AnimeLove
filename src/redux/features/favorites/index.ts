@@ -1,6 +1,5 @@
 import { TState } from '@/redux/store';
 import {createSlice} from '@reduxjs/toolkit';
-import { json } from 'stream/consumers';
 
 const initialState: TState['favorites'] = {
     favorites: JSON.parse(localStorage.getItem('favorites')!) || {}, 

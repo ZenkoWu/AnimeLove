@@ -40,8 +40,7 @@ export interface TState {
             }
         }
         count: number
-    }, 
-    apiMethods: any // todo 
+    }
 }
 
 export const store = configureStore({

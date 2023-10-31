@@ -17,8 +17,6 @@ interface TElementInfo {
         }
     },
     background?: string,
-    duration?: string,  
-    episodes?: number,
     favorites?: number,
     genres?: {mal_id: number, type: string, name: string}[],
     popularity?: number,
@@ -36,7 +34,9 @@ export interface TAnimeInfo extends TElementInfo {
     trailer?: {
         embed_url: string,
         url: string
-    }
+    },
+    duration?: string,  
+    episodes?: number,
 }
 
 export interface TMangaInfo extends TElementInfo {
@@ -62,3 +62,16 @@ export type TCharactersInfo = {
 }
 
 export type TCategories = 'anime' | 'manga' | 'characters'
+
+
+export type TSmallCardInfo = {  
+    mal_id: number,
+    title: string,
+    images: {
+        jpg: {
+            image_url: string,
+            small_image_url: string,
+            large_image_url: string
+        }
+    }
+}
