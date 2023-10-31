@@ -4,4 +4,4 @@ export const API_ROUTES = {
     ANIME: 'anime',
     MANGA: 'manga',
     CHARACTERS: 'characters'
-}
+} as const;
