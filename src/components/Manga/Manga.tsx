@@ -19,7 +19,7 @@ export type TMangaFilterState = {
 const initialState = {
     type: 'manga',
     orderBy: 'popularity',
-    status: 'complete'
+    status: 'Finished'
 }
 
 export const Manga = () => {// todo дублирование с аниме and characters убрать

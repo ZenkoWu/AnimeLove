@@ -1,16 +1,16 @@
 
 export const AGE_RATING = {
-    ['all ages']: 'g',
-    'children': 'pg',
-    ['teens 13 or older']: 'pg13',
-    '17+ (violence)': 'r17',
-    '18+': 'r'
+    'G - All Ages' : 'g',
+    'PG - Children': 'pg',
+    'PG-13 - Teens 13 or older': 'pg13',
+    'R - 17+ (violence & profanity)': 'r17',
+    'R+ - Mild Nudity': 'r'
 } as const;
-
+ 
 export const ANIME_STATUS = {
-    'finished': 'complete',
-    'ongoing': 'airing',
-    'announce': 'upcoming'
+    'Finished Airing': 'complete',
+    'Currently Airing': 'airing',
+    'Not yet aired': 'upcoming'
 } as const;
 
 export const ANIME_ORDER_BY = {
@@ -41,10 +41,10 @@ export const MANGA_ORDER_BY = {
 } as const;
 
 export const MANGA_STATUS = {
-    'publishing': 'publishing',
-    'complete': 'complete',
-    'hiatus': 'hiatus',
-    'discontinued': 'discontinued',
+    'Publishing': 'publishing',
+    'Finished': 'complete',
+    'On Hiatus': 'hiatus',
+    'Discontinued': 'discontinued',
     'upcoming': 'upcoming'
 } as const;
 

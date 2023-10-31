@@ -19,9 +19,9 @@ export type TAnimeFilterState = {
 
 const initialState = {
     type: 'tv',
-    rating: 'teens 13 or older',
+    rating: 'PG-13 - Teens 13 or older',
     orderBy: 'popularity',
-    status: 'finished'
+    status: 'Finished Airing'
 }
 
 const Anime = () => {
@@ -95,7 +95,7 @@ const Anime = () => {
     }
 
     dispatch(paginationActions.changeAmount({
-        category: 'anime', 
+        category: 'anime',  //todo category constants anime .manga .char API_ROUTES.ANIME
         count: anime.pagination.items.total
     }))
    return (

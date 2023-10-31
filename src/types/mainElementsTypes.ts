@@ -1,15 +1,10 @@
-import { ANIME_TYPE, MANGA_TYPES } from './../constants';
-
-export const ANIME_RATING = [
-    'G - All Ages',
-    'PG - Children',
-    'PG-13 - Teens 13 or older',
-    'R - 17+ (violence & profanity)',
-    'R+ - Mild Nudity'
-] as const;
-
-const ANIME_STATUS =  ['Finished Airing', 'Currently Airing', 'Not yet aired'] as const;
-const MANGA_STATUS =  ['Finished', 'Publishing', 'On Hiatus', 'Discontinued'] as const;
+import { 
+    AGE_RATING, 
+    ANIME_STATUS, 
+    ANIME_TYPE, 
+    MANGA_STATUS, 
+    MANGA_TYPES 
+} from './../constants';
 
 interface TElementInfo {
     mal_id: number,
@@ -36,8 +31,8 @@ interface TElementInfo {
 
 export interface TAnimeInfo extends TElementInfo {
     type?: keyof typeof ANIME_TYPE;
-    rating?:  typeof ANIME_RATING[number],
-    status?: typeof ANIME_STATUS[number],
+    rating?:  keyof typeof AGE_RATING,
+    status?: keyof typeof ANIME_STATUS,
     trailer?: {
         embed_url: string,
         url: string
@@ -47,7 +42,7 @@ export interface TAnimeInfo extends TElementInfo {
 export interface TMangaInfo extends TElementInfo {
     type?: keyof typeof MANGA_TYPES,
     chapters?: number,
-    status?: typeof MANGA_STATUS[number],
+    status?: keyof typeof MANGA_STATUS,
 }
 
 export type TCharactersInfo = {
@@ -66,4 +61,4 @@ export type TCharactersInfo = {
     nicknames?: string[]
 }
 
-export type TCategories =  'anime' | 'manga' | 'characters'
+export type TCategories = 'anime' | 'manga' | 'characters'
