@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import s from './Paginator.module.css'
+
+const PORTION_SIZE = 10;
 
 type TPaginator = {
     totalElementCount: number,
@@ -7,12 +10,12 @@ type TPaginator = {
     onPageChange: (p: number) => void
 }
 
-export default function Paginator({
+export const Paginator = ({
     totalElementCount, 
     pageSize, 
     currentPage, 
-    onPageChange}: TPaginator
-) {
+    onPageChange
+}: TPaginator )=> {
     let pagesCount = Math.ceil(totalElementCount / pageSize)
     const pages: number[] = []
 
@@ -20,14 +23,14 @@ export default function Paginator({
         pages.push(i)
     } 
     
-    const portionSize = 10;
+    const portionSize = PORTION_SIZE;
     const portionCount = Math.ceil(pagesCount / portionSize)
     const [portionNumber, setPortionNumber] = useState(1)
     const leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
     const rightPortionPageNumber = portionNumber * portionSize;
 
     return (
-        <div style={{margin: '5px auto'}}> 
+        <div className={s.container}> 
             <nav 
                 aria-label="Page navigation example" 
                 className='m-auto text-center' 
@@ -42,15 +45,16 @@ export default function Paginator({
                                 aria-label="Previous" 
                                 onClick={()=> {setPortionNumber(portionNumber - 1) }}
                             >
-                                <span aria-hidden="true">&laquo;</span>
+                                {/* left btn*/}
+                                <span aria-hidden="true">&laquo;</span>  
                             </a>
                         </li>
                     }   
 
                     {
                         pages
-                            .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                             .map(p => 
+                                p >= leftPortionPageNumber && p <= rightPortionPageNumber &&
                                 <span 
                                     key={p} 
                                     className={currentPage == p ? 'fw-bold text-decoration-underline' : ''}  
@@ -70,7 +74,8 @@ export default function Paginator({
                                 aria-label="Next" 
                                 onClick={()=> {setPortionNumber(portionNumber + 1)}}
                             >
-                                <span aria-hidden="true">&raquo;</span>
+                                {/* right btn*/}
+                                <span aria-hidden="true">&raquo;</span> 
                             </a>
                         </li>
                     }

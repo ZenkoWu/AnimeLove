@@ -1,4 +1,4 @@
-import Paginator from '../Paginator/Paginator';
+import {Paginator} from '../Paginator/Paginator';
 import {ElementCardFull} from './ElementCardFull/ElementCardFull';
 import s from './List.module.css'
 import { useState } from 'react';
