@@ -5,7 +5,7 @@ import starSymbol from '../../imges/starScore.svg'
 import { TAnimeInfo, TCategories, TMangaInfo } from "../../types/mainElementsTypes"
 import { getScoreColor } from "../../utils/getScoreColor"
 import { api } from "../../redux/services/api/api"
-import FavoriteBtn from "../../components/Favorites/FavoriteBtn/FavoriteBtn"
+import {FavoriteBtn} from "../../components/Favorites/FavoriteBtn/FavoriteBtn"
 import { flexPlace } from "../../utils/flexPlace"
 import {Carousel} from "../../components/Carousel/Carousel"
 import { API_ROUTES } from "../../redux/services/apiRoutes/apiRoutes"
