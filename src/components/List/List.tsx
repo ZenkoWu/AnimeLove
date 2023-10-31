@@ -23,7 +23,7 @@ export const List = ({
     title, 
     pageSize
 }: TList) => {
-    const [isFullCard, setIsFullCard] = useState(false) // todo save this state localy
+    const [isFullCard, setIsFullCard] = useState(false)
 
     return (
         <div className={s.container}>
