@@ -6,7 +6,7 @@ const initialState: TState['favorites'] = {
     count:  JSON.parse(localStorage.getItem('favoritesCount')!) || 0,
 }
 
-const favoritesSlice = createSlice({ //todo 
+const favoritesSlice = createSlice({ //todo  
     name: 'favorites',
     initialState, 
     reducers: {

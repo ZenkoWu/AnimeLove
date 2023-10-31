@@ -7,27 +7,32 @@ import { TState } from "@/redux/store"
 import { useDebounce } from "use-debounce"
 import { skipToken } from "@reduxjs/toolkit/query"
 import { API_ROUTES } from "../../../redux/services/apiRoutes/apiRoutes"
+import { TCategories } from "@/types/mainElementsTypes"
+import { TGetSearchedData } from "@/redux/services/apiMethods"
 
-const searchLimit = 3
+const searchLimit = 3;
 
 const SearchContainer = () => {
     const [input, setInput] = useState('')
     const [searchTerm] = useDebounce(input, 1500)
 
     const isSafeContent = useSelector((state: TState) => state.common.isSafeContent)
-   
-    const {data: anime} =  api.getSearched(searchTerm ? {route: API_ROUTES.ANIME, input, limit: searchLimit, sfw: isSafeContent ? 'sfw': ''} : skipToken)  // todo сделать один апи метод для получения всех данных чтоб не дергать три
-    const {data: manga} = api.getSearched(searchTerm ? {route: API_ROUTES.MANGA, input, limit: searchLimit,  sfw: isSafeContent ? 'sfw': ''} :  skipToken)
-    const {data: characters} = api.getSearched(searchTerm ? {route: API_ROUTES.CHARACTERS, input, limit: searchLimit,  sfw: isSafeContent ? 'sfw': ''}: skipToken)
 
-    // if(!anime && !manga && ! characters) { //todo перенести в блоки поиска а не здесь
-    //     return <Preloader/>
-    // }
+   const getParams = (route: TCategories): TGetSearchedData => ({
+        route, 
+        input, 
+        limit: searchLimit, 
+        sfw: isSafeContent ? 'sfw': ''
+    })
+    
+    const {data: anime} =  api.getSearched(searchTerm ? getParams(API_ROUTES.ANIME) : skipToken)
+    const {data: manga} = api.getSearched(searchTerm ? getParams(API_ROUTES.MANGA) :  skipToken)
+    const {data: characters} = api.getSearched(searchTerm ? getParams(API_ROUTES.CHARACTERS) : skipToken)
 
     const searchBlocks: TSearchBlock[] = [
-        {title: 'anime', searchResult: anime},  
-        {title: 'manga',  searchResult: manga}, 
-        {title: 'characters',  searchResult: characters} 
+        {title: API_ROUTES.ANIME, searchResult: anime},  
+        {title: API_ROUTES.MANGA,  searchResult: manga}, 
+        {title: API_ROUTES.CHARACTERS,  searchResult: characters} 
     ]
     return (
         <Search 

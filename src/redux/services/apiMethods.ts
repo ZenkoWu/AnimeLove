@@ -33,7 +33,7 @@ type TGetCharactersData = {
     currentPage: number
 }
 
-type TGetSearchedData = {
+export type TGetSearchedData = {
     route: TCategories, 
     input: string, 
     limit: number, // 1 - 25
