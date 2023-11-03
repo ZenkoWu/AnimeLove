@@ -3,20 +3,18 @@ import { TextFieldWrapper } from "../TextFieldWrapper/TextFieldWrapper"
 import ArrowImage from "../../ArrowImage/ArrowImage"
 import { SelectModal } from "../SelectModal/SelectModal"
 import { flexPlace } from "../../../utils/flexPlace"
-
-type TSelectField = {
-    value: string, 
-    setValue:  (payload: string) => void,
-    title: string,
-    placeholder: string,
-    options: string[],
-    zIndex?: number
+import {TSelectModal} from '../SelectModal/SelectModal'
+export type TSelectField = { 
+    title: string, 
+    options: {id: string, label: string}[],
+    value: string,
+    setValue: (id: string) => void,
+    zIndex: number,
 }
 
 export const SelectField = ({
     value, 
     setValue, 
-    placeholder, 
     title, 
     options, 
     zIndex
@@ -30,7 +28,7 @@ export const SelectField = ({
                     className={`w-100 fs-14 text_field m-0 ${flexPlace('between', 'center')}`} 
                     onClick={()=> setOpened((prev) => !prev)}
                 >
-                    {value ?? placeholder}
+                    {value}
                     <ArrowImage opened={opened} />
                 </div>  
             </TextFieldWrapper>

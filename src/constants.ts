@@ -1,35 +1,37 @@
+export const AGE_RATING = [
+    {id: 'g', label:  'G - All Ages'},
+    {id: 'pg', label:  'PG - Children'},
+    {id: 'pg13', label:  'PG-13 - Teens 13 or older'},
+    {id: 'r17', label:  'R - 17+ (violence & profanity)'},
+    {id: 'r', label:   'R+ - Mild Nudity'},
+] as const;
 
-export const AGE_RATING = {
-    'G - All Ages' : 'g',
-    'PG - Children': 'pg',
-    'PG-13 - Teens 13 or older': 'pg13',
-    'R - 17+ (violence & profanity)': 'r17',
-    'R+ - Mild Nudity': 'r'
-} as const;
- 
-export const ANIME_STATUS = {
-    'Finished Airing': 'complete',
-    'Currently Airing': 'airing',
-    'Not yet aired': 'upcoming'
-} as const;
+export const ANIME_STATUS = [
+    {label: 'Finished Airing', id: 'complete'},
+    {label: 'Currently Airing', id:'airing'},
+   { label: 'Not yet aired', id:'upcoming'}
+ ] as const;
 
-export const ANIME_ORDER_BY = {
-    'popularity': 'popularity',
-    'title': 'title',
-    'start date': 'start_date',
-    'end date': 'end_date',
-    'favorites': 'favorites',
-    'episodes': 'episodes'
-} as const;
+const COMMON_ORDER_BY = [
+    {label: 'Popularity', id: 'popularity'},
+    {label: 'Title', id: 'title'},
+    {label: 'Start date', id: 'start_date'},
+    {label: 'End date', id: 'end_date'},
+    {label: 'Favorites', id: 'favorites'},
+] as const;
 
-export const ANIME_TYPE =  {
-    'tv': 'tv',
-    'ova': 'ova',
-    'movie': 'movie',
-    'special': 'special',
-    'music':  'music'
-} as const;
+export const ANIME_ORDER_BY = [
+    ...COMMON_ORDER_BY,
+    {label: 'Episodes', id:'episodes'}
+] as const;
 
+export const ANIME_TYPE = [
+    {label: 'Tv', id: 'tv'},
+    {label: 'Ova', id: 'ova'},
+    {label: 'Movie', id: 'movie'},
+    {label: 'Special', id: 'special'},
+    {label: 'Music', id: 'music'},
+] as const;
 
 export const MANGA_ORDER_BY = {
     'popularity': 'popularity',

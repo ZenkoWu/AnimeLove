@@ -16,14 +16,13 @@ type TGetListParams = {
     route: TCategories, 
     pageLimit: number, // 1 - 25
     currentPage: number, 
-    type: TAnimeFilterState['type'] | TMangaFilterState['type'], 
-    rating?: typeof AGE_RATING[keyof typeof AGE_RATING], 
-    orderBy:  
-        typeof ANIME_ORDER_BY[keyof typeof  ANIME_ORDER_BY] | 
-        typeof MANGA_ORDER_BY[keyof typeof MANGA_ORDER_BY], //TODO улучшить и сократить типизацию
-    status: 
-        typeof ANIME_STATUS[keyof typeof  ANIME_STATUS] | 
-        typeof MANGA_STATUS[keyof typeof MANGA_STATUS],
+    type: TAnimeFilterState['type'],
+    // | TMangaFilterState['type'], 
+    rating?: TAnimeFilterState['rating'], 
+    orderBy: TAnimeFilterState['orderBy'],
+    // | TMangaFilterState['orderBy'],
+    status: TAnimeFilterState['status'],
+    //  | TMangaFilterState['status'],
     sfw: 'sfw' | ''
 }
 

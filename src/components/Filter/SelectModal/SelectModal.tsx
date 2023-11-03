@@ -1,7 +1,7 @@
 import s from './SelectModal.module.css'
 
-type TSelectModal = {
-    options: string[], 
+export type TSelectModal = {
+    options: {id: string, label: string}[],
     zIndex?: number, 
     setValue: (payload: string) => void,
     active: string
@@ -14,14 +14,14 @@ export const SelectModal = ({options, setValue, zIndex, active}: TSelectModal) =
             className={` ${s.container} rounded-3`} 
             style={{ zIndex: `${zIndex}`}}>
             {
-                options?.map(el => 
+                options.map(el => 
                     <div 
-                        key={el}
+                        key={el.id}
                         className={`${s.py_12} rounded-3`}
-                        style={{backgroundColor: active == el ? '#bdb7b7': 'white'}}
-                        onClick={() => setValue(el)} 
+                        style={{backgroundColor: active == el.label ? '#bdb7b7': 'white'}}
+                        onClick={() => setValue(el.id)} 
                     >
-                        {el} 
+                        {el.label} 
                     </div>
                 )
             }

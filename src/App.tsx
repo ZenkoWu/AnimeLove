@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import {Header} from './components/Header/Header';
-import Anime from './components/Anime/Anime';
+import {Anime} from './components/Anime/Anime';
 import {Footer} from './components/Footer/Footer';
 import {Manga} from './components/Manga/Manga';
 import {Home} from './components/Home/Home';
