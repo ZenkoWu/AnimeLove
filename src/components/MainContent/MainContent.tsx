@@ -16,16 +16,12 @@ import { MANGA_ORDER_BY, MANGA_STATUS, MANGA_TYPES } from '../../constants';
 import { TSelectField } from '../Filter/SelectField/SelectField';
 
 type TMainContent = {
-    initialState: TAnimeFilterState,
-    // | TMangaFilterState, 
+    initialState: TAnimeFilterState | TMangaFilterState, 
     category: TCategories,
-    types:  typeof ANIME_TYPE,
-    // | typeof MANGA_TYPES,
-    orderBy: typeof ANIME_ORDER_BY,
-    // | typeof MANGA_ORDER_BY,
-    status: typeof ANIME_STATUS,
-    //  | typeof MANGA_STATUS,
-    rating: typeof AGE_RATING, //only for anime
+    types:  typeof ANIME_TYPE | typeof MANGA_TYPES,
+    orderBy: typeof ANIME_ORDER_BY | typeof MANGA_ORDER_BY,
+    status: typeof ANIME_STATUS | typeof MANGA_STATUS,
+    rating?: typeof AGE_RATING, //only for anime
     title: 'Anime' | 'Manga'
 }
 
@@ -38,10 +34,11 @@ export const MainContent = ({
     rating,
     title
 }: TMainContent) => {
-    const [filter, setFilter] = useState<TAnimeFilterState>(initialState) //| TMangaFilterState
+    const [filter, setFilter] = useState<TAnimeFilterState | TMangaFilterState>(initialState) 
     const isSafeContent = useSelector((state: TState) => state.common.isSafeContent)
 
     const setValue = (select: any)=> (id: string)=> setFilter(prev => ({...prev, [select]: id})) //todo 
+
     const selects : TSelectField[] = [
         {
             title: 'Order by', 
@@ -66,7 +63,7 @@ export const MainContent = ({
         },
     ]
 
-    if(rating && category == API_ROUTES.ANIME) {
+    if( 'rating' in filter && rating && category == API_ROUTES.ANIME) {
         selects.push(
             {
                 title: 'Age rating', 
@@ -91,7 +88,7 @@ export const MainContent = ({
         currentPage, 
         pageLimit, 
         type: filter.type, 
-        rating: rating && filter.rating || '',
+        rating: 'rating' in filter && filter.rating || '',
         orderBy: filter.orderBy,
         status: filter.status,
         sfw: isSafeContent ? 'sfw' : ''

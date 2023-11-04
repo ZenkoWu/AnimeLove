@@ -3,26 +3,15 @@ import { BASE_URL} from './apiRoutes/apiRoutes'
 import { TCategories } from '@/types/mainElementsTypes'
 import { TAnimeFilterState } from '../../components/Anime/Anime'
 import { TMangaFilterState } from '../../components/Manga/Manga'
-import { 
-    AGE_RATING, 
-    ANIME_ORDER_BY, 
-    ANIME_STATUS, 
-    MANGA_ORDER_BY, 
-    MANGA_STATUS 
-} from '@/constants'
-
 
 type TGetListParams = {
     route: TCategories, 
     pageLimit: number, // 1 - 25
     currentPage: number, 
-    type: TAnimeFilterState['type'],
-    // | TMangaFilterState['type'], 
-    rating?: TAnimeFilterState['rating'], 
-    orderBy: TAnimeFilterState['orderBy'],
-    // | TMangaFilterState['orderBy'],
-    status: TAnimeFilterState['status'],
-    //  | TMangaFilterState['status'],
+    type: TAnimeFilterState['type'] | TMangaFilterState['type'], 
+    rating?: TAnimeFilterState['rating'] | '', 
+    orderBy: TAnimeFilterState['orderBy'] | TMangaFilterState['orderBy'],
+    status: TAnimeFilterState['status'] | TMangaFilterState['status'],
     sfw: 'sfw' | ''
 }
 

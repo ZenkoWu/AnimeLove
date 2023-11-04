@@ -1,3 +1,11 @@
+const COMMON_ORDER_BY = [
+    {label: 'Popularity', id: 'popularity'},
+    {label: 'Title', id: 'title'},
+    {label: 'Start date', id: 'start_date'},
+    {label: 'End date', id: 'end_date'},
+    {label: 'Favorites', id: 'favorites'},
+] as const;
+
 export const AGE_RATING = [
     {id: 'g', label:  'G - All Ages'},
     {id: 'pg', label:  'PG - Children'},
@@ -10,14 +18,6 @@ export const ANIME_STATUS = [
     {label: 'Finished Airing', id: 'complete'},
     {label: 'Currently Airing', id:'airing'},
    { label: 'Not yet aired', id:'upcoming'}
- ] as const;
-
-const COMMON_ORDER_BY = [
-    {label: 'Popularity', id: 'popularity'},
-    {label: 'Title', id: 'title'},
-    {label: 'Start date', id: 'start_date'},
-    {label: 'End date', id: 'end_date'},
-    {label: 'Favorites', id: 'favorites'},
 ] as const;
 
 export const ANIME_ORDER_BY = [
@@ -33,29 +33,25 @@ export const ANIME_TYPE = [
     {label: 'Music', id: 'music'},
 ] as const;
 
-export const MANGA_ORDER_BY = {
-    'popularity': 'popularity',
-    'title': 'title',
-    'start date': 'start_date',
-    'end date': 'end_date',
-    'favorites': 'favorites',
-    'chapters': 'chapters'
-} as const;
+export const MANGA_ORDER_BY = [
+    ...COMMON_ORDER_BY,
+    {label: 'Chapters', id:'chapters'}
+] as const;
 
-export const MANGA_STATUS = {
-    'Publishing': 'publishing',
-    'Finished': 'complete',
-    'On Hiatus': 'hiatus',
-    'Discontinued': 'discontinued',
-    'upcoming': 'upcoming'
-} as const;
+export const MANGA_STATUS = [
+    {label: 'Publishing', id: 'publishing'},
+    {label: 'Finished', id: 'complete'},
+    {label: 'On Hiatus', id: 'hiatus'},
+    {label: 'Discontinued', id: 'discontinued'},
+    {label: 'Upcoming', id: 'upcoming'}
+ ] as const;
 
-export const MANGA_TYPES = {
-    'manga': 'manga',
-    'novel': 'novel',
-    'lightnovel': 'lightnovel',
-    'oneshot': 'oneshot',
-    'doujin': 'doujin',
-    'manhwa': 'manhwa',
-    'manhua': 'manhua'
-} as const;
+export const MANGA_TYPES = [
+    {label: 'Manga', id: 'manga'},
+    {label: 'Novel', id: 'novel'},
+    {label: 'Lightnovel', id: 'lightnovel'},
+    {label: 'Oneshot', id: 'oneshot'},
+    {label: 'Doujin', id: 'doujin'},
+    {label: 'Manhwa', id: 'manhwa'},
+    {label: 'Manhua', id: 'manhua'}
+] as const;
