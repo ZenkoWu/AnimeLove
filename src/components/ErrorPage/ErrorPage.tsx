@@ -1,6 +1,7 @@
 import { flexPlace } from '../../utils/flexPlace'
 import notFound from '../../imges/error.png'
 
+//todo можно ли оставлять тег стайл с одним стилем если страница открывается редко и не перерендеривается
 export const ErrorPage = () => {
     return (
         <div className={flexPlace('center', 'center')}>
@@ -11,4 +12,3 @@ export const ErrorPage = () => {
         </div>
     )
 }
-//todo ask можно ли оставлять тег стайл с одним стилем если страница открывается очень редко
