@@ -31,7 +31,7 @@ export const ElementCard = ({category, data}: TElementCard) => {
                     />
                 </div>
             </div>
-            <h5>{title}</h5>
+            <h5 className={s.title}>{title}</h5>
         </div>
     )
 }
