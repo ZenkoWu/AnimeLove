@@ -28,9 +28,9 @@ interface TElementInfo {
 }
 
 export interface TAnimeInfo extends TElementInfo {
-    type?: keyof typeof ANIME_TYPE;
-    rating?:  keyof typeof AGE_RATING,
-    status?: keyof typeof ANIME_STATUS,
+    type?: typeof ANIME_TYPE[number]['label']; 
+    rating?: typeof AGE_RATING[number]['label'],
+    status?: typeof ANIME_STATUS[number]['label'],
     trailer?: {
         embed_url: string,
         url: string
@@ -38,11 +38,10 @@ export interface TAnimeInfo extends TElementInfo {
     duration?: string,  
     episodes?: number,
 }
-
 export interface TMangaInfo extends TElementInfo {
-    type?: keyof typeof MANGA_TYPES,
+    type?: typeof MANGA_TYPES[number]['label'],
     chapters?: number,
-    status?: keyof typeof MANGA_STATUS,
+    status?: typeof MANGA_STATUS[number]['label']
 }
 
 export type TCharactersInfo = {
