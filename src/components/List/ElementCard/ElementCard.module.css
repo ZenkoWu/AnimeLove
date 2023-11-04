@@ -1,6 +1,5 @@
 .poster {
-    /* height: 315px; max-height: 350px; */
-    max-height: 300px;
+    max-height: 450px;
     object-fit: cover;
     width: 100%;
 }
