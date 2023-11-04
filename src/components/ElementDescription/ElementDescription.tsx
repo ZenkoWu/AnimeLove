@@ -28,22 +28,22 @@ export const ElementDescription = ({route}: {route: TCategories}) => {
     }
     
     const recommends = rec.data.map((el: any) => el.entry)
-    const info = data.data //todo TAnimeInfo | TMangaInfo 
+    const info: TAnimeInfo | TMangaInfo = data.data
 
-    const moreInfo = route === API_ROUTES.ANIME ?
+    const moreInfo = 'episodes' in info && route === API_ROUTES.ANIME ?
         [
             {title: 'Type', value: info.type },
             {title: 'Year', value: info.year },
             {title: 'Source', value: info.source },
             {title: 'Episodes', value: info.episodes },
             {title: 'Rating', value: info.rating },
-            {title: 'Genre', value: info.genres?.map((g: any) => g.name).join(', ')},
+            {title: 'Genre', value: info.genres?.map((g: any) => g.name).join(', ') || 'unknown'},
             {title: 'Status', value: info.status },
         ] 
     :
         [
-            {title: 'Chapters', value: info.chapters  ?? 'unknown'},
-            {title: 'Genre', value: info.genres?.map((g: any) => g.name).join(', ')},
+            {title: 'Chapters', value: 'chapters' in info && info.chapters  || 'unknown'},
+            {title: 'Genre', value: info.genres?.map((g: any) => g.name).join(', ') || 'unknown'},
             {title: 'Status', value: info.status },
         ]
 
@@ -104,14 +104,14 @@ export const ElementDescription = ({route}: {route: TCategories}) => {
                     {
                         route === API_ROUTES.ANIME &&
                         (
-                            info.trailer?.embed_url ?
+                            'trailer' in info && info.trailer?.embed_url &&
                             <iframe 
                                 width="80%" 
                                 height="550px" 
                                 className="px-5 m-auto d-block"
                                 src={info.trailer.embed_url}
                             />
-                            : 
+                            || 
                             <p className="pt-4 fs-5">
                                 We will add trailer soon ^-^
                             </p>
