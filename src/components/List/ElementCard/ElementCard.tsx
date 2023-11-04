@@ -9,8 +9,7 @@ export const ElementCard = ({category, data}: TElementCard) => {
     const title = 'title' in data ? data.title : data.name
     
     return ( 
-        //todo w-100
-        <div  className='w-25 px-3 text-center mb-2' > 
+        <div className='px-3 text-center mb-2' > 
             <div className={`${s.cardContainer} position-relative`}>
                 <NavLink to={`${data.mal_id}`}>
                     <img 

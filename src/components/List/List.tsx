@@ -60,11 +60,13 @@ export const List = ({
                     <div className='d-flex justify-between flex-wrap'>  
                         { 
                             elementsList.map((el) => 
+                            <div className='w-25'>
                                 <ElementCard 
                                     category={title.toLowerCase()  as TCategories} 
                                     data={el} 
                                     key={el.mal_id}
                                 />
+                            </div>
                             ) 
                         }
                     </div> 
