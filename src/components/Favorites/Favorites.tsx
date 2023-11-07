@@ -59,7 +59,7 @@ export const Favorites = () => {
                         onClick={()=> setOpened(true)} 
                         className="btn btn-primary" 
                         style={{whiteSpace:'nowrap'}}
-                        disabled={count === 0}
+                        disabled={favorites[active]?.count === 0 || !favorites[active]}
                     >
                         delete all {active}
                     </button>
