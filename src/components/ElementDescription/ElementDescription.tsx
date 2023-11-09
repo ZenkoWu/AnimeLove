@@ -11,7 +11,7 @@ import {Carousel} from "../../components/Carousel/Carousel"
 import { API_ROUTES } from "../../redux/services/apiRoutes/apiRoutes"
 import { ErrorPage } from "../../components/ErrorPage/ErrorPage"
 
-const recommendsAmount = 6
+const recommendsAmount = 10
 
 export const ElementDescription = ({route}: {route: TCategories}) => {
     const params = useParams()
@@ -53,8 +53,8 @@ export const ElementDescription = ({route}: {route: TCategories}) => {
         <div className={s.container}>
             <div className={s.cardBackground}>
                 <div className='p-4 w-100'>
-                    <div className="d-flex gap-4 pb-4">
-                        <img src={info.images.jpg.image_url} alt="info-img" className={s.infoPic}/>
+                    <div className={s.elementDescription}>
+                        <img src={info.images.jpg.image_url} alt="info-img" className={s.poster}/>
                         <div className="w-100"> 
                             <div className={`${flexPlace('between', 'center')}`}>
                                 <div className=" d-flex">
