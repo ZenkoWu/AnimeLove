@@ -3,11 +3,11 @@ import {ElementCardFull} from './ElementCardFull/ElementCardFull';
 import s from './List.module.css'
 import { useState } from 'react';
 import {ElementCard} from './ElementCard/ElementCard';
-import { TMangaInfo,TAnimeInfo, TCategories } from '../../types/mainElementsTypes';
+import { TMangaInfo,TAnimeInfo, TCategories, TCharactersInfo } from '../../types/mainElementsTypes';
 import { flexPlace } from '../../utils/flexPlace';
 
 type TList = {
-    elementsList: TAnimeInfo[] | TMangaInfo[], 
+    elementsList: TAnimeInfo[] | TMangaInfo[] | TCharactersInfo[], 
     changeCurrentPage: (p: number) => void, 
     currentPage: number, 
     totalElementCount: number, 
@@ -31,7 +31,14 @@ export const List = ({
     return (
         <div className={s.container}>
             <div className={`${s.elementList}`}>
-                <div className={` pt-2 pb-3 ${smallSize ? s.filterBtn : s.listHeader}`}>
+                <div 
+                    className={`pt-2 pb-3 
+                        ${
+                            title == 'Characters' ? `${flexPlace('between', 'center')}` : 
+                            !smallSize && s.listHeader
+                        }`
+                    }
+                >
                     <h2 className={s.title}>{title} List</h2>
                     <div className={smallSize && `${flexPlace('between', 'center')} pt-2 pb-3` || ''}>
                         {   
@@ -44,16 +51,16 @@ export const List = ({
                             </button>
                         }
                         
-                            <div className="form-check form-switch fs-4">
-                                <input 
-                                    className="form-check-input border border-primary" 
-                                    type="checkbox" 
-                                    role="switch" 
-                                    id="flexSwitchCheckDefault"
-                                    onClick={()=> setIsFullCard(prev => !prev)}
-                                />
-                            </div>
+                        <div className="form-check form-switch fs-4">
+                            <input 
+                                className="form-check-input border border-primary" 
+                                type="checkbox" 
+                                role="switch" 
+                                id="flexSwitchCheckDefault"
+                                onClick={()=> setIsFullCard(prev => !prev)}
+                            />
                         </div>
+                    </div>
                 </div>
                 {
                     elementsList.length < 1 && 
