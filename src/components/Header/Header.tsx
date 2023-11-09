@@ -3,7 +3,7 @@ import {useState} from 'react'
 import { flexPlace } from '../../utils/flexPlace';
 import {NavBar} from './NavBar/NavBar';
 import {BurgerMenu} from './NavBar/BurgerMenu/BurgerMenu';
-import { getWindowSizes } from './NavBar/useWindowSizes';
+import { getWindowSizes } from './NavBar/useWindowSizes/useWindowSizes';
 import { BtnGroup } from './BtnGroup/BtnGroup';
 
 const menuItems = [

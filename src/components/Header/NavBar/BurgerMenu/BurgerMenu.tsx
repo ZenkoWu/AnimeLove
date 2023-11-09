@@ -1,7 +1,7 @@
 import { Menu } from "@mui/material";
 import React, { useState, useCallback } from "react";
 import { NavLink } from "react-router-dom";
-import { useWindowSizes } from "../useWindowSizes";
+import { useWindowSizes } from "../useWindowSizes/useWindowSizes";
 
 export const BurgerMenu = ({menuConfig}: {
     menuConfig: { 

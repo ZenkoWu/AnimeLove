@@ -1,11 +1,9 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import s from './NavBar.module.css'
-import { useState } from 'react';
+import s from './NavBar.module.css';
 import { flexPlace } from '../../../utils/flexPlace';
 import { API_ROUTES } from '../../../redux/services/apiRoutes/apiRoutes';
 import { useSelector } from 'react-redux';
 import { TState } from '../../../redux/store';
-import { getWindowSizes } from './useWindowSizes';
 
 const getRandomAnime = (
     navigate: (link: string, extra: {replace: boolean}) => void, 
