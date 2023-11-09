@@ -1,5 +1,6 @@
 .poster {
     max-height: 450px;
+    min-height: 300px;
     object-fit: cover;
     width: 100%;
 }
@@ -32,4 +33,33 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+
+.container {
+    padding-top: 20px;
+}
+
+
+@media (max-width: 1200px) {
+    .poster {
+        max-height: 400px;
+    }
+}
+
+@media (max-width: 991px) {
+    .poster {
+        max-height: 300px;
+        min-height: 100px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 10px;
+       
+    }
+    .poster {
+        max-height: 400px;
+    }
 }
