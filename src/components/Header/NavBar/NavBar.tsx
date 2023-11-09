@@ -25,12 +25,9 @@ export const NavBar = ({menuItems, width}: {
 }) => {
     const navigate = useNavigate();
     const {totalAmount} = useSelector((state: TState) => state.pagination.anime)
-
-    // const [width, setWidth] = useState(getWindowSizes().width) // todo remove
-    // window.addEventListener('resize', ()=> setWidth(()=> getWindowSizes().width ))
   
     return (
-        <div className={width > 990 ? (`${flexPlace('between', 'center')} gap-4`): 'd-none'}>
+        <div className={width > 991 ? (`${flexPlace('between', 'center')} gap-4`): 'd-none'}>
             <NavLink to='/' className={s.title}>AnimeLove</NavLink>
                 {
                     menuItems.map((link, i) => (
