@@ -31,6 +31,12 @@
     }
 }
 
+@media (max-width: 890px) {
+    .container {
+        padding: 6vw 10vw;
+        display: block;
+    }
+}
 @media (max-width: 690px) {
     .container {
         padding: 5vw;
