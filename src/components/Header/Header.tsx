@@ -2,25 +2,41 @@ import { useDispatch, useSelector } from 'react-redux';
 import s from './Header.module.css'
 import {useState} from 'react'
 import { createPortal } from 'react-dom';
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import SearchContainer from './SearchContainer/SearchContainer';
 import { flexPlace } from '../../utils/flexPlace';
 import { TState } from '../../redux/store';
 import { commonActions } from '../../redux/features/common';
 import { Modal } from '../Modal/Modal';
-import { API_ROUTES } from '../../redux/services/apiRoutes/apiRoutes';
+import {NavBar} from './NavBar/NavBar';
+import {BurgerMenu} from './NavBar/BurgerMenu/BurgerMenu';
+import { getWindowSizes } from './NavBar/useWindowSizes';
 
-const getRandomAnime = (
-    navigate: (link: string, extra: {replace: boolean}) => void, 
-    totalAnimeCount: number
-) => {
-    const randomAnimeId = Math.floor(Math.random() * totalAnimeCount) + 1;
-    navigate(`${API_ROUTES.ANIME}/${randomAnimeId}`, { replace: true })
-}
+const menuItems = [
+    {
+        route: '/',
+        title:'Home',
+        key: 0,
+    },
+    {
+        route: '/anime',
+        title:'Anime',
+        key: 1,
+    }, 
+    {
+        route: '/manga',
+        title:'Manga',
+        key: 2,
+    },
+    {
+        route: '/characters',
+        title:'Characters',
+        key: 3,
+    },
 
-export const Header = () => {
-    const navigate = useNavigate();
-    const {totalAmount} = useSelector((state: TState) => state.pagination.anime) 
+]
+
+export const Header = () => { 
     const favCount = useSelector((state: TState) => state.favorites.count)
     const isSafeContent = useSelector((state: TState) => state.common.isSafeContent)
 
@@ -31,6 +47,9 @@ export const Header = () => {
     const changeContentMode = () => (
         isSafeContent ? setOpened(true) : dispatch(commonActions.setSafeContent(true))
     )
+    const [width, setWidth] = useState(getWindowSizes().width)
+
+    window.addEventListener('resize', ()=> setWidth(()=> getWindowSizes().width ))
 
     return (
         <header className={`${s.container} ${flexPlace('between', 'center')}`} >
@@ -50,21 +69,12 @@ export const Header = () => {
                     document.getElementById('content')!
                 )
             }
-            <div className={`${flexPlace('between', 'center')} gap-4`}>
-                <NavLink to='/' className={s.title}>AnimeLove</NavLink>
-                <div className={`${flexPlace('between', 'center')} gap-4`}>
-                    <NavLink to='/anime' className={s.link}>Anime</NavLink>
-                    <NavLink to='/manga' className={s.link}>Manga</NavLink>
-                    <NavLink to='/characters' className={s.link}>Characters</NavLink>
-                    <p 
-                        className={`${s.link} m-0 cursor-pointer`}
-                        onClick={()=>getRandomAnime(navigate, totalAmount)}
-                    >
-                        Random anime
-                    </p>
-                </div>
-            </div>
-            <div className={`${flexPlace('between', 'center')} gap-3`}>
+             <div className={`${flexPlace('between', 'center')} gap-4`}>
+                <NavBar menuItems={menuItems} width={width}/>
+                <BurgerMenu menuConfig={menuItems}/>
+            </div> 
+            
+            <div className={`${flexPlace('between', 'center')} gap-3`}> 
                 <div className="form-check form-switch fs-5 pb-1 ">
                     <input 
                         className={`form-check-input border ${!isSafeContent && 'border-primary'}`} 
