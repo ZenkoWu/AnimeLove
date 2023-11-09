@@ -65,23 +65,27 @@ export const Favorites = () => {
                     </button>
                 </div>  
                 <div className="pt-4"> 
-                    <div className={`d-flex p-2 w-100 flex-wrap`}> 
+                    <div className={`${flexPlace('start', 'start')} flex-wrap p-2 w-100`}> 
                         { 
                             active == 'manga' && favorites.manga?.count ?
                                 Object.values(favorites.manga.items).map(el => (
-                                // <div className=' red w-25'> // todo rewrite this code
+                                <div className={s.elementCard}> 
                                     <ElementCard category={active} data={el}/>
-                                    // </div>
+                                </div>
                                 ))  
                             : 
                                 active == 'anime' && favorites.anime?.count ?
                                 Object.values(favorites.anime.items).map(el => (
-                                    <ElementCard category={active} data={el}/>
+                                    <div className={s.elementCard}> 
+                                        <ElementCard category={active} data={el}/>
+                                    </div>
                                 )) 
                             :
                                 active == 'characters' && favorites.characters?.count ?
                                 Object.values(favorites.characters.items).map(el => (
-                                    <ElementCard category={active} data={el}/>
+                                    <div className={s.elementCard}> 
+                                        <ElementCard category={active} data={el}/>
+                                    </div>
                                 ))  
                             : 
                                 <div>No favorite {active} </div>

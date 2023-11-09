@@ -1,0 +1,51 @@
+.container {
+    display: grid;
+    grid-template-columns: 6fr 2fr;
+    padding: 50px;
+    gap: 30px;
+    /* display: flex;
+    justify-content: space-between;
+    padding: 50px;*/ /* TODO flex */
+}
+
+.filterBackground {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1000; 
+    top: 50px; 
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+@media (max-width: 1200px) {
+    .container {
+        padding: 6vw;
+        display: block;
+    }
+}
+
+@media (max-width: 991px) {
+    .container {
+        padding: 6vw 12vw;
+        display: block;
+    }
+}
+
+@media (max-width: 890px) {
+    .container {
+        padding: 6vw 10vw;
+        display: block;
+    }
+}
+@media (max-width: 690px) {
+    .container {
+        padding: 5vw;
+        display: block;
+    }
+}
+@media (max-width: 510px) {
+    .container {
+        padding: 10px;
+        display: block;
+    }
+}

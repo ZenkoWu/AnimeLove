@@ -1,4 +1,7 @@
 .wrapper_modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   left: 0;
   top: 0;
@@ -13,11 +16,10 @@
 }
 
 .modal {
+  margin: 10px;
   display: inline-block; 
   cursor: default;
   position: absolute;
-  left: 30vw;
-  top: 35vh;
   z-index: 5000;
   animation: appear 500ms ease-in-out 1;
 }

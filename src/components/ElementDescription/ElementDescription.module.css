@@ -10,3 +10,55 @@
 .borderBottomGrey {
     border-bottom: 1px solid #ced4da;
 }
+
+.poster {
+    max-height: 550px;
+    min-height: 300px;
+    object-fit: cover;
+}
+
+.elementDescription {
+    display: flex;
+    padding-bottom: 20px;
+    gap: 24px;
+}
+
+@media (max-width: 576px) {
+    .poster {
+        max-height: 400px;
+        max-width: 300px;
+    }
+    .elementDescription {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .container {
+        padding: 6vw;
+    }
+}
+
+@media (max-width: 991px) {
+    .container {
+        padding: 6vw 9vw;
+    }
+}
+
+@media (max-width: 890px) {
+    .container {
+        padding: 5vw 10vw;
+    }
+}
+@media (max-width: 690px) {
+    .container {
+        padding: 5vw;
+    }
+}
+@media (max-width: 510px) {
+    .container {
+        padding: 10px;
+    }
+}

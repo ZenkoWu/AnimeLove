@@ -1,3 +1,31 @@
 .container {
-    padding: 50px 150px;
+    padding: 50px 200px;
+}
+
+@media (max-width: 1200px) {
+    .container {
+        padding: 6vw;
+    }
+}
+
+@media (max-width: 991px) {
+    .container {
+        padding: 6vw 12vw;
+    }
+}
+
+@media (max-width: 890px) {
+    .container {
+        padding: 6vw 10vw;
+    }
+}
+@media (max-width: 690px) {
+    .container {
+        padding: 5vw;
+    }
+}
+@media (max-width: 510px) {
+    .container {
+        padding: 10px;
+    }
 }

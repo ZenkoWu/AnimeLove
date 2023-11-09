@@ -12,7 +12,10 @@ import { TGetSearchedData } from "@/redux/services/apiMethods"
 
 const searchLimit = 3;
 
-const SearchContainer = () => {
+const SearchContainer = ({searched, setSearched}: {
+    searched: boolean, 
+    setSearched: (searched: boolean)=> void
+}) => {
     const [input, setInput] = useState('')
     const [searchTerm] = useDebounce(input, 1500)
 
@@ -39,6 +42,8 @@ const SearchContainer = () => {
             searchBlocks={searchBlocks} 
             setInput={setInput} 
             input={input}
+            searched={searched} 
+            setSearched={setSearched}
         />
     )
 }

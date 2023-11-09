@@ -1,7 +1,7 @@
-.modalContainer {
+.modalContainer { /* search blocks modal */
     position: absolute;
     top: 50px; 
-    width: 360px;
+    width: 360px; 
     border: 1px solid rgb(209, 204, 204);
     box-shadow: 0px 3px 15px grey;
     overflow-y: auto;
@@ -10,11 +10,11 @@
 }
 
 .modalContainer::-webkit-scrollbar {
-    width: 16px; /* ширина для вертикального скролла */
+    width: 16px; /* width for vertical scroll */
     background-color: rgba(247, 82, 41, 0.3);
 }
 
-/* ползунок скроллбара */
+/* scrollbar slider */
 .modalContainer::-webkit-scrollbar-thumb {
     background-color: rgb(247, 82, 41);
 }
@@ -29,4 +29,13 @@
 
 .searchInput input:focus{
     outline: none;
+}
+
+@media (max-width: 530px) {
+    .searchInput {
+        width: 60vw;
+    }
+    .modalContainer {
+        width: 60vw;
+    }
 }
