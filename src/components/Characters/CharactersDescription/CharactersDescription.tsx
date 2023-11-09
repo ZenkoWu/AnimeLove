@@ -26,37 +26,39 @@ export const CharactersDescription = () => {
     return (
         <div className={s.container}>
             <div className={s.cardBackground}>
-                <div className='p-4 w-100'>
-                    <img 
-                        src={characters.images.jpg.image_url} 
-                        alt="character-poster" 
-                        className={'pe-4 pb-2 float-start'} 
-                    />
-                    <div className="pb-4" >
-                    <div className="w-100"> 
-                        <div className={`${flexPlace('between', 'center')}`}>
-                            <h1 className='fw-bold fs-2' >{characters.name}</h1>
-                            <FavoriteBtn 
-                                category={API_ROUTES.CHARACTERS}
-                                info={{
-                                    mal_id: characters.mal_id,
-                                    images: characters.images,
-                                    title: characters.name
-                                }}
-                            />
-                        </div>
-                        <p className={s.borderBottomGrey}>{characters.name_kanji}</p> 
-                        <p className="p-0 m-0">Nicknames: {characters.nicknames?.map(el => el).join(', ')}</p>
-                    </div>
+                <div className={`p-4 w-100`}>
+                    <div className={`${s.elementDescription}`}>
+                        <img 
+                            src={characters.images.jpg.image_url} 
+                            alt="character-poster" 
+                            className={`float-start ${s.poster}`} 
+                        />
+                        <div className="pb-4">
+                            <div className="w-100"> 
+                                <div className={`${flexPlace('between', 'center')}`}>
+                                    <h1 className='fw-bold fs-2' >{characters.name}</h1>
+                                    <FavoriteBtn 
+                                        category={API_ROUTES.CHARACTERS}
+                                        info={{
+                                            mal_id: characters.mal_id,
+                                            images: characters.images,
+                                            title: characters.name
+                                        }}
+                                    />
+                                </div>
+                                <p className={s.borderBottomGrey}>{characters.name_kanji}</p> 
+                                <p className="p-0 m-0">Nicknames: {characters.nicknames?.map(el => el).join(', ')}</p>
+                            </div>
 
-                        
-                    { 
-                        characters.about &&
-                        <div className="py-3">
-                            <h4>Description</h4>
-                            <p>{characters.about}</p>
+                            
+                            { 
+                                characters.about &&
+                                <div className="py-3">
+                                    <h4>Description</h4>
+                                    <p>{characters.about}</p>
+                                </div>
+                            }
                         </div>
-                    }
                     </div>
                 </div>
             </div>
