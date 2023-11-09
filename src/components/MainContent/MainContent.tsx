@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { api } from "../../redux/services/api/api";
 import Preloader from "../Preloader/Preloader";
 import {List} from '../List/List';
 import { Filter} from '../Filter/Filter';
-import { ContentContainer } from '../ContentContainer/ContentContainer';
+import s from './MainContent.module.css';
 import { TState } from '../../redux/store';
 import { paginationActions } from '../../redux/features/pagination';
 import { API_ROUTES } from '../../redux/services/apiRoutes/apiRoutes';
@@ -14,6 +14,7 @@ import { TMangaFilterState } from '../Manga/Manga';
 import { AGE_RATING, ANIME_ORDER_BY, ANIME_TYPE, ANIME_STATUS } from '../../constants';
 import { MANGA_ORDER_BY, MANGA_STATUS, MANGA_TYPES } from '../../constants';
 import { TSelectField } from '../Filter/SelectField/SelectField';
+import { getWindowSizes } from '../Header/NavBar/useWindowSizes/useWindowSizes';
 
 type TMainContent = {
     initialState: TAnimeFilterState | TMangaFilterState, 
@@ -36,8 +37,25 @@ export const MainContent = ({
 }: TMainContent) => {
     const [filter, setFilter] = useState<TAnimeFilterState | TMangaFilterState>(initialState) 
     const isSafeContent = useSelector((state: TState) => state.common.isSafeContent)
+    const [isFilterClicked, setIsFilterClicked] = useState(false)
 
-    const setValue = (select: any)=> (id: string)=> setFilter(prev => ({...prev, [select]: id})) //todo 
+    const [width, setWidth] = useState(getWindowSizes().width)
+    window.addEventListener('resize', ()=> setWidth(()=> getWindowSizes().width ))
+
+    // remove scrollbar when modal filter is open
+    useEffect(()=> {
+        const body = document.querySelector('body')!
+
+        if(isFilterClicked) {
+            body.style.height = '100vh'
+            body.style.overflow = 'hidden'
+        } else {
+            body.style.height = '100%'
+            body.style.overflow = 'visible'
+        }
+    }, [isFilterClicked])
+
+    const setValue = (select: any)=> (id: string)=> setFilter(prev => ({...prev, [select]: id})) //todo
 
     const selects : TSelectField[] = [
         {
@@ -106,19 +124,29 @@ export const MainContent = ({
         category, 
         count: data.pagination.items.total
     }))
+   
    return (
-        <div>
-            <ContentContainer>
-                <List
-                    title={title}
-                    elementsList={data.data} 
-                    changeCurrentPage={changeCurrentPage} 
-                    currentPage={currentPage}
-                    totalElementCount={totalAmount}
-                    pageSize={pageLimit}
+        <div className={s.container}>
+            { isFilterClicked && <div className={s.filterBackground}/> }
+            <List
+                title={title}
+                elementsList={data.data} 
+                changeCurrentPage={changeCurrentPage} 
+                currentPage={currentPage}
+                totalElementCount={totalAmount}
+                pageSize={pageLimit}
+                smallSize={ width <= 1200}
+                setIsFilterClicked={setIsFilterClicked}
+            />
+            {
+                isFilterClicked && 
+                <Filter 
+                    selects={selects} 
+                    smallSize 
+                    setIsFilterClicked={setIsFilterClicked}
                 />
-                <Filter selects={selects}/>
-            </ContentContainer>
+            }
+            { width > 1200 && <Filter selects={selects}/> }
         </div>
     )
 }
