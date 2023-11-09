@@ -20,6 +20,7 @@ export const ElementDescription = ({route}: {route: TCategories}) => {
         return <ErrorPage/>;
     }
 
+    // r - вообще непонятно тут с какой сущностью работаешь
     const {data} = api.getById({route, id: params.id})
     const {data: rec} = api.getRecommendations({route, id: params.id})
 
@@ -27,9 +28,11 @@ export const ElementDescription = ({route}: {route: TCategories}) => {
         return <Preloader/>
     }
     
+    // r - эни :(
     const recommends = rec.data.map((el: any) => el.entry)
-    const info: TAnimeInfo | TMangaInfo = data.data
+    const info: TAnimeInfo | TMangaInfo = data.data// r - дата дата , оч понятнои некрасиво :(
 
+    // r - мемоизация
     const moreInfo = 'episodes' in info && route === API_ROUTES.ANIME ?
         [
             {title: 'Type', value: info.type },

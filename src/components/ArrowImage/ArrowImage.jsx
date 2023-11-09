@@ -1,6 +1,6 @@
 import arrowDown from '../../imges/arrowDown.svg'
 import arrowUp from '../../imges/arrowUp.svg'
-
+// r - файл jsx феееее
 const ArrowImage = ({opened}) => {
     return (
         <div>

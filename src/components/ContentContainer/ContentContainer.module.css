@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 6fr 2fr;
     padding: 50px;
-    /* display: flex;
+    /* display: flex;// r - комееееент
     justify-content: space-between;
     padding: 50px; // todo flex */ 
 }

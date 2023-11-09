@@ -22,7 +22,7 @@ export interface TState {
             anime?: {
                 items: {
                     [key in string]: TAnimeInfo
-                },
+                },// r - тут можно записать как Record<string, TAnimeInfo> 
                 count: number
                 
             },

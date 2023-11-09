@@ -10,7 +10,8 @@ export type TAnimeFilterState = {
 }
 
 const initialState: TAnimeFilterState = {
-    type: ANIME_TYPE[0].id,
+    type: ANIME_TYPE[0].id,// r - ANIME_TYPE[0] эт че за , некрасиво, заведи дефолтный и там это сделай, рандомные индексы - плохо
+    // r -  меняя порядок в массиве я никак не вижу связи что где-то это берется первым
     rating: AGE_RATING[0].id,
     orderBy: ANIME_ORDER_BY[0].id,
     status: ANIME_STATUS[0].id

@@ -9,10 +9,10 @@ type TGetListParams = {
     pageLimit: number, // 1 - 25
     currentPage: number, 
     type: TAnimeFilterState['type'] | TMangaFilterState['type'], 
-    rating?: TAnimeFilterState['rating'] | '', 
+    rating?: TAnimeFilterState['rating'] | '', // r - он опциональный, зачем пустая строка
     orderBy: TAnimeFilterState['orderBy'] | TMangaFilterState['orderBy'],
     status: TAnimeFilterState['status'] | TMangaFilterState['status'],
-    sfw: 'sfw' | ''
+    sfw: 'sfw' | ''// r - поч не опциональный? 
 }
 
 type TGetCharactersData = {

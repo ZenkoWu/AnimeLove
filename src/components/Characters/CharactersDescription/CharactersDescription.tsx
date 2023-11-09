@@ -14,6 +14,7 @@ export const CharactersDescription = () => {
     if(!params.charactersId) {
         return <ErrorPage/>;
     }
+    // r - api.manga.getById было бы понятнее, по неймингу хз что за сущность получим
     const {data} = api.getById({route: API_ROUTES.CHARACTERS, id: params.charactersId}) 
 
     if(!data) {
@@ -38,7 +39,7 @@ export const CharactersDescription = () => {
                             <h1 className='fw-bold fs-2' >{characters.name}</h1>
                             <FavoriteBtn 
                                 category={API_ROUTES.CHARACTERS}
-                                info={{
+                                info={{// r - в переменную и мемоизруй а, оно ж разное на ререндерах 
                                     mal_id: characters.mal_id,
                                     images: characters.images,
                                     title: characters.name

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import s from './Characters.module.css'
+import s from './Characters.module.css'// r - поч они идут через модули? 
 import { useCallback } from 'react';
 import { api } from "../../redux/services/api/api";
 import Preloader from "../Preloader/Preloader";

@@ -1,6 +1,6 @@
 import { TState } from '@/redux/store';
 import {createSlice} from '@reduxjs/toolkit';
-
+// r -  коммент к папке фич - поработай над читаемостью и названиями файлов и всего, ничего непонятно
 const initialState: TState['common'] = {
     isSafeContent: true
 }
