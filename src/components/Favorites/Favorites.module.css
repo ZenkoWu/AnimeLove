@@ -1,3 +1,68 @@
 .container {
     padding: 50px 150px;
 }
+
+.elementList {
+    background-color: white;
+    border: 1px solid rgb(209, 204, 204);
+    padding: 20px;
+}
+.title {
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.elementCard {
+    width: 25%;
+}
+
+.listHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filterBtn {
+    display: none;
+}
+
+.elementCard {
+    width: 25%;
+} 
+
+@media (max-width: 1200px) {
+    
+    .container {
+        padding: 6vw;
+    }
+}
+
+@media (max-width: 991px) { 
+    .elementCard {
+        width: 33%;
+    }
+    .container {
+        padding: 6vw 10vw;
+    }
+}
+
+@media (max-width: 576px) {
+    .elementCard {
+        width: 50%;
+    }
+}
+
+@media (max-width: 1200px) {
+    
+}
+
+@media (max-width: 690px) {
+    .container {
+        padding: 5vw;
+    }
+}
+@media (max-width: 510px) {
+    .container {
+        padding: 10px;
+    }
+}
