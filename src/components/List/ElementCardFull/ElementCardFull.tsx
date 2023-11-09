@@ -14,7 +14,8 @@ export const ElementCardFull = ({category, data}: TElementCard) => {
             <div className={`${s.content} w-100`}>
                 <div className={`${flexPlace('between', 'center')}`}>
                     <NavLink to={`${data.mal_id}`} className='text-dark'>
-                    <h2>{title}</h2></NavLink>
+                        <p className={s.cardTitle}>{title}</p>
+                    </NavLink>
                     <FavoriteBtn 
                         category={category} 
                         info={{
