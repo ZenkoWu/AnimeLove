@@ -32,6 +32,37 @@
     background-size: 8px 10px;
     background: url('https://cdn2.iconfinder.com/data/icons/user-interface-solid-6/64/User_Interface_Glyph-49-1024.png') no-repeat ;
     background-size: 20px;
-    background-position: right center;
-    
+    background-position: right center; 
+}
+.filterModal {
+    position: fixed;
+    z-index: 2000; 
+    top: 50px; 
+    left: 0;
+    background-color: white;
+    height: 100%;    
+}
+
+@media (max-width: 1200px) {
+    .filterModal {
+        width: 37%;
+    }
+}
+
+@media (max-width: 991px) { 
+    .filterModal {
+        width: 43%;
+    }
+}
+
+@media (max-width: 690px) {
+    .filterModal {
+        width: 53%;
+    }
+}
+
+@media (max-width: 510px) {
+    .filterModal {
+        width: 60%;
+    }
 }
