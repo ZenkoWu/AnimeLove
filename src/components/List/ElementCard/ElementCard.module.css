@@ -1,5 +1,5 @@
 .poster {
-    max-height: 450px;
+    max-height: 325px;
     min-height: 300px;
     object-fit: cover;
     width: 100%;
@@ -40,20 +40,18 @@
     padding-top: 20px;
 }
 
-
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
     .poster {
-        max-height: 400px;
+        max-height: 350px;
+        min-height: 270px;
     }
 }
 
 @media (max-width: 991px) {
     .poster {
         max-height: 300px;
-        min-height: 100px;
     }
 }
-
 @media (max-width: 576px) {
     .container {
         padding: 10px;

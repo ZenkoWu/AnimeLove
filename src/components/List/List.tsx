@@ -69,10 +69,10 @@ export const List = ({
                                     data={el} 
                                     key={el.mal_id}
                                 />)
-                        }
+                        } 
                     </div>
                     :
-                    <div className={`${flexPlace('center', 'start')}  flex-wrap ${s.cardContainer}`}>  
+                    <div className={`${flexPlace('start', 'start')} flex-wrap ${s.cardContainer}`}>  
                         { 
                             elementsList.map((el) => 
                             <div className={s.elementCard}>
