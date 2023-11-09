@@ -60,7 +60,7 @@ export const SearchBlock = ({title, searchResult}: TSearchBlock) => {
                                         {   
                                             'genres' in el &&
                                             <div className={`d-flex align-items-end h-50 ${s.cardTitle}`}>
-                                                <span className='text-decoration-underline'>Genres</span>:
+                                                <span className={'text-decoration-underline'}>Genres</span>:
                                                 { 
                                                     el.genres?.length ? 
                                                         el.genres?.map(g => g.name).join(', ')

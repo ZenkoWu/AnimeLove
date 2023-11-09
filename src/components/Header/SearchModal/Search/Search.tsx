@@ -1,17 +1,23 @@
-import { useState } from "react"
 import s from './Search.module.css'
 import { SearchBlock, TSearchBlock } from "./SearchBlock/SearchBlock"
 import loupe from '../../../../imges/loupeBtn.svg'
 import closeBtn from '../../../../imges/closeSearch.svg'
 
 export type TSearch = {
+    searched: boolean, 
+    setSearched: (searched: boolean) => void,
     searchBlocks: TSearchBlock[], 
     setInput: (input: string)=> void, 
     input: string
 }
 
-export const Search = ({searchBlocks, setInput, input}: TSearch) => {
-    const [searched, setSearched] = useState(false)
+export const Search = ({
+    searched, 
+    setSearched, 
+    searchBlocks, 
+    setInput, 
+    input
+}: TSearch) => {
     return (
         <div>
             {
