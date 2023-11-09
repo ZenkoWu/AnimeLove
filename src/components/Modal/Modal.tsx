@@ -1,7 +1,7 @@
 import s from './Modal.module.css';
 import { flexPlace } from "../../utils/flexPlace";
 
-type TDeleteTicket = {
+type TModal = {
     opened: boolean,
     setOpened:(open: boolean) => void,
     onAccept:() => void,
@@ -15,7 +15,7 @@ export const Modal = ({
     onAccept, 
     question, 
     title
-}: TDeleteTicket) => {
+}: TModal) => {
     const onAcceptClick = () => {
         onAccept()
         setOpened(false)
