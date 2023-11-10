@@ -41,7 +41,7 @@ export const BurgerMenu = ({menuConfig}: {
             </button>
         
             <Menu
-                style={{marginTop: "5px"}}
+                style={{marginTop: "5px", zIndex:'2001'}}
                 id="simple-menu"
                 anchorEl={anchor}
                 open={isOpen}
