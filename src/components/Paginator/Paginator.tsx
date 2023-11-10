@@ -55,13 +55,13 @@ export const Paginator = ({
                         pages
                             .map(p => 
                                 p >= leftPortionPageNumber && p <= rightPortionPageNumber &&
-                                <span 
+                                <div 
                                     key={p} 
-                                    className={currentPage == p ? 'fw-bold text-decoration-underline' : ''}  
+                                    className={currentPage == p ? 'fw-bold text-decoration-underline ' : ''}  
                                     onClick = {()=>{onPageChange(p)}} 
                                 >
-                                    <a className="page-link" href="#">{p}</a>
-                                </span>
+                                    <a className={`${s.link} page-link`} href="#">{p}</a>
+                                </div>
                             )
                     }
 

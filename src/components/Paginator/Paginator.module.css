@@ -1,3 +1,15 @@
 .container {
     margin: 5px auto;
 }
+
+@media (max-width: 576px) {
+    .link {
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 385px) {
+    .link {
+        padding: 6px 6px;
+    }
+}
