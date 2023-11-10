@@ -8,6 +8,7 @@ import { flexPlace } from '../../../utils/flexPlace';
 import { TState } from '../../../redux/store';
 import { commonActions } from '../../../redux/features/common';
 import { Modal } from '../../Modal/Modal';
+import favorites from '../../../imges/favorites.svg'
 
 export const BtnGroup = ({width}: {width: number}) => {
     const [searched, setSearched] = useState(false)
@@ -55,8 +56,9 @@ export const BtnGroup = ({width}: {width: number}) => {
             <SearchContainer searched={searched} setSearched={setSearched}/>
             { 
                 !(searched && width < 1085) &&  
-                <NavLink to='/favorites' className={s.title}>
-                    ❤<span className='fs-5'>{favCount > 0 && favCount}</span>
+                <NavLink to='/favorites' className={`${s.title} d-flex`}>
+                    <img src={favorites} alt='favorites' />
+                    <span className='fs-5'>{favCount > 0 && favCount}</span>
                 </NavLink>
             }
         </div>

@@ -105,10 +105,8 @@ export const ElementDescription = ({route}: {route: TCategories}) => {
                         route === API_ROUTES.ANIME &&
                         (
                             'trailer' in info && info.trailer?.embed_url &&
-                            <iframe 
-                                width="80%" 
-                                height="550px" 
-                                className="px-5 m-auto d-block"
+                            <iframe  
+                                className={`m-auto d-block ${s.trailer}`}
                                 src={info.trailer.embed_url}
                             />
                             || 
