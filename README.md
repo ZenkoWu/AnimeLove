@@ -74,5 +74,8 @@ You may also see any lint errors in the console.
 - React
 - Redux Toolkit
 
+## API for receiving data
+https://docs.api.jikan.moe/
+
 
 
