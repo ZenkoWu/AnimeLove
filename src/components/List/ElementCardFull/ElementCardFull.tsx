@@ -29,12 +29,10 @@ export const ElementCardFull = ({category, data}: TElementCard) => {
                     'title' in data  &&
                     <div className={`d-flex align-center gap-4`}>
                         <p> 
-                            <span className='text-decoration-underline'>Year:</span> 
-                            {data.year ?? 'unknown'}
+                            <span className='text-decoration-underline'>Year:</span> {data.year ?? 'unknown'}
                         </p>
                         <p>
-                            <span className='text-decoration-underline'>Rating:</span> 
-                            {(data.score)?.toFixed(0)}/10
+                            <span className='text-decoration-underline'>Rating:</span> {(data.score)?.toFixed(0)}/10
                         </p>
                     </div>
                 }
