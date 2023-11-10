@@ -35,14 +35,14 @@ export const Modal = ({
         >
             <div className={`bg-white rounded-3 p-4 ${s.modal}`}>
                 <div 
-                    className={`${flexPlace('between', 'center')} pb-16 btn`} 
+                    className={`${flexPlace('between', 'center')} pb-16 btn fw-bold`} 
                     onClick={()=> setOpened(false)}
                 >
-                    <p className='fs20 fw-600'>{title}</p>
+                    <p className='fs20 fw-600 fw-bold'>{title}</p>
                    x
                 </div>
 
-                <p className='pb-24'>{question}</p>
+                <p className='py-4'>{question}</p>
 
                 <div className='d-flex'>
                     <div 
