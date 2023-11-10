@@ -35,118 +35,120 @@ export const MainContent = ({
     rating,
     title
 }: TMainContent) => {
-    const [filter, setFilter] = useState<TAnimeFilterState | TMangaFilterState>(initialState) 
-    const isSafeContent = useSelector((state: TState) => state.common.isSafeContent)
-    const [isFilterClicked, setIsFilterClicked] = useState(false)
+    // const [filter, setFilter] = useState<TAnimeFilterState | TMangaFilterState>(initialState) 
+    // const isSafeContent = useSelector((state: TState) => state.common.isSafeContent)
+    // const [isFilterClicked, setIsFilterClicked] = useState(false)
 
-    const [width, setWidth] = useState(getWindowSizes().width)
-    window.addEventListener('resize', ()=> setWidth(()=> getWindowSizes().width ))
+    // const [width, setWidth] = useState(getWindowSizes().width)
+    // window.addEventListener('resize', ()=> setWidth(()=> getWindowSizes().width ))
 
-    // remove scrollbar when modal filter is open
-    useEffect(()=> {
-        const body = document.querySelector('body')!
+    // // remove scrollbar when modal filter is open
+    // useEffect(()=> {
+    //     const body = document.querySelector('body')!
 
-        if(isFilterClicked) {
-            body.style.height = '100vh'
-            body.style.overflow = 'hidden'
-        } else {
-            body.style.height = '100%'
-            body.style.overflow = 'visible'
-        }
-    }, [isFilterClicked])
+    //     if(isFilterClicked) {
+    //         body.style.height = '100vh'
+    //         body.style.overflow = 'hidden'
+    //     } else {
+    //         body.style.height = '100%'
+    //         body.style.overflow = 'visible'
+    //     }
+    // }, [isFilterClicked])
 
-    const setValue = (select: any)=> (id: string)=> setFilter(prev => ({...prev, [select]: id})) //todo
+    // const setValue = (select: any)=> (id: string)=> setFilter(prev => ({...prev, [select]: id})) //todo
 
-    const selects : TSelectField[] = [
-        {
-            title: 'Order by', 
-            options: [...orderBy],
-            value: orderBy.find(el => el.id === filter.orderBy)?.label ?? 'orderby',
-            setValue: setValue('orderBy'),
-            zIndex: 5
-        },
-        {
-            title: 'Type', 
-            options: [...types],
-            value: types.find(el => el.id === filter.type)?.label ?? 'type',
-            setValue: setValue('type'),
-            zIndex: 3
-        },
-        {
-            title: 'Status', 
-            options: [...status],
-            value: status.find(el => el.id === filter.status)?.label ?? 'status',
-            setValue: setValue('status'),
-            zIndex: 1
-        },
-    ]
+    // const selects : TSelectField[] = [
+    //     {
+    //         title: 'Order by', 
+    //         options: [...orderBy],
+    //         value: orderBy.find((el: any) => el.id === filter.orderBy)?.label ?? 'orderby',
+    //         setValue: setValue('orderBy'),
+    //         zIndex: 5
+    //     },
+    //     {
+    //         title: 'Type', 
+    //         options: [...types],
+    //         value: types.find((el: any)=> el.id === filter.type)?.label ?? 'type',
+    //         setValue: setValue('type'),
+    //         zIndex: 3
+    //     },
+    //     {
+    //         title: 'Status', 
+    //         options: [...status],
+    //         value: status.find((el: any)=> el.id === filter.status)?.label ?? 'status',
+    //         setValue: setValue('status'),
+    //         zIndex: 1
+    //     },
+    // ]
 
-    if( 'rating' in filter && rating && category == API_ROUTES.ANIME) {
-        selects.push(
-            {
-                title: 'Age rating', 
-                options: [...rating],
-                value: rating.find(el => el.id === filter.rating)?.label ?? 'rating',
-                setValue: setValue('rating'),
-                zIndex: 2
-            }
-        )
-    }
+    // if( 'rating' in filter && rating && category == API_ROUTES.ANIME) {
+    //     selects.push(
+    //         {
+    //             title: 'Age rating', 
+    //             options: [...rating],
+    //             value: rating.find((el: any) => el.id === filter.rating)?.label ?? 'rating',
+    //             setValue: setValue('rating'),
+    //             zIndex: 2
+    //         }
+    //     )
+    // }
 
-    const {
-        currentPage, 
-        pageSize: pageLimit, 
-        totalAmount
-    } = useSelector((state: TState ) => state.pagination[category])
+    // const {
+    //     currentPage, 
+    //     pageSize: pageLimit, 
+    //     totalAmount
+    // } = useSelector((state: TState ) => state.pagination[category])
     
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
-    const {data} = api.getList({
-        route: category,
-        currentPage, 
-        pageLimit, 
-        type: filter.type, 
-        rating: 'rating' in filter && filter.rating || '',
-        orderBy: filter.orderBy,
-        status: filter.status,
-        sfw: isSafeContent ? 'sfw' : ''
-    })
+    // const {data} = api.getList({
+    //     route: category,
+    //     currentPage, 
+    //     pageLimit, 
+    //     type: filter.type, 
+    //     rating: 'rating' in filter && filter.rating || '',
+    //     orderBy: filter.orderBy,
+    //     status: filter.status,
+    //     sfw: isSafeContent ? 'sfw' : ''
+    // })
     
-    const changeCurrentPage = useCallback((page: number) => {
-        dispatch(paginationActions.changeCurrentPage({category, page}))
-    }, [currentPage]) 
+    // const changeCurrentPage = useCallback((page: number) => {
+    //     dispatch(paginationActions.changeCurrentPage({category, page}))
+    // }, [currentPage]) 
 
-    if(!data) {
-        return <Preloader/>
-    }
+    // if(!data) {
+    //     return <Preloader/>
+    // }
 
-    dispatch(paginationActions.changeAmount({
-        category, 
-        count: data.pagination.items.total
-    }))
+    // dispatch(paginationActions.changeAmount({
+    //     category, 
+    //     count: data.pagination.items.total
+    // }))
    
    return (
-        <div className={s.container}>
-            { isFilterClicked && <div className={s.filterBackground}/> }
-            <List
-                title={title}
-                elementsList={data.data} 
-                changeCurrentPage={changeCurrentPage} 
-                currentPage={currentPage}
-                totalElementCount={totalAmount}
-                pageSize={pageLimit}
-                smallSize={ width <= 1200}
-                setIsFilterClicked={setIsFilterClicked}
-            />
-            {
-                isFilterClicked && 
-                <Filter 
-                    selects={selects} 
-                    smallSize 
-                    setIsFilterClicked={setIsFilterClicked}
-                />
-            }
-            { width > 1200 && <Filter selects={selects}/> }
-        </div>
-    )
+    //     <div className={s.container}>
+    //         { isFilterClicked && <div className={s.filterBackground}/> }
+    //         <List
+    //             title={title}
+    //             elementsList={data.data} 
+    //             changeCurrentPage={changeCurrentPage} 
+    //             currentPage={currentPage}
+    //             totalElementCount={totalAmount}
+    //             pageSize={pageLimit}
+    //             smallSize={ width <= 1200}
+    //             setIsFilterClicked={setIsFilterClicked}
+    //         />
+    //         {
+    //             isFilterClicked && 
+    //             <Filter 
+    //                 selects={selects} 
+    //                 smallSize 
+    //                 setIsFilterClicked={setIsFilterClicked}
+    //             />
+    //         }
+    //         { width > 1200 && <Filter selects={selects}/> }
+    //     </div>
+    // )
+    <div>test it</div>
+   )
 }
