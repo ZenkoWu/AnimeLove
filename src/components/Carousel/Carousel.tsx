@@ -2,6 +2,7 @@ import { TSmallCardInfo } from '@/types/mainElementsTypes'
 import { flexPlace } from '../../utils/flexPlace'
 import React, {useState} from 'react'
 import { NavLink } from 'react-router-dom'
+import s from './Carousel.module.css'
 
 type TCarousel = {
     carouselItems: TSmallCardInfo[], 
@@ -19,7 +20,7 @@ export function Carousel({carouselItems, to, title, itemsCount}: TCarousel) {
             <div className={`${flexPlace('between', 'center')} border px-2`}>
                 <button
                     disabled={offset == 0}
-                    className={' me-2 p-1 border cursor-pointer ' + (offset != 0 && ' bg-primary text-white')}
+                    className={`${s.arrowBtn} me-2  border cursor-pointer ${offset != 0 && ' bg-primary text-white'}`}
                     onClick={() => setOffset(prev => prev - 1)}
                 >
                     {'<'}
@@ -51,7 +52,7 @@ export function Carousel({carouselItems, to, title, itemsCount}: TCarousel) {
                 }
                 </div>
                 <button
-                    className='ms- p-1 bg-primary text-white border cursor-pointer'
+                    className={`${s.arrowBtn} bg-primary text-white border cursor-pointer`}
                     onClick={() => setOffset(prev => prev == carouselItems.length - itemsCount ? prev = 0 : prev + 1)}
                 >
                     {'>'}

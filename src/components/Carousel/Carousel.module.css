@@ -1,0 +1,9 @@
+.arrowBtn {
+    padding: 5px;
+}
+
+@media (max-width: 400px) {
+    .arrowBtn {
+        padding: 8px 10px;
+    }
+}
