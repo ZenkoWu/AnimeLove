@@ -4,14 +4,14 @@ import s from './ElementCard.module.css'
 import { TElementCard } from '@/types/mainElementsTypes';
 
 
-export const ElementCard = ({category, data}: TElementCard) => {
+export const ElementCard = ({category, data, route}: TElementCard) => {
 
     const title = 'title' in data ? data.title : data.name
     
     return ( 
         <div className={`${s.container} text-center p-2`} > 
             <div className={`${s.cardContainer} position-relative`}>
-                <NavLink to={`${data.mal_id}`}>
+                <NavLink to={route? `/${route}/${data.mal_id}` : `${data.mal_id}`}>
                     <img 
                         src={data.images?.jpg.image_url} 
                         alt='poster' 
