@@ -18,12 +18,12 @@ export const SearchBlock = ({title, searchResult}: TSearchBlock) => {
     return (
         <>
             {
-                searchResult?.pagination.items?.total > 0 && 
+                searchResult?.data && searchResult?.pagination.items?.total > 0 && 
                 <div className="mb-3">
                     <div className='d-flex gap-2 pb-2'>
                         <p className='fw-bolder text-secondary m-0 '>{title.toUpperCase()}</p>
                         <p className='text-white bg-secondary px-1 m-0 rounded-3'>
-                            {searchResult.pagination.items.total}
+                            {searchResult.pagination.items?.total}
                         </p>
                     </div>
                     
