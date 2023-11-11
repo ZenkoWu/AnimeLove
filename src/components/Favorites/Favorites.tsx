@@ -70,21 +70,33 @@ export const Favorites = () => {
                             active == 'manga' && favorites.manga?.count ?
                                 Object.values(favorites.manga.items).map(el => (
                                 <div className={s.elementCard}> 
-                                    <ElementCard category={active} data={el}/>
+                                    <ElementCard 
+                                        category={active} 
+                                        data={el} 
+                                        route={'manga'}
+                                    />
                                 </div>
                                 ))  
                             : 
                                 active == 'anime' && favorites.anime?.count ?
                                 Object.values(favorites.anime.items).map(el => (
                                     <div className={s.elementCard}> 
-                                        <ElementCard category={active} data={el}/>
+                                        <ElementCard 
+                                            category={active} 
+                                            data={el} 
+                                            route={'anime'}
+                                        />
                                     </div>
                                 )) 
                             :
                                 active == 'characters' && favorites.characters?.count ?
                                 Object.values(favorites.characters.items).map(el => (
                                     <div className={s.elementCard}> 
-                                        <ElementCard category={active} data={el}/>
+                                        <ElementCard 
+                                            category={active} 
+                                            data={el} 
+                                            route={'characters'}
+                                        />
                                     </div>
                                 ))  
                             : 

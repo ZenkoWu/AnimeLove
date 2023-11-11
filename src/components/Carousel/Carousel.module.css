@@ -1,0 +1,34 @@
+.arrowBtn {
+    padding: 5px;
+}
+
+.poster{
+    width: 130px;
+}
+
+@media (max-width: 576px) {
+    .poster{
+        width: 25vw;
+    }
+}
+
+@media (max-width: 400px) {
+    .arrowBtn {
+        padding: 8px 10px;
+    }
+    .poster{
+        width: 40vw;
+    }
+}
+
+@media (max-width: 390px) {
+    .poster{
+        width: 35vw;
+    }
+}
+
+@media (max-width: 340px) {
+    .poster{
+        width: 30vw;
+    }
+}

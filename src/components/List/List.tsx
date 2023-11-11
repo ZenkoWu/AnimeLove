@@ -5,6 +5,8 @@ import { useState } from 'react';
 import {ElementCard} from './ElementCard/ElementCard';
 import { TMangaInfo,TAnimeInfo, TCategories, TCharactersInfo } from '../../types/mainElementsTypes';
 import { flexPlace } from '../../utils/flexPlace';
+import { GridBtn } from './GridBtn/GridBtn';
+import { InlineBtn } from './InlineBtn/InlineBtn';
 
 type TList = {
     elementsList: TAnimeInfo[] | TMangaInfo[] | TCharactersInfo[], 
@@ -50,14 +52,14 @@ export const List = ({
                                 Filter
                             </button>
                         }
-                        
-                        <div className="form-check form-switch fs-4">
-                            <input 
-                                className="form-check-input border border-primary" 
-                                type="checkbox" 
-                                role="switch" 
-                                id="flexSwitchCheckDefault"
-                                onClick={()=> setIsFullCard(prev => !prev)}
+                        <div className={`${flexPlace('center', 'center')} gap-2`}>
+                            <GridBtn 
+                                onClick={()=> setIsFullCard(false)} 
+                                isWhite={!isFullCard}
+                            />
+                            <InlineBtn 
+                                onClick={()=> setIsFullCard(true)} 
+                                isWhite={isFullCard}
                             />
                         </div>
                     </div>

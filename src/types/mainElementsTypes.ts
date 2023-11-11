@@ -78,6 +78,7 @@ export type TSmallCardInfo = {
 
 export type TElementCard = {
     category: TCategories,
-    data: TAnimeInfo | TMangaInfo | TCharactersInfo
+    data: TAnimeInfo | TMangaInfo | TCharactersInfo,
+    route?: TCategories
 }
 

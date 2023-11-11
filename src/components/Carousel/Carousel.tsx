@@ -2,6 +2,7 @@ import { TSmallCardInfo } from '@/types/mainElementsTypes'
 import { flexPlace } from '../../utils/flexPlace'
 import React, {useState} from 'react'
 import { NavLink } from 'react-router-dom'
+import s from './Carousel.module.css'
 
 type TCarousel = {
     carouselItems: TSmallCardInfo[], 
@@ -19,7 +20,7 @@ export function Carousel({carouselItems, to, title, itemsCount}: TCarousel) {
             <div className={`${flexPlace('between', 'center')} border px-2`}>
                 <button
                     disabled={offset == 0}
-                    className={' me-2 p-1 border cursor-pointer ' + (offset != 0 && ' bg-primary text-white')}
+                    className={`${s.arrowBtn} me-2  border cursor-pointer ${offset != 0 && ' bg-primary text-white'}`}
                     onClick={() => setOffset(prev => prev - 1)}
                 >
                     {'<'}
@@ -36,10 +37,9 @@ export function Carousel({carouselItems, to, title, itemsCount}: TCarousel) {
                                         className='text-decoration-none text-muted'
                                         onClick={()=> window.scrollTo({top: 0})}
                                     >
-                                        <div className='rounded-3 text-center' style={{width:'130px'}}> 
+                                        <div className='rounded-3 text-center' > 
                                             <img 
-                                                style={{height:'180px'}}
-                                                className=' rounded-3'
+                                                className={`${s.poster} rounded-3`}
                                                 src={el.images.jpg.image_url} 
                                             />
                                             <h6 className='fw-bold' >{el.title}</h6>
@@ -51,7 +51,7 @@ export function Carousel({carouselItems, to, title, itemsCount}: TCarousel) {
                 }
                 </div>
                 <button
-                    className='ms- p-1 bg-primary text-white border cursor-pointer'
+                    className={`${s.arrowBtn} bg-primary text-white border cursor-pointer`}
                     onClick={() => setOffset(prev => prev == carouselItems.length - itemsCount ? prev = 0 : prev + 1)}
                 >
                     {'>'}
