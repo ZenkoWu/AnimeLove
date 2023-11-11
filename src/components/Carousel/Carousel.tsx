@@ -37,10 +37,9 @@ export function Carousel({carouselItems, to, title, itemsCount}: TCarousel) {
                                         className='text-decoration-none text-muted'
                                         onClick={()=> window.scrollTo({top: 0})}
                                     >
-                                        <div className='rounded-3 text-center' style={{width:'130px'}}> 
+                                        <div className='rounded-3 text-center' > 
                                             <img 
-                                                style={{height:'180px'}}
-                                                className=' rounded-3'
+                                                className={`${s.poster} rounded-3`}
                                                 src={el.images.jpg.image_url} 
                                             />
                                             <h6 className='fw-bold' >{el.title}</h6>
