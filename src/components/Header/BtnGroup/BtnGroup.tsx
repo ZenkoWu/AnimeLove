@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import s from './BtnGroup.module.css'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { createPortal } from 'react-dom';
 import { NavLink } from "react-router-dom";
 import SearchContainer from '../SearchContainer/SearchContainer';
@@ -9,13 +9,19 @@ import { TState } from '../../../redux/store';
 import { commonActions } from '../../../redux/features/common';
 import { Modal } from '../../Modal/Modal';
 import favorites from '../../../imges/favorites.svg'
+import { hideOverflow } from '../../../utils/hideOverflow';
 
 export const BtnGroup = ({width}: {width: number}) => {
     const [searched, setSearched] = useState(false)
+    const [opened, setOpened] = useState(false)
+    
     const favCount = useSelector((state: TState) => state.favorites.count)
     const isSafeContent = useSelector((state: TState) => state.common.isSafeContent)
 
-    const [opened, setOpened] = useState(false)
+    // remove scrollbar when modal allow adult content is open
+    useEffect(()=> {
+        hideOverflow(opened)
+    }, [opened])
 
     const dispatch = useDispatch()
 
@@ -25,7 +31,7 @@ export const BtnGroup = ({width}: {width: number}) => {
     return (
         <div className={`${flexPlace('between', 'center')} gap-3`}>
             {
-                opened && 
+                opened &&  
                 createPortal(
                     <Modal
                         opened={opened} 
