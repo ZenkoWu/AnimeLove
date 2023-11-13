@@ -55,7 +55,7 @@ export const Search = ({
                 </div>
                 :
                 <div className='cursor-pointer' onClick={()=> setSearched(true)}>
-                  <img src={loupe} alt="loupe" />
+                    <img src={loupe} alt="loupe" />
                 </div>
             }
         </div>

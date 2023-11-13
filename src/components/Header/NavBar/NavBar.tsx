@@ -5,6 +5,8 @@ import { API_ROUTES } from '../../../redux/services/apiRoutes/apiRoutes';
 import { useSelector } from 'react-redux';
 import { TState } from '../../../redux/store';
 
+const tabletWidth = 991
+
 const getRandomAnime = (
     navigate: (link: string, extra: {replace: boolean}) => void, 
     totalAnimeCount: number
@@ -25,7 +27,7 @@ export const NavBar = ({menuItems, width}: {
     const {totalAmount} = useSelector((state: TState) => state.pagination.anime)
   
     return (
-        <div className={width > 991 ? (`${flexPlace('between', 'center')} gap-4`): 'd-none'}>
+        <div className={width > tabletWidth ? (`${flexPlace('between', 'center')} gap-4`): 'd-none'}>
             <NavLink to='/' className={s.title}>AnimeLove</NavLink>
                 {
                     menuItems.map((link, i) => (

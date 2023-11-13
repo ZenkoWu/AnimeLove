@@ -47,10 +47,10 @@ export const CharactersDescription = () => {
                                     />
                                 </div>
                                 <p className={s.borderBottomGrey}>{characters.name_kanji}</p> 
-                                <p className="p-0 m-0">Nicknames: {characters.nicknames?.map(el => el).join(', ')}</p>
+                                <p className="p-0 m-0">
+                                    Nicknames: {characters.nicknames?.map(el => el).join(', ')}
+                                </p>
                             </div>
-
-                            
                             { 
                                 characters.about &&
                                 <div className="py-3">

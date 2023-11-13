@@ -26,6 +26,8 @@ type TMainContent = {
     title: 'Anime' | 'Manga'
 }
 
+type TSelect = 'orderBy' | 'type' | 'status' | 'rating'
+
 export const MainContent = ({
     initialState, 
     category, 
@@ -43,6 +45,7 @@ export const MainContent = ({
     window.addEventListener('resize', ()=> setWidth(()=> getWindowSizes().width ))
 
     // remove scrollbar when modal filter is open
+    //todo how do better
     useEffect(()=> {
         const body = document.querySelector('body')!
 
@@ -55,7 +58,7 @@ export const MainContent = ({
         }
     }, [isFilterClicked])
 
-    const setValue = (select: any)=> (id: string)=> setFilter(prev => ({...prev, [select]: id})) //todo
+    const setValue = (select: TSelect)=> (id: string)=> setFilter(prev => ({...prev, [select]: id}))
 
     const selects : TSelectField[] = [
         {

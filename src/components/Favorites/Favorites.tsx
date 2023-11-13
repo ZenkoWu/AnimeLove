@@ -19,6 +19,7 @@ export const Favorites = () => {
     const deleteFavorites = (category: TCategories) => {
         dispatch(favoritesActions.deleteFavorites(category))
     }
+
     const tabs = [
         {title: 'Anime', active: 'anime' },
         {title: 'Manga', active: 'manga' },
@@ -67,39 +68,17 @@ export const Favorites = () => {
                 <div className="pt-4"> 
                     <div className={`${flexPlace('start', 'start')} flex-wrap p-2 w-100`}> 
                         { 
-                            active == 'manga' && favorites.manga?.count ?
-                                Object.values(favorites.manga.items).map(el => (
+                            favorites[active] && favorites[active]?.count &&
+                                Object.values(favorites[active]?.items ?? []).map(el => (
                                 <div className={s.elementCard}> 
                                     <ElementCard 
                                         category={active} 
                                         data={el} 
-                                        route={'manga'}
+                                        route={active}
                                     />
                                 </div>
                                 ))  
-                            : 
-                                active == 'anime' && favorites.anime?.count ?
-                                Object.values(favorites.anime.items).map(el => (
-                                    <div className={s.elementCard}> 
-                                        <ElementCard 
-                                            category={active} 
-                                            data={el} 
-                                            route={'anime'}
-                                        />
-                                    </div>
-                                )) 
-                            :
-                                active == 'characters' && favorites.characters?.count ?
-                                Object.values(favorites.characters.items).map(el => (
-                                    <div className={s.elementCard}> 
-                                        <ElementCard 
-                                            category={active} 
-                                            data={el} 
-                                            route={'characters'}
-                                        />
-                                    </div>
-                                ))  
-                            : 
+                            || 
                                 <div>No favorite {active} </div>
                             
                         }

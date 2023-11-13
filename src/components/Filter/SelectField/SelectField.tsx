@@ -3,7 +3,7 @@ import { TextFieldWrapper } from "../TextFieldWrapper/TextFieldWrapper"
 import ArrowImage from "../../ArrowImage/ArrowImage"
 import { SelectModal } from "../SelectModal/SelectModal"
 import { flexPlace } from "../../../utils/flexPlace"
-import {TSelectModal} from '../SelectModal/SelectModal'
+
 export type TSelectField = { 
     title: string, 
     options: {id: string, label: string}[],
