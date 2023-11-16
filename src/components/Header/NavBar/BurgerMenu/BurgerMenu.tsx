@@ -46,7 +46,7 @@ export const BurgerMenu = ({menuConfig}: {
                 anchorEl={anchor}
                 open={isOpen}
                 MenuListProps={{
-                    className: "  navbarMenu  p-0"
+                    className: "navbarMenu p-0"
                 }}
                 onClose={closeMenu}
             > 
@@ -61,7 +61,6 @@ export const BurgerMenu = ({menuConfig}: {
                                     link => link.isActive ? ' fw-bold ' : ' text-secondary '
                                 }
                             > 
-                                  
                                 <div className='p-3 px-5 fs-5'>
                                     {title}
                                 </div>

@@ -13,6 +13,25 @@ import { ErrorPage } from "../../components/ErrorPage/ErrorPage"
 
 const recommendsAmount = 10
 
+type TRec = {
+    data: {
+        entry: {
+            mal_id: number, 
+            images: {
+                jpg: {
+                    image_url: string,
+                }
+            },
+            url?: string,
+            title: string,
+        }, 
+        url: string,
+        votes: number
+    }[]
+}
+
+export type TRecommends = TRec['data'][number]['entry'][]
+
 export const ElementDescription = ({route}: {route: TCategories}) => {
     const params = useParams()
     
@@ -27,7 +46,8 @@ export const ElementDescription = ({route}: {route: TCategories}) => {
         return <Preloader/>
     }
     
-    const recommends = rec.data.map((el: any) => el.entry)
+    const recommends: TRecommends = rec.data.map((el: TRec['data'][number]) => el.entry)
+
     const info: TAnimeInfo | TMangaInfo = data.data
 
     const moreInfo = 'episodes' in info && route === API_ROUTES.ANIME ?
@@ -37,13 +57,13 @@ export const ElementDescription = ({route}: {route: TCategories}) => {
             {title: 'Source', value: info.source },
             {title: 'Episodes', value: info.episodes },
             {title: 'Rating', value: info.rating },
-            {title: 'Genre', value: info.genres?.map((g: any) => g.name).join(', ') || 'unknown'},
+            {title: 'Genre', value: info.genres?.map((g) => g.name).join(', ') || 'unknown'},
             {title: 'Status', value: info.status },
         ] 
     :
         [
             {title: 'Chapters', value: 'chapters' in info && info.chapters  || 'unknown'},
-            {title: 'Genre', value: info.genres?.map((g: any) => g.name).join(', ') || 'unknown'},
+            {title: 'Genre', value: info.genres?.map((g) => g.name).join(', ') || 'unknown'},
             {title: 'Status', value: info.status },
         ]
 

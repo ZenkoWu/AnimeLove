@@ -77,7 +77,8 @@ export const List = ({
                                     category={title.toLowerCase() as TCategories}
                                     data={el} 
                                     key={el.mal_id}
-                                />)
+                                />
+                            )
                         } 
                     </div>
                     :

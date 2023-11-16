@@ -15,6 +15,7 @@ import { AGE_RATING, ANIME_ORDER_BY, ANIME_TYPE, ANIME_STATUS } from '../../cons
 import { MANGA_ORDER_BY, MANGA_STATUS, MANGA_TYPES } from '../../constants';
 import { TSelectField } from '../Filter/SelectField/SelectField';
 import { getWindowSizes } from '../Header/NavBar/useWindowSizes/useWindowSizes';
+import { hideOverflow } from '../../utils/hideOverflow';
 
 type TMainContent = {
     initialState: TAnimeFilterState | TMangaFilterState, 
@@ -25,6 +26,8 @@ type TMainContent = {
     rating?: any, //only for anime
     title: 'Anime' | 'Manga'
 }
+
+type TSelect = 'orderBy' | 'type' | 'status' | 'rating'
 
 export const MainContent = ({
     initialState, 
@@ -44,18 +47,10 @@ export const MainContent = ({
 
     // remove scrollbar when modal filter is open
     useEffect(()=> {
-        const body = document.querySelector('body')!
-
-        if(isFilterClicked) {
-            body.style.height = '100vh'
-            body.style.overflow = 'hidden'
-        } else {
-            body.style.height = '100%'
-            body.style.overflow = 'visible'
-        }
+        hideOverflow(isFilterClicked)
     }, [isFilterClicked])
 
-    const setValue = (select: any)=> (id: string)=> setFilter(prev => ({...prev, [select]: id})) //todo
+    const setValue = (select: TSelect)=> (id: string)=> setFilter(prev => ({...prev, [select]: id}))
 
     const selects : TSelectField[] = [
         {
