@@ -5,7 +5,7 @@ import { TCharactersInfo } from "../../../types/types"
 import { api } from "../../../redux/services/api/api"
 import {FavoriteBtn} from "../../Favorites/FavoriteBtn/FavoriteBtn"
 import { flexPlace } from "../../../utils/flexPlace"
-import { API_ROUTES } from "../../../redux/services/apiRoutes/apiRoutes"
+import { API_ROUTES } from "../../../redux/services/api/apiRoutes"
 import { ErrorPage } from "../../../components/ErrorPage/ErrorPage"
 
 export const CharactersDescription = () => {

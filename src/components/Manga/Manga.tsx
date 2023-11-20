@@ -1,6 +1,6 @@
 import { TMangaFilterState } from '@/types/types';
 import { MANGA_ORDER_BY, MANGA_STATUS, MANGA_TYPES } from '../../constants';
-import { API_ROUTES } from '../../redux/services/apiRoutes/apiRoutes';
+import { API_ROUTES } from '../../redux/services/api/apiRoutes';
 import { MainContent } from '../MainContent/MainContent';
 
 const initialState: TMangaFilterState = {

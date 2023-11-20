@@ -7,7 +7,7 @@ import { Filter} from '../Filter/Filter';
 import s from './MainContent.module.css';
 import { TState } from '../../redux/store';
 import { paginationActions } from '../../redux/features/pagination';
-import { API_ROUTES } from '../../redux/services/apiRoutes/apiRoutes';
+import { API_ROUTES } from '../../redux/services/api/apiRoutes';
 import { TAnimeFilterState, TMangaFilterState, TCategories } from '@/types/types';
 import { AGE_RATING, ANIME_ORDER_BY, ANIME_TYPE, ANIME_STATUS } from '../../constants';
 import { MANGA_ORDER_BY, MANGA_STATUS, MANGA_TYPES } from '../../constants';

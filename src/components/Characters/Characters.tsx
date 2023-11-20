@@ -6,7 +6,7 @@ import Preloader from "../Preloader/Preloader";
 import {List} from '../List/List';
 import { TState } from '../../redux/store';
 import { paginationActions } from '../../redux/features/pagination';
-import { API_ROUTES } from '../../redux/services/apiRoutes/apiRoutes';
+import { API_ROUTES } from '../../redux/services/api/apiRoutes';
 
 
 export const Characters = () => {

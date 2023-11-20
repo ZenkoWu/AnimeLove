@@ -8,9 +8,8 @@ import { api } from "../../redux/services/api/api"
 import {FavoriteBtn} from "../../components/Favorites/FavoriteBtn/FavoriteBtn"
 import { flexPlace } from "../../utils/flexPlace"
 import {Carousel} from "../../components/Carousel/Carousel"
-import { API_ROUTES } from "../../redux/services/apiRoutes/apiRoutes"
+import { API_ROUTES } from "../../redux/services/api/apiRoutes"
 import { ErrorPage } from "../../components/ErrorPage/ErrorPage"
-import { useMemo } from "react"
 
 const recommendsAmount = 10
 

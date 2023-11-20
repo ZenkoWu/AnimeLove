@@ -9,7 +9,7 @@ import { Favorites } from './components/Favorites/Favorites';
 import { Characters } from './components/Characters/Characters';
 import { CharactersDescription } from './components/Characters/CharactersDescription/CharactersDescription';
 import { ElementDescription } from './components/ElementDescription/ElementDescription';
-import { API_ROUTES } from './redux/services/apiRoutes/apiRoutes';
+import { API_ROUTES } from './redux/services/api/apiRoutes';
 
 function App() {
     return (

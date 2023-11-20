@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import { BASE_URL} from './apiRoutes/apiRoutes'
+import { BASE_URL} from './api/apiRoutes'
 import { TAnimeFilterState, TMangaFilterState, TCategories } from '@/types/types'
 
 type TGetListParams = {

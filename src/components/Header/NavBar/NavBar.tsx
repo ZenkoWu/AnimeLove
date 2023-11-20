@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import s from './NavBar.module.css';
 import { flexPlace } from '../../../utils/flexPlace';
-import { API_ROUTES } from '../../../redux/services/apiRoutes/apiRoutes';
+import { API_ROUTES } from '../../../redux/services/api/apiRoutes';
 import { useSelector } from 'react-redux';
 import { TState } from '../../../redux/store';
 

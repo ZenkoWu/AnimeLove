@@ -1,6 +1,6 @@
 import { TAnimeFilterState } from '@/types/types';
 import { AGE_RATING, ANIME_ORDER_BY, ANIME_TYPE, ANIME_STATUS } from '../../constants';
-import { API_ROUTES } from '../../redux/services/apiRoutes/apiRoutes';
+import { API_ROUTES } from '../../redux/services/api/apiRoutes';
 import { MainContent } from '../MainContent/MainContent';
 
 const initialState: TAnimeFilterState = {

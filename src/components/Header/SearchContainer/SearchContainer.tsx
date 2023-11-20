@@ -6,7 +6,7 @@ import { useSelector } from "react-redux"
 import { TState } from "@/redux/store"
 import { useDebounce } from "use-debounce"
 import { skipToken } from "@reduxjs/toolkit/query"
-import { API_ROUTES } from "../../../redux/services/apiRoutes/apiRoutes"
+import { API_ROUTES } from "../../../redux/services/api/apiRoutes"
 import { TCategories } from "@/types/types"
 import { TGetSearchedData } from "@/redux/services/apiMethods"
 
