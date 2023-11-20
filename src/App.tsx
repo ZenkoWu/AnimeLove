@@ -18,12 +18,18 @@ function App() {
             <div className="content" id='content'>
                 <Routes>
                     <Route path='/' element={<Home/>}/>
-                    <Route path='anime' element={<Anime/>}/>
-                    <Route path='anime/:id' element={<ElementDescription route={API_ROUTES.ANIME}/>}/>
-                    <Route path='manga' element={<Manga/>}/>
-                    <Route path='manga/:id' element={<ElementDescription route={API_ROUTES.MANGA}/>}/>
-                    <Route path='characters' element={<Characters/>}/>
-                    <Route path='characters/:charactersId' element={<CharactersDescription/>}/>
+                    <Route path='anime'>
+                        <Route index element={<Anime/>}/>
+                        <Route path=':id' element={<ElementDescription route={API_ROUTES.ANIME}/>}/>
+                    </Route>
+                    <Route path='manga'>
+                        <Route index element={<Manga/>}/>
+                        <Route path=':id' element={<ElementDescription route={API_ROUTES.MANGA}/>}/>
+                    </Route>
+                    <Route path='characters'>
+                        <Route index element={<Characters/>}/>
+                        <Route path=':charactersId' element={<CharactersDescription/>}/>
+                    </Route>
                     <Route path='favorites' element={<Favorites/>}/>
                 </Routes>
             </div>
