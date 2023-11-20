@@ -46,7 +46,7 @@ export function Carousel({
                         carouselItems
                             .map((el, i )=> (
                                 offset <= i && i < itemsCount + offset &&
-                                <div>
+                                <div key={el.mal_id}>
                                     <div className='p-3'>
                                         <NavLink 
                                             to={to + el.mal_id} 
