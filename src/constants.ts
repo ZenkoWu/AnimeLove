@@ -1,8 +1,8 @@
 import { 
     TAnimeOrderBy, 
-    TAnimeRating, 
+    TAnimeRatings, 
     TAnimeStatus, 
-    TAnimeType, 
+    TAnimeTypes, 
     TMangaOrderBy, 
     TMangaStatus, 
     TMangaType
@@ -16,7 +16,7 @@ const COMMON_ORDER_BY = [
     {label: 'Favorites', id: 'favorites'},
 ] as const;
 
-export const AGE_RATING: TAnimeRating[] = [
+export const ageRatings: TAnimeRatings[] = [
     {id: 'g', label:  'G - All Ages'},
     {id: 'pg', label:  'PG - Children'},
     {id: 'pg13', label:  'PG-13 - Teens 13 or older'},
@@ -24,18 +24,18 @@ export const AGE_RATING: TAnimeRating[] = [
     {id: 'r', label:   'R+ - Mild Nudity'},
 ];
 
-export const ANIME_STATUS: TAnimeStatus[] = [
+export const animeStatuses: TAnimeStatus[] = [
     {label: 'Finished Airing', id: 'complete'},
     {label: 'Currently Airing', id:'airing'},
    { label: 'Not yet aired', id:'upcoming'}
 ];
 
-export const ANIME_ORDER_BY: TAnimeOrderBy[]= [
+export const animeOrderBy: TAnimeOrderBy[]= [
     ...COMMON_ORDER_BY,
     {label: 'Episodes', id:'episodes'}
 ];
 
-export const ANIME_TYPE: TAnimeType[] = [
+export const animeTypes: TAnimeTypes[] = [
     {label: 'Tv', id: 'tv'},
     {label: 'Ova', id: 'ova'},
     {label: 'Movie', id: 'movie'},
@@ -43,12 +43,12 @@ export const ANIME_TYPE: TAnimeType[] = [
     {label: 'Music', id: 'music'},
 ];
 
-export const MANGA_ORDER_BY: TMangaOrderBy[] = [
+export const mangaOrderBy: TMangaOrderBy[] = [
     ...COMMON_ORDER_BY,
     {label: 'Chapters', id:'chapters'}
 ];
 
-export const MANGA_STATUS: TMangaStatus[] = [
+export const mangaStatuses: TMangaStatus[] = [
     {label: 'Publishing', id: 'publishing'},
     {label: 'Finished', id: 'complete'},
     {label: 'On Hiatus', id: 'hiatus'},
@@ -56,7 +56,7 @@ export const MANGA_STATUS: TMangaStatus[] = [
     {label: 'Upcoming', id: 'upcoming'}
  ];
 
-export const MANGA_TYPES: TMangaType[] = [
+export const mangaTypes: TMangaType[] = [
     {label: 'Manga', id: 'manga'},
     {label: 'Novel', id: 'novel'},
     {label: 'Lightnovel', id: 'lightnovel'},

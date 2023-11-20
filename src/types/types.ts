@@ -1,9 +1,9 @@
 import { 
-    AGE_RATING, 
-    ANIME_STATUS, 
-    ANIME_TYPE, 
-    MANGA_STATUS, 
-    MANGA_TYPES 
+    ageRatings,
+    animeStatuses,
+    animeTypes,
+    mangaStatuses,
+    mangaTypes,
 } from '../constants';
 
 interface TElementInfo {
@@ -28,9 +28,9 @@ interface TElementInfo {
 }
 
 export interface TAnimeInfo extends TElementInfo {
-    type?: typeof ANIME_TYPE[number]['label']; 
-    rating?: typeof AGE_RATING[number]['label'],
-    status?: typeof ANIME_STATUS[number]['label'],
+    type?: typeof animeTypes[number]['label']; 
+    rating?: typeof ageRatings[number]['label'],
+    status?: typeof animeStatuses[number]['label'],
     trailer?: {
         embed_url: string,
         url: string
@@ -39,9 +39,9 @@ export interface TAnimeInfo extends TElementInfo {
     episodes?: number,
 }
 export interface TMangaInfo extends TElementInfo {
-    type?: typeof MANGA_TYPES[number]['label'],
+    type?: typeof mangaTypes[number]['label'],
     chapters?: number,
-    status?: typeof MANGA_STATUS[number]['label']
+    status?: typeof mangaStatuses[number]['label']
 }
 
 export type TCharactersInfo = {
@@ -84,10 +84,10 @@ export type TElementCard = {
 type TOrderBy = 'popularity' | 'title' | 'start_date' | 'end_date' | 'favorites' 
 
 export type TAnimeTypeId = 'tv' | 'ova' | 'movie' | 'special' | 'music'
-export type TAnimeType = {label: string, id: TAnimeTypeId}
+export type TAnimeTypes = {label: string, id: TAnimeTypeId}
 
-export type TAnimeRatingId = 'g' | 'pg' | 'pg13' | 'r17' | 'r'
-export type TAnimeRating = {label: string, id: TAnimeRatingId}
+export type TAnimeRatingsId = 'g' | 'pg' | 'pg13' | 'r17' | 'r'
+export type TAnimeRatings = {label: string, id: TAnimeRatingsId}
 
 export type TAnimeOrderById = TOrderBy | 'episodes'
 export type TAnimeOrderBy = {label: string, id: TAnimeOrderById}
@@ -98,7 +98,7 @@ export type TAnimeStatus = {label: string, id: TAnimeStatusId}
 
 export type TAnimeFilterState = {
     type:  TAnimeTypeId,
-    rating: TAnimeRatingId,
+    rating: TAnimeRatingsId,
     orderBy: TAnimeOrderById,
     status: TAnimeStatusId
 }
