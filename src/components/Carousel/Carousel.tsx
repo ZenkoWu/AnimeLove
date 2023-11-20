@@ -1,8 +1,9 @@
 import { flexPlace } from '../../utils/flexPlace'
-import React, {useState} from 'react'
+import React, {useCallback, useState} from 'react'
 import { NavLink } from 'react-router-dom'
 import s from './Carousel.module.css'
 import { TRecommends } from '../ElementDescription/ElementDescription'
+import { scrollToTop } from '../../utils/scrollToTop'
 
 type TCarousel = {
     carouselItems: TRecommends, 
@@ -18,7 +19,14 @@ export function Carousel({
     itemsCount
 }: TCarousel) {
     const [offset, setOffset] = useState(0)
-  
+    
+    const goToPrevious = useCallback(() => setOffset(prev => prev - 1), [])
+    const goToNext = useCallback(() => 
+        setOffset(prev => 
+            prev == carouselItems.length - itemsCount ?  prev = 0 : prev + 1
+        ),
+    [])
+    
     return (
         <div className='pb-5 px-2'>
             <h3 className='fw-bold text-center'>{title}</h3>
@@ -29,7 +37,7 @@ export function Carousel({
                         ${s.arrowBtn} me-2 border cursor-pointer 
                         ${offset != 0 && ' bg-primary text-white'}
                     `}
-                    onClick={() => setOffset(prev => prev - 1)}
+                    onClick={goToPrevious}
                 >
                     {'<'}
                 </button>
@@ -43,7 +51,7 @@ export function Carousel({
                                         <NavLink 
                                             to={to + el.mal_id} 
                                             className='text-decoration-none text-muted'
-                                            onClick={()=> window.scrollTo({top: 0})}
+                                            onClick={scrollToTop}
                                         >
                                             <div className='rounded-3 text-center' > 
                                                 <img 
@@ -60,9 +68,7 @@ export function Carousel({
                 </div>
                 <button
                     className={`${s.arrowBtn} bg-primary text-white border cursor-pointer`}
-                    onClick={() => 
-                        setOffset(prev => prev == carouselItems.length - itemsCount ?  prev = 0 : prev + 1
-                    )}
+                    onClick={goToNext}
                 >
                     {'>'}
                 </button>
