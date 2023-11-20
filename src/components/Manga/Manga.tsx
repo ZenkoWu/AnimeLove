@@ -4,9 +4,9 @@ import { API_ROUTES } from '../../redux/services/api/apiRoutes';
 import { MainContent } from '../MainContent/MainContent';
 
 const initialState: TMangaFilterState = {
-    type: mangaTypes[0].id,
-    orderBy: mangaOrderBy[0].id,
-    status: mangaStatuses[0].id
+    type: mangaTypes.find(el => el.id === 'manga')!.id,
+    orderBy: mangaOrderBy.find(el => el.id === 'popularity')!.id,
+    status: mangaStatuses.find(el => el.id === 'complete')!.id
 }
 
 export const Manga = () => {

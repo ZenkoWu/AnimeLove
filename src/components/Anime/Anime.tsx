@@ -4,10 +4,10 @@ import { API_ROUTES } from '../../redux/services/api/apiRoutes';
 import { MainContent } from '../MainContent/MainContent';
 
 const initialState: TAnimeFilterState = {
-    type: animeTypes[0].id,
-    rating: ageRatings[0].id,
-    orderBy: animeOrderBy[0].id,
-    status: animeStatuses[0].id
+    type: animeTypes.find(el => el.id === 'tv')!.id,
+    rating: ageRatings.find(el => el.id === 'pg13')!.id,
+    orderBy: animeOrderBy.find(el => el.id === 'popularity')!.id,
+    status: animeStatuses.find(el => el.id === 'complete')!.id
 }
 
 export const Anime = () => {
