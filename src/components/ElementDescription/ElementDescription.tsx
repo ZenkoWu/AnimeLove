@@ -10,27 +10,27 @@ import { flexPlace } from "../../utils/flexPlace"
 import {Carousel} from "../../components/Carousel/Carousel"
 import { API_ROUTES } from "../../redux/services/apiRoutes/apiRoutes"
 import { ErrorPage } from "../../components/ErrorPage/ErrorPage"
+import { useMemo } from "react"
 
 const recommendsAmount = 10
 
-type TRec = {
-    data: {
-        entry: {
-            mal_id: number, 
-            images: {
-                jpg: {
-                    image_url: string,
-                }
-            },
-            url?: string,
-            title: string,
-        }, 
-        url: string,
-        votes: number
-    }[]
+type TRecommendEntry = {
+    mal_id: number, 
+    images: {
+        jpg: {
+            image_url: string,
+        }
+    },
+    url?: string,
+    title: string,
+}
+type TRecElement = {
+    entry: TRecommendEntry,
+    url: string,
+    votes: number
 }
 
-export type TRecommends = TRec['data'][number]['entry'][]
+export type TRecommends = TRecommendEntry[]
 
 export const ElementDescription = ({route}: {route: TCategories}) => {
     const params = useParams()
@@ -46,7 +46,7 @@ export const ElementDescription = ({route}: {route: TCategories}) => {
         return <Preloader/>
     }
     
-    const recommends: TRecommends = rec.data.map((el: TRec['data'][number]) => el.entry)
+    const recommends: TRecommends = rec.data.map((el: TRecElement) => el.entry)
 
     const info: TAnimeInfo | TMangaInfo = data.data
 
@@ -66,7 +66,7 @@ export const ElementDescription = ({route}: {route: TCategories}) => {
             {title: 'Genre', value: info.genres?.map((g) => g.name).join(', ') || 'unknown'},
             {title: 'Status', value: info.status },
         ]
-
+        
     const scoreColor = info.score && getScoreColor(info.score)
 
     return (
