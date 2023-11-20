@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { favoritesReducer } from './features/favorites'
-import {logger} from './middlewares/logger'
 import { TAnimeInfo, TMangaInfo } from '@/types/types'
 import { commonReducer } from './features/common'
 import { TPaginationData, paginationReducer } from './features/pagination'
@@ -52,6 +51,5 @@ export const store = configureStore({
     },
     middleware: (getMiddleware) => getMiddleware().concat([
         apiMethods.middleware
-        // logger
     ])
 })
