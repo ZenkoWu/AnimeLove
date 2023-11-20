@@ -1,4 +1,3 @@
-import { TSmallCardInfo } from '@/types/types'
 import { flexPlace } from '../../utils/flexPlace'
 import React, {useState} from 'react'
 import { NavLink } from 'react-router-dom'
