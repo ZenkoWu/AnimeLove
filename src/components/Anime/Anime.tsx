@@ -1,13 +1,7 @@
+import { TAnimeFilterState } from '@/types/types';
 import { AGE_RATING, ANIME_ORDER_BY, ANIME_TYPE, ANIME_STATUS } from '../../constants';
 import { API_ROUTES } from '../../redux/services/apiRoutes/apiRoutes';
 import { MainContent } from '../MainContent/MainContent';
-
-export type TAnimeFilterState = {
-    type:  typeof ANIME_TYPE[number]['id'],
-    rating: typeof AGE_RATING[number]['id'],
-    orderBy: typeof ANIME_ORDER_BY[number]['id'],
-    status: typeof ANIME_STATUS[number]['id']
-}
 
 const initialState: TAnimeFilterState = {
     type: ANIME_TYPE[0].id,

@@ -1,13 +1,7 @@
+import { TMangaFilterState } from '@/types/types';
 import { MANGA_ORDER_BY, MANGA_STATUS, MANGA_TYPES } from '../../constants';
 import { API_ROUTES } from '../../redux/services/apiRoutes/apiRoutes';
 import { MainContent } from '../MainContent/MainContent';
-
-
-export type TMangaFilterState = {
-    type:  typeof MANGA_TYPES[number]['id'],
-    orderBy: typeof MANGA_ORDER_BY[number]['id'],
-    status: typeof MANGA_STATUS[number]['id']
-}
 
 const initialState: TMangaFilterState = {
     type: MANGA_TYPES[0].id,

@@ -81,4 +81,39 @@ export type TElementCard = {
     data: TAnimeInfo | TMangaInfo | TCharactersInfo,
     route?: TCategories
 }
+type TOrderBy = 'popularity' | 'title' | 'start_date' | 'end_date' | 'favorites' 
 
+export type TAnimeTypeId = 'tv' | 'ova' | 'movie' | 'special' | 'music'
+export type TAnimeType = {label: string, id: TAnimeTypeId}
+
+export type TAnimeRatingId = 'g' | 'pg' | 'pg13' | 'r17' | 'r'
+export type TAnimeRating = {label: string, id: TAnimeRatingId}
+
+export type TAnimeOrderById = TOrderBy | 'episodes'
+export type TAnimeOrderBy = {label: string, id: TAnimeOrderById}
+
+export type TAnimeStatusId = 'complete' | 'airing' | 'upcoming' 
+export type TAnimeStatus = {label: string, id: TAnimeStatusId}
+
+
+export type TAnimeFilterState = {
+    type:  TAnimeTypeId,
+    rating: TAnimeRatingId,
+    orderBy: TAnimeOrderById,
+    status: TAnimeStatusId
+}
+
+export type TMangaTypeId = 'manga' | 'novel' | 'lightnovel' | 'oneshot' | 'doujin' | 'manhwa' | 'manhua'
+export type TMangaType = {label: string, id: TMangaTypeId}
+
+export type TMangaOrderById = TOrderBy | 'chapters'
+export type TMangaOrderBy = {label: string, id: TMangaOrderById}
+
+export type TMangaStatusId = 'complete' | 'publishing' | 'hiatus' | 'discontinued' | 'upcoming'
+export type TMangaStatus = {label: string, id: TMangaStatusId}
+
+export type TMangaFilterState = {
+    type: TMangaTypeId,
+    orderBy: TMangaOrderById,
+    status: TMangaStatusId
+}
