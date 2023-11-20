@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { TextFieldWrapper } from "../TextFieldWrapper/TextFieldWrapper"
-import ArrowImage from "../../ArrowImage/ArrowImage"
+import {ArrowImage} from "../../ArrowImage/ArrowImage"
 import { SelectModal } from "../SelectModal/SelectModal"
 import { flexPlace } from "../../../utils/flexPlace"
 
