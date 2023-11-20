@@ -8,7 +8,7 @@ import s from './MainContent.module.css';
 import { TState } from '../../redux/store';
 import { paginationActions } from '../../redux/features/pagination';
 import { API_ROUTES } from '../../redux/services/apiRoutes/apiRoutes';
-import { TCategories } from '@/types/mainElementsTypes';
+import { TCategories } from '@/types/types';
 import { TAnimeFilterState } from '../Anime/Anime';
 import { TMangaFilterState } from '../Manga/Manga';
 import { AGE_RATING, ANIME_ORDER_BY, ANIME_TYPE, ANIME_STATUS } from '../../constants';

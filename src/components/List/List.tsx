@@ -3,7 +3,7 @@ import {ElementCardFull} from './ElementCardFull/ElementCardFull';
 import s from './List.module.css'
 import { useState } from 'react';
 import {ElementCard} from './ElementCard/ElementCard';
-import { TMangaInfo,TAnimeInfo, TCategories, TCharactersInfo } from '../../types/mainElementsTypes';
+import { TMangaInfo,TAnimeInfo, TCategories, TCharactersInfo } from '../../types/types';
 import { flexPlace } from '../../utils/flexPlace';
 import { GridBtn } from './GridBtn/GridBtn';
 import { InlineBtn } from './InlineBtn/InlineBtn';

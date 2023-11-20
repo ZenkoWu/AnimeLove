@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import s from './SearchBlock.module.css'
-import { TAnimeInfo, TCategories, TCharactersInfo, TMangaInfo } from "@/types/mainElementsTypes";
+import { TAnimeInfo, TCategories, TCharactersInfo, TMangaInfo } from "@/types/types";
 
 export type TSearchBlock = {
     title: TCategories,

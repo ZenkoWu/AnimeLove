@@ -4,7 +4,7 @@ import {
     ANIME_TYPE, 
     MANGA_STATUS, 
     MANGA_TYPES 
-} from './../constants';
+} from '../constants';
 
 interface TElementInfo {
     mal_id: number,

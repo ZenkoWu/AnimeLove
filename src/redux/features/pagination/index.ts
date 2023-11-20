@@ -1,5 +1,5 @@
 import { TState } from '@/redux/store';
-import { TCategories } from '../../../types/mainElementsTypes';
+import { TCategories } from '../../../types/types';
 import {createSlice} from '@reduxjs/toolkit';
 
 export type TPaginationData = {

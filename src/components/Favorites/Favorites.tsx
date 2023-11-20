@@ -6,7 +6,7 @@ import { TState } from "@/redux/store"
 import s from './Favorites.module.css'
 import { favoritesActions } from "../../redux/features/favorites"
 import {Modal} from "../Modal/Modal"
-import { TCategories } from "../../types/mainElementsTypes"
+import { TCategories } from "../../types/types"
 import { flexPlace } from "../../utils/flexPlace"
 
 export const Favorites = () => {

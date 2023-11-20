@@ -7,7 +7,7 @@ import { TState } from "@/redux/store"
 import { useDebounce } from "use-debounce"
 import { skipToken } from "@reduxjs/toolkit/query"
 import { API_ROUTES } from "../../../redux/services/apiRoutes/apiRoutes"
-import { TCategories } from "@/types/mainElementsTypes"
+import { TCategories } from "@/types/types"
 import { TGetSearchedData } from "@/redux/services/apiMethods"
 
 const searchLimit = 3;

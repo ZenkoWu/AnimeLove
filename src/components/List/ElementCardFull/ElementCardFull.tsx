@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import {FavoriteBtn} from '../../Favorites/FavoriteBtn/FavoriteBtn';
 import s from './ElementCardFull.module.css'
-import { TElementCard } from '@/types/mainElementsTypes';
+import { TElementCard } from '@/types/types';
 import { flexPlace } from '../../../utils/flexPlace';
 
 export const ElementCardFull = ({category, data}: TElementCard) => {

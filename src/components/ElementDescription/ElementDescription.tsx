@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom"
 import Preloader from "../Preloader/Preloader"
 import s from './ElementDescription.module.css'
 import starSymbol from '../../imges/starScore.svg'
-import { TAnimeInfo, TCategories, TMangaInfo } from "../../types/mainElementsTypes"
+import { TAnimeInfo, TCategories, TMangaInfo } from "../../types/types"
 import { getScoreColor } from "../../utils/getScoreColor"
 import { api } from "../../redux/services/api/api"
 import {FavoriteBtn} from "../../components/Favorites/FavoriteBtn/FavoriteBtn"

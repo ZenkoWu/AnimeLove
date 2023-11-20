@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import Preloader from "../../Preloader/Preloader"
 import s from './CharactersDescription.module.css'
-import { TCharactersInfo } from "../../../types/mainElementsTypes"
+import { TCharactersInfo } from "../../../types/types"
 import { api } from "../../../redux/services/api/api"
 import {FavoriteBtn} from "../../Favorites/FavoriteBtn/FavoriteBtn"
 import { flexPlace } from "../../../utils/flexPlace"
