@@ -3,7 +3,9 @@ import { useCallback } from "react";
 import { favoritesActions } from "../../../redux/features/favorites";
 import { HeartBtn } from "./HeartBtn";
 import { TState } from "@/redux/store";
-import { TAnimeInfo, TCategories, TMangaInfo, TSmallCardInfo } from "@/types/types";
+import {  TCategories, TSmallCardInfo } from "@/types/types";
+import { TAnimeInfo } from "@/types/anime";
+import { TMangaInfo } from "@/types/manga";
 
 export const FavoriteBtn = ({category, info}: {category: TCategories, info: TSmallCardInfo}) => {
     const dispatch = useDispatch()

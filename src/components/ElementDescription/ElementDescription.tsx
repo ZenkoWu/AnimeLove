@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom"
 import Preloader from "../Preloader/Preloader"
 import s from './ElementDescription.module.css'
 import starSymbol from '../../imges/starScore.svg'
-import { TAnimeInfo, TCategories, TMangaInfo } from "../../types/types"
+import { TCategories } from "../../types/types"
 import { getScoreColor } from "../../utils/getScoreColor"
 import { api } from "../../redux/services/api/api"
 import {FavoriteBtn} from "../../components/Favorites/FavoriteBtn/FavoriteBtn"
@@ -10,6 +10,8 @@ import { flexPlace } from "../../utils/flexPlace"
 import {Carousel} from "../../components/Carousel/Carousel"
 import { API_ROUTES } from "../../redux/services/api/apiRoutes"
 import { ErrorPage } from "../../components/ErrorPage/ErrorPage"
+import { TAnimeInfo } from "@/types/anime"
+import { TMangaInfo } from "@/types/manga"
 
 const recommendsAmount = 10
 

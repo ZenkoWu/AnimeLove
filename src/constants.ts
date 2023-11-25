@@ -1,12 +1,5 @@
-import { 
-    TAnimeOrderBy, 
-    TAnimeRatings, 
-    TAnimeStatus, 
-    TAnimeTypes, 
-    TMangaOrderBy, 
-    TMangaStatus, 
-    TMangaType
-} from "./types/types";
+import { TAnimeFilter } from "./types/anime";
+import { TMangaFilter } from "./types/manga";
 
 const COMMON_ORDER_BY = [
     {label: 'Popularity', id: 'popularity'},
@@ -16,52 +9,52 @@ const COMMON_ORDER_BY = [
     {label: 'Favorites', id: 'favorites'},
 ] as const;
 
-export const ageRatings: TAnimeRatings[] = [
-    {id: 'g', label:  'G - All Ages'},
-    {id: 'pg', label:  'PG - Children'},
-    {id: 'pg13', label:  'PG-13 - Teens 13 or older'},
-    {id: 'r17', label:  'R - 17+ (violence & profanity)'},
-    {id: 'r', label:   'R+ - Mild Nudity'},
-];
+export const animeFilter : TAnimeFilter = {
+    types: [
+        {label: 'Tv', id: 'tv'},
+        {label: 'Ova', id: 'ova'},
+        {label: 'Movie', id: 'movie'},
+        {label: 'Special', id: 'special'},
+        {label: 'Music', id: 'music'},
+    ],
+    statuses: [
+        {label: 'Finished Airing', id: 'complete'},
+        {label: 'Currently Airing', id:'airing'},
+       { label: 'Not yet aired', id:'upcoming'}
+    ],
+    ageRatings: [
+        {id: 'g', label:  'G - All Ages'},
+        {id: 'pg', label:  'PG - Children'},
+        {id: 'pg13', label:  'PG-13 - Teens 13 or older'},
+        {id: 'r17', label:  'R - 17+ (violence & profanity)'},
+        {id: 'r', label:   'R+ - Mild Nudity'},
+    ],
 
-export const animeStatuses: TAnimeStatus[] = [
-    {label: 'Finished Airing', id: 'complete'},
-    {label: 'Currently Airing', id:'airing'},
-   { label: 'Not yet aired', id:'upcoming'}
-];
+    orderBy: [
+        ...COMMON_ORDER_BY,
+        {label: 'Episodes', id:'episodes'}
+    ]
+}
 
-export const animeOrderBy: TAnimeOrderBy[]= [
-    ...COMMON_ORDER_BY,
-    {label: 'Episodes', id:'episodes'}
-];
-
-export const animeTypes: TAnimeTypes[] = [
-    {label: 'Tv', id: 'tv'},
-    {label: 'Ova', id: 'ova'},
-    {label: 'Movie', id: 'movie'},
-    {label: 'Special', id: 'special'},
-    {label: 'Music', id: 'music'},
-];
-
-export const mangaOrderBy: TMangaOrderBy[] = [
-    ...COMMON_ORDER_BY,
-    {label: 'Chapters', id:'chapters'}
-];
-
-export const mangaStatuses: TMangaStatus[] = [
-    {label: 'Publishing', id: 'publishing'},
-    {label: 'Finished', id: 'complete'},
-    {label: 'On Hiatus', id: 'hiatus'},
-    {label: 'Discontinued', id: 'discontinued'},
-    {label: 'Upcoming', id: 'upcoming'}
- ];
-
-export const mangaTypes: TMangaType[] = [
-    {label: 'Manga', id: 'manga'},
-    {label: 'Novel', id: 'novel'},
-    {label: 'Lightnovel', id: 'lightnovel'},
-    {label: 'Oneshot', id: 'oneshot'},
-    {label: 'Doujin', id: 'doujin'},
-    {label: 'Manhwa', id: 'manhwa'},
-    {label: 'Manhua', id: 'manhua'}
-];
+export const mangaFilter: TMangaFilter = {
+    types: [
+        {label: 'Manga', id: 'manga'},
+        {label: 'Novel', id: 'novel'},
+        {label: 'Lightnovel', id: 'lightnovel'},
+        {label: 'Oneshot', id: 'oneshot'},
+        {label: 'Doujin', id: 'doujin'},
+        {label: 'Manhwa', id: 'manhwa'},
+        {label: 'Manhua', id: 'manhua'}
+    ],
+    statuses: [
+        {label: 'Publishing', id: 'publishing'},
+        {label: 'Finished', id: 'complete'},
+        {label: 'On Hiatus', id: 'hiatus'},
+        {label: 'Discontinued', id: 'discontinued'},
+        {label: 'Upcoming', id: 'upcoming'}
+    ],
+    orderBy: [
+        ...COMMON_ORDER_BY,
+        {label: 'Chapters', id:'chapters'}
+    ]
+}

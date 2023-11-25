@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { favoritesReducer } from './features/favorites'
-import { TAnimeInfo, TMangaInfo } from '@/types/types'
 import { commonReducer } from './features/common'
 import { TPaginationData, paginationReducer } from './features/pagination'
 import { apiMethods } from './services/apiMethods'
+import { TAnimeInfo } from '@/types/anime'
+import { TMangaInfo } from '@/types/manga'
 
 export interface TState {
     common: {
