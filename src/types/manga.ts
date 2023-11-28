@@ -1,7 +1,7 @@
 import { mangaFilter } from "@/constants";
 import { TElementInfo } from "./types";
 
-export interface TMangaInfo extends TElementInfo {
+export type TMangaInfo = TElementInfo & {
     type?: typeof mangaFilter.types[number]['label'],
     chapters?: number,
     status?: typeof mangaFilter.statuses[number]['label']

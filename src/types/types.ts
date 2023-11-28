@@ -1,7 +1,7 @@
 import { TAnimeInfo } from './anime';
 import { TMangaInfo } from './manga';
 
-export interface TElementInfo {
+export type TElementInfo = {
     mal_id: number,
     title: string,
     images: {
@@ -21,7 +21,6 @@ export interface TElementInfo {
     score?: number,
     title_japanese?: string,
 }
-
 
 export type TCharactersInfo = {
     mal_id: number,

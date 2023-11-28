@@ -1,7 +1,7 @@
 import { animeFilter } from "@/constants"
 import { TElementInfo } from "./types"
 
-export interface TAnimeInfo extends TElementInfo {
+export type TAnimeInfo = TElementInfo  & ( {
     type?: typeof animeFilter.types[number]['label'],
     rating?: typeof animeFilter.ageRatings[number]['label'],
     status?: typeof animeFilter.statuses[number]['label'],
@@ -11,7 +11,7 @@ export interface TAnimeInfo extends TElementInfo {
     },
     duration?: string,  
     episodes?: number,
-}
+})
 
 export enum TAnimeTypeId {
     tv = 'tv',
