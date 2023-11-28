@@ -9,23 +9,25 @@ import { TState } from '../../redux/store';
 import { paginationActions } from '../../redux/features/pagination';
 import { API_ROUTES } from '../../redux/services/api/apiRoutes';
 import { TCategories } from '@/types/types';
-import {
-    animeFilter,
-    mangaFilter
-} from '../../constants';
 import { TSelectField } from '../Filter/SelectField/SelectField';
 import { getWindowSizes } from '../Header/NavBar/useWindowSizes/useWindowSizes';
 import { hideOverflow } from '../../utils/hideOverflow';
-import { TAnimeFilterState } from '@/types/anime';
-import { TMangaFilterState } from '@/types/manga';
+import { 
+    TAnimeFilterState, 
+    TAnimeOrderBy, 
+    TAnimeRating, 
+    TAnimeStatus, 
+    TAnimeType 
+} from '../../types/anime';
+import { TMangaFilterState, TMangaOrderBy, TMangaStatus, TMangaType } from '../../types/manga';
 
 type TMainContent = {
     initialState: TAnimeFilterState | TMangaFilterState, 
     category: TCategories,
-    types:  typeof animeFilter.types | typeof mangaFilter.types,
-    orderBy: typeof animeFilter.orderBy | typeof mangaFilter.orderBy,
-    status: typeof animeFilter.statuses | typeof mangaFilter.statuses,
-    rating?: typeof animeFilter.ageRatings, //only for anime
+    types:  TAnimeType[] | TMangaType[],
+    orderBy: TAnimeOrderBy[] | TMangaOrderBy[],
+    status: TAnimeStatus[] | TMangaStatus[],
+    rating?: TAnimeRating[], //only for anime
     title: 'Anime' | 'Manga'
 }
 

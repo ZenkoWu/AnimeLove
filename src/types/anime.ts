@@ -1,8 +1,8 @@
 import { TElementInfo } from "./types"
 
 export type TAnimeInfo = TElementInfo & {
-    type?: TAnimeTypes['label'],
-    rating?: TAnimeRatings['label'],
+    type?: TAnimeType['label'],
+    rating?: TAnimeRating['label'],
     status?: TAnimeStatus['label'],
     trailer?: {
         embed_url: string,
@@ -19,7 +19,7 @@ export enum TAnimeTypeId {
     special = 'special',
     music = 'music'
 } 
-export type TAnimeTypes = {label: string, id: keyof typeof TAnimeTypeId}
+export type TAnimeType = {label: string, id: keyof typeof TAnimeTypeId}
 
 export enum TAnimeRatingsId {
     g = 'g',
@@ -29,7 +29,7 @@ export enum TAnimeRatingsId {
     r = 'r'
 } 
 
-export type TAnimeRatings = {label: string, id: keyof typeof TAnimeRatingsId}
+export type TAnimeRating = {label: string, id: keyof typeof TAnimeRatingsId}
 
 export enum TAnimeOrderById {
     popularity = 'popularity',
@@ -51,9 +51,9 @@ export enum TAnimeStatusId {
 export type TAnimeStatus = {label: string, id: keyof typeof TAnimeStatusId}
 
 export type TAnimeFilter = {
-    types: TAnimeTypes[],
+    types: TAnimeType[],
     statuses: TAnimeStatus[],
-    ageRatings: TAnimeRatings[],
+    ageRatings: TAnimeRating[],
     orderBy: TAnimeOrderBy[]
 }
 

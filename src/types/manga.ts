@@ -1,7 +1,7 @@
 import { TElementInfo } from "./types";
 
 export type TMangaInfo = TElementInfo & {
-    type?: TMangaTypes['label'],
+    type?: TMangaType['label'],
     chapters?: number,
     status?: TMangaStatus['label']
 }
@@ -15,7 +15,7 @@ export enum TMangaTypeId {
     manhwa = 'manhwa',
     manhua = 'manhua'
 }
-export type TMangaTypes = {label: string, id:  keyof typeof TMangaTypeId}
+export type TMangaType = {label: string, id:  keyof typeof TMangaTypeId}
 
 export enum TMangaOrderById {
     popularity = 'popularity',
@@ -43,7 +43,7 @@ export type TMangaFilterState = {
 }
 
 export type TMangaFilter = {
-    types: TMangaTypes[],
+    types: TMangaType[],
     statuses: TMangaStatus[],
     orderBy: TMangaOrderBy[]
 }
