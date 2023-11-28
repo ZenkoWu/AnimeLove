@@ -1,5 +1,5 @@
 import { mangaFilter } from "@/constants";
-import { TElementInfo, TOrderBy } from "./types";
+import { TElementInfo } from "./types";
 
 export interface TMangaInfo extends TElementInfo {
     type?: typeof mangaFilter.types[number]['label'],
@@ -7,19 +7,40 @@ export interface TMangaInfo extends TElementInfo {
     status?: typeof mangaFilter.statuses[number]['label']
 }
 
-export type TMangaTypeId = 'manga' | 'novel' | 'lightnovel' | 'oneshot' | 'doujin' | 'manhwa' | 'manhua'
-export type TMangaTypes = {label: string, id: TMangaTypeId}
+export enum TMangaTypeId {
+    manga ='manga',
+    novel = 'novel',
+    lightnovel = 'lightnovel',
+    oneshot = 'oneshot',
+    doujin = 'doujin',
+    manhwa = 'manhwa',
+    manhua = 'manhua'
+}
+export type TMangaTypes = {label: string, id:  keyof typeof TMangaTypeId}
 
-export type TMangaOrderById = TOrderBy | 'chapters'
-export type TMangaOrderBy = {label: string, id: TMangaOrderById}
+export enum TMangaOrderById {
+    popularity = 'popularity',
+    title = 'title', 
+    start_date =  'start_date',
+    end_date = 'end_date',
+    favorites = 'favorites', 
+    chapters = 'chapters'
+}
+export type TMangaOrderBy = {label: string, id:  keyof typeof TMangaOrderById}
 
-export type TMangaStatusId = 'complete' | 'publishing' | 'hiatus' | 'discontinued' | 'upcoming'
-export type TMangaStatus = {label: string, id: TMangaStatusId}
+export enum TMangaStatusId {
+    complete = 'complete',
+    publishing = 'publishing',
+    hiatus = 'hiatus', 
+    discontinued = 'discontinued', 
+    upcoming = 'upcoming'
+}
+export type TMangaStatus = {label: string, id:  keyof typeof TMangaStatusId}
 
 export type TMangaFilterState = {
-    type: TMangaTypeId,
-    orderBy: TMangaOrderById,
-    status: TMangaStatusId
+    type:  keyof typeof TMangaTypeId,
+    orderBy:  keyof typeof TMangaOrderById,
+    status:  keyof typeof TMangaStatusId
 }
 
 export type TMangaFilter = {

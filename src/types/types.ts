@@ -59,5 +59,3 @@ export type TElementCard = {
     data: TAnimeInfo | TMangaInfo | TCharactersInfo,
     route?: TCategories
 }
-export type TOrderBy = 'popularity' | 'title' | 'start_date' | 'end_date' | 'favorites' 
-
