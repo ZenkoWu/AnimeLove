@@ -1,10 +1,9 @@
-import { mangaFilter } from "@/constants";
 import { TElementInfo } from "./types";
 
 export type TMangaInfo = TElementInfo & {
-    type?: typeof mangaFilter.types[number]['label'],
+    type?: TMangaTypes['label'],
     chapters?: number,
-    status?: typeof mangaFilter.statuses[number]['label']
+    status?: TMangaStatus['label']
 }
 
 export enum TMangaTypeId {
